@@ -7,11 +7,69 @@
 - t-SNE still achieved the strongest local-structure preservation in the final comparison, with neighborhood preservation `0.523` and trustworthiness `0.893`.
 - ACOM remained stable as dataset size increased from `50` to `200` documents, but neighborhood preservation and trustworthiness declined beyond `100` documents while stress increased.
 
+## Executive Summary
+
+### What the project is
+
+This project builds and evaluates a research pipeline for mapping document embeddings onto a **discrete two-dimensional grid** using ACOM, then comparing that discrete map against standard continuous dimensionality-reduction methods.
+
+### Dataset used
+
+The experiments use a balanced five-category subset of **20 Newsgroups**:
+
+- `comp.graphics`
+- `rec.sport.baseball`
+- `sci.med`
+- `sci.space`
+- `talk.politics.misc`
+
+The main benchmark contains `100` documents in total, sampled with fixed random seed and light semantic-preserving cleaning.
+
+### Embedding model used
+
+The main embedding backend is `sentence-transformers` with:
+
+- model: `all-MiniLM-L6-v2`
+- dimension: `384`
+
+### Algorithms compared
+
+The project compares:
+
+- `ACOM` for discrete grid mapping
+- `PCA`
+- `t-SNE`
+- `UMAP`
+
+### Best ACOM version
+
+The strongest ACOM variant in the completed experiments is:
+
+- `acom_v1_wider_swap_annealed`
+
+This version combined wider swap candidate search with annealed acceptance and produced the best ACOM results on cost improvement, neighborhood preservation, and trustworthiness.
+
+### Main experimental finding
+
+The main result is that tuned ACOM became meaningfully stronger than the original baseline and exceeded PCA on two key local-structure metrics:
+
+- neighborhood preservation: `0.367` for tuned ACOM vs `0.329` for PCA
+- trustworthiness: `0.787` for tuned ACOM vs `0.758` for PCA
+
+However, continuous nonlinear methods remained stronger on local semantic structure:
+
+- `t-SNE`: neighborhood preservation `0.523`, trustworthiness `0.893`
+- `UMAP`: neighborhood preservation `0.505`, trustworthiness `0.897`
+
+### Current limitation
+
+The current ACOM implementation remains limited by the discrete grid constraint and by search efficiency at larger scales. It still underperforms t-SNE and UMAP on local-structure preservation, and its quality degrades as the number of documents increases beyond the 100-document benchmark.
+
 ## 1. Project Overview
 
-This project investigates whether document embeddings can be mapped to a **discrete two-dimensional semantic grid** using a swarm-inspired optimization procedure. The repository implements ACOM as a grid-based optimizer and compares it against continuous projection methods that operate on the same embedding set.
+This project investigates whether document embeddings can be mapped to a **discrete two-dimensional semantic grid** using a swarm-inspired optimization procedure. The repository implements ACOM as a grid-based optimizer and compares it against continuous projection methods on the same embedding set.
 
-The central engineering idea is straightforward: prepare a controlled document benchmark, generate embeddings, run multiple mapping methods, evaluate them with shared metrics, and archive every experiment so results remain reproducible.
+The overall workflow is straightforward: prepare a controlled benchmark, generate embeddings, run multiple mapping methods, evaluate them with shared metrics, and archive each experiment so the results remain reproducible.
 
 ```mermaid
 flowchart LR
@@ -30,9 +88,43 @@ flowchart LR
     J --> K["Archived Runs"]
 ```
 
+### Method Comparison: Continuous vs Discrete Outputs
+
+The most important conceptual distinction in the project is that PCA, t-SNE, and UMAP solve a **continuous projection** problem, while ACOM solves a **discrete placement** problem.
+
+```mermaid
+flowchart LR
+    A["Embeddings (384D)"] --> B["PCA"]
+    A --> C["t-SNE"]
+    A --> D["UMAP"]
+    A --> E["ACOM"]
+    B --> F["Continuous 2D Layout"]
+    C --> F
+    D --> F
+    E --> G["Discrete 2D Grid"]
+```
+
+### Representative Final ACOM Output
+
+The tuned ACOM system produces an explicit semantic grid rather than a scatter plot. Figure 1 shows the final discrete output that the rest of the report explains and justifies.
+
+![Tuned ACOM grid](../outputs/figures/tuned_acom_grid.png)
+
+*Figure 1. Tuned `acom_v1_wider_swap_annealed` grid layout on the 100-document benchmark.*
+
+## Key Decisions
+
+| Decision | Selected option | Reason |
+|---|---|---|
+| Dataset | 20 Newsgroups subset | Controlled, labeled benchmark with diverse topics |
+| Categories | `comp.graphics`, `rec.sport.baseball`, `sci.med`, `sci.space`, `talk.politics.misc` | Balanced topical diversity with manageable scope |
+| Embedding model | `all-MiniLM-L6-v2` | Compact 384D embeddings with strong practical quality |
+| Core metrics | Neighborhood preservation, trustworthiness, stress | Shared comparison across discrete and continuous mappings |
+| Final ACOM reference | `acom_v1_wider_swap_annealed` | Best internal optimization and best local-structure scores among ACOM variants |
+
 ### Repository Context
 
-The project is organized as a research pipeline rather than a single script. Source modules, working data, latest outputs, and archived experiments are separated so that multiple runs and tuned variants can be compared cleanly.
+The project is organized as a research pipeline rather than a single script. Source modules, working data, latest outputs, and archived experiments are separated so that multiple runs and ACOM variants can be compared cleanly.
 
 ```mermaid
 flowchart TD
@@ -68,7 +160,7 @@ This problem differs from standard dimensionality reduction. PCA, t-SNE, and UMA
 - structured semantic maps rather than free-floating points
 - a representation closer to shelf, matrix, or dashboard layouts
 
-The cost of that explicit structure is additional geometric constraint. The experiments in this repository therefore examine whether a discrete grid can preserve enough semantic structure to be competitive.
+The cost of that explicit structure is additional geometric constraint. The core empirical question is therefore whether a discrete grid can preserve enough semantic structure to remain useful.
 
 ## 3. Dataset
 
@@ -87,6 +179,8 @@ The repository uses:
 - fixed random seed `42`
 - balanced sampling
 - light semantic-preserving cleaning
+
+The benchmark was intentionally kept small and balanced so that changes in ACOM behavior would be easier to interpret.
 
 ### Dataset Composition
 
@@ -148,11 +242,13 @@ The project compares one discrete mapping approach and three continuous baseline
 - **UMAP**
   Nonlinear manifold-learning baseline that often balances local structure and broader geometry.
 
-The comparison is intentionally controlled: all methods operate on the same prepared embedding matrix, and all are evaluated with the same metric implementation.
+The comparison is intentionally controlled: all methods operate on the same prepared embedding matrix and are evaluated with the same metric implementation.
 
 ## 6. First ACOM Implementation
 
-The first ACOM implementation was a reproducible Version 1 baseline:
+The first ACOM implementation was designed as a clean baseline rather than a highly tuned final algorithm. Its role was to establish whether a discrete grid mapping could work at all before more targeted refinements were introduced.
+
+The baseline configuration used:
 
 - `10x10` grid
 - random initialization
@@ -162,7 +258,21 @@ The first ACOM implementation was a reproducible Version 1 baseline:
 - neighborhood radius = `1`
 - swap candidate breadth = `12`
 
-The algorithm treated `num_ants` as the number of proposal attempts per iteration rather than as explicit moving agents. This made the first version simple, readable, and suitable as a baseline research implementation.
+The algorithm treated `num_ants` as the number of proposal attempts per iteration rather than as explicit moving agents. This kept the first version simple, readable, and easy to evaluate as a research baseline.
+
+### Baseline Optimization Workflow
+
+```mermaid
+flowchart TD
+    A["Initialize Grid"] --> B["Select Swap Candidates"]
+    B --> C["Compute Local Cost Change"]
+    C --> D{"Improves Cost?"}
+    D -- "Yes" --> E["Accept Swap"]
+    D -- "No" --> F["Reject Swap"]
+    E --> G["Update Grid"]
+    F --> G
+    G --> H["Repeat Until Early Stop or Max Iteration"]
+```
 
 ### Baseline ACOM Metrics
 
@@ -174,13 +284,13 @@ The algorithm treated `num_ants` as the number of proposal attempts per iteratio
 
 ![Baseline ACOM grid](../outputs/figures/acom_v1_baseline_grid.png)
 
-*Figure 1. Discrete grid produced by the first ACOM baseline run.*
+*Figure 2. Discrete grid produced by the first ACOM baseline run.*
 
 ### Baseline ACOM Cost History
 
 ![Baseline ACOM cost history](../outputs/figures/acom_v1_baseline_cost_history.png)
 
-*Figure 2. Cost curve for the first ACOM baseline run.*
+*Figure 3. Cost curve for the first ACOM baseline run.*
 
 ### Initial Limitations
 
@@ -188,10 +298,10 @@ The first version improved its internal objective, but the external structure-pr
 
 ## 7. Observed Problems
 
-The first ACOM version revealed three main problems:
+The baseline run made the main weaknesses of the initial design visible:
 
 1. **Greedy search trapped the optimizer early.**
-   The cost curve in Figure 2 falls quickly and then plateaus, which is typical of local trapping.
+   The cost curve in Figure 3 falls quickly and then plateaus, which is typical of local trapping.
 
 2. **Neighborhood preservation was poor.**
    The baseline score of `0.134` was well below later tuned results.
@@ -206,26 +316,42 @@ The first ACOM version revealed three main problems:
 | `acom_v1_baseline` | 0.134 | 0.567 | 275.767 |
 | `acom_v1_wider_swap_annealed` | 0.367 | 0.787 | 213.015 |
 
-This gap provided the main motivation for the controlled ACOM improvement phase.
+This baseline-to-tuned gap motivated the controlled ACOM improvement phase.
 
 ## 8. Algorithm Improvements
 
-The algorithm was improved incrementally rather than replaced wholesale. Each change was introduced as a named variant and evaluated under the same metrics.
+The algorithm was improved incrementally rather than replaced wholesale. Each variant changed one main ingredient at a time so that the reason for any improvement remained interpretable.
 
 ```mermaid
 flowchart TD
     A["Initialize Random Grid"] --> B["Build Semantic Neighbor Lists"]
     B --> C["Select Swap Candidates"]
     C --> D["Evaluate Local Cost Change"]
-    D --> E{"Accept or Reject"}
-    E -- "Accept" --> F["Swap Documents"]
-    E -- "Reject" --> G["Keep Layout"]
-    F --> H["Record Cost"]
-    G --> H
-    H --> I{"Early Stop or Max Iter?"}
-    I -- "No" --> C
-    I -- "Yes" --> J["Return Final Grid"]
+    D --> E{"Improvement > 0?"}
+    E -- "Yes" --> F["Accept Swap"]
+    E -- "No" --> G["Annealed Acceptance Test"]
+    G --> H{"Accept Uphill Move?"}
+    H -- "Yes" --> F
+    H -- "No" --> I["Keep Layout"]
+    F --> J["Update Grid"]
+    I --> J
+    J --> K["Record Cost"]
+    K --> L{"Early Stop or Max Iter?"}
+    L -- "No" --> C
+    L -- "Yes" --> M["Return Final Grid"]
 ```
+
+### Version Evolution at a Glance
+
+| Version / Variant | Main change | Why it was introduced | Key outcome |
+|---|---|---|---|
+| `acom_v1_baseline` | Greedy swap-based baseline | Establish a simple discrete benchmark | Worked, but local-structure metrics were weak |
+| `acom_v1_k10` | More semantic neighbors | Test whether broader semantic context helps placement | Improved over baseline, but only moderately |
+| `acom_v1_more_iters` | More iterations | Test whether the baseline was simply under-optimized | Improved cost and metrics, but still plateaued |
+| `acom_v1_wider_swap_search` | Wider candidate search | Reduce poor local proposals and broaden search | First major jump in neighborhood preservation and trustworthiness |
+| `acom_v1_wider_swap_annealed` | Annealed acceptance on top of wider search | Escape local minima created by greedy acceptance | Best ACOM variant overall |
+
+This table captures the development logic of the project: start with a simple baseline, identify the main failure mode, then improve search breadth and search flexibility before changing anything more complicated.
 
 ### Variant Comparison Table
 
@@ -243,7 +369,7 @@ flowchart TD
 
 ![ACOM variant comparison](../outputs/figures/acom_variant_comparison.png)
 
-*Figure 3. Comparison of cost improvement, neighborhood preservation, and trustworthiness across named ACOM variants.*
+*Figure 4. Comparison of cost improvement, neighborhood preservation, and trustworthiness across named ACOM variants.*
 
 ### Improvement Step 1: Wider Swap Candidate Search
 
@@ -253,21 +379,29 @@ The first clearly successful change was **wider swap search**. Increasing the ca
 - trustworthiness from `0.567` to `0.683`
 - final cost from `275.767` to `234.524`
 
-**Evidence:** the wider-search row in the variant comparison table and the jump visible in Figure 3.
+**Evidence:** the wider-search row in the variant comparison table and the jump visible in Figure 4.
 
-**Interpretation:** better candidate coverage helped the optimizer escape poor local swap choices without changing the cost function itself.
+**Interpretation:** better candidate coverage improved the search process itself. The objective stayed the same, but the optimizer became better at finding useful moves.
 
 ### Improvement Step 2: Annealed Acceptance
 
-The strongest improvement came from adding **annealed acceptance** on top of wider search. Relative to `acom_v1_wider_swap_search`, the annealed variant improved:
+The strongest improvement came from adding **annealed acceptance** on top of wider search. This change addressed the main weakness of the greedy baseline: once the search reached a locally acceptable arrangement, it tended to stop making meaningful progress. Relative to `acom_v1_wider_swap_search`, the annealed variant improved:
 
 - neighborhood preservation from `0.239` to `0.367`
 - trustworthiness from `0.683` to `0.787`
 - final cost from `234.524` to `213.015`
 
-**Evidence:** the last two rows of the variant comparison table and the rightmost ranking in Figure 3.
+**Evidence:** the last two rows of the variant comparison table and the rightmost ranking in Figure 4.
 
 **Interpretation:** occasional uphill moves reduced local trapping and produced more semantically coherent layouts than greedy acceptance alone.
+
+### Tuned Cost History as Evidence of Reduced Plateauing
+
+![Tuned ACOM cost history](../outputs/figures/tuned_acom_cost_history.png)
+
+*Figure 5. Cost history for `acom_v1_wider_swap_annealed`, showing a deeper descent than the baseline greedy run.*
+
+Taken together, Figures 3 and 5 provide the clearest visual explanation for why the final ACOM version was selected: the tuned variant continues improving where the baseline begins to flatten.
 
 ## 9. Evaluation Metrics
 
@@ -298,7 +432,7 @@ flowchart LR
 
 ## 10. Experimental Results
 
-The strongest final method comparison uses the tuned ACOM variant against PCA, t-SNE, and UMAP on the same 100-document embedding set.
+The main comparison in this project is the tuned ACOM variant against PCA, t-SNE, and UMAP on the same 100-document embedding set.
 
 ### Final Tuned Comparison
 
@@ -313,41 +447,74 @@ The strongest final method comparison uses the tuned ACOM variant against PCA, t
 
 ![Tuned metric comparison](../outputs/figures/tuned_acom_metric_comparison.png)
 
-*Figure 4. Final metric comparison between the tuned ACOM variant and the continuous baselines.*
+*Figure 6. Final metric comparison between the tuned ACOM variant and the continuous baselines.*
 
 ### Interpretation
 
-- **ACOM vs PCA:** ACOM improved local-structure metrics over PCA, but PCA remained much stronger on stress.
-- **ACOM vs t-SNE:** t-SNE preserved local neighborhoods better.
-- **ACOM vs UMAP:** UMAP also preserved local neighborhoods better and achieved much lower stress.
+- **ACOM vs PCA:** tuned ACOM outperformed PCA on neighborhood preservation (`0.367` vs `0.329`) and trustworthiness (`0.787` vs `0.758`), but PCA remained much stronger on stress (`0.612` vs `5.107`).
+- **ACOM vs t-SNE:** t-SNE remained stronger on local structure, with neighborhood preservation `0.523` and trustworthiness `0.893`.
+- **ACOM vs UMAP:** UMAP also remained stronger on local structure and achieved much lower stress (`2.850`) than tuned ACOM.
+- **Among the continuous baselines:** UMAP showed the strongest overall balance in this comparison because it combined high neighborhood preservation and trustworthiness with substantially lower stress than t-SNE.
 
-This is an important research outcome: the tuned ACOM variant became competitive with PCA on local structure while still remaining a discrete method, but continuous nonlinear methods retained an advantage on local semantic preservation.
+The key result is therefore mixed but meaningful: the tuned ACOM variant became competitive with PCA on local structure while still remaining a discrete method, but continuous nonlinear methods retained a clear advantage on local semantic preservation.
+
+### Baseline Comparison Discussion
+
+**What ACOM does better**
+
+- produces an explicit discrete grid rather than a scatter plot
+- improves on PCA in neighborhood preservation and trustworthiness
+- yields a map that is immediately interpretable as a placement layout
+
+**What ACOM still does worse**
+
+- underperforms t-SNE and UMAP on local semantic structure
+- shows much higher stress than PCA
+- degrades more noticeably as the document count increases
+
+**Why that is still acceptable in this project**
+
+The purpose of ACOM is not to beat every continuous method on every metric. It solves a harder discrete placement problem. The value of ACOM is that it produces an interpretable, explicit semantic grid while remaining quantitatively competitive enough to justify further research.
+
+### Practical Runtime Note
+
+Runtime data is available for embedding generation and for the ACOM scaling study.
+
+| Task | Scope | Runtime |
+|---|---|---:|
+| Embedding generation | 100 documents, `all-MiniLM-L6-v2` | `5.7658 s` |
+| Tuned ACOM scaling run | 50 documents | `13.3635 s` |
+| Tuned ACOM scaling run | 100 documents | `15.1044 s` |
+| Tuned ACOM scaling run | 150 documents | `38.9926 s` |
+| Tuned ACOM scaling run | 200 documents | `36.0956 s` |
 
 ## 11. Visual Comparison of Methods
+
+The visual comparison helps clarify what the quantitative metrics mean in practice. The continuous methods produce smooth scatter plots, while ACOM produces a cell-based layout that can be read as an explicit semantic map.
 
 ### Tuned ACOM Grid
 
 ![Tuned ACOM grid](../outputs/figures/tuned_acom_grid.png)
 
-*Figure 5. Tuned ACOM discrete document map.*
+*Figure 7. Tuned ACOM discrete document map.*
 
 ### PCA
 
 ![Tuned PCA scatter](../outputs/figures/tuned_pca_scatter.png)
 
-*Figure 6. PCA projection on the same embedding set.*
+*Figure 8. PCA projection on the same embedding set.*
 
 ### t-SNE
 
 ![Tuned t-SNE scatter](../outputs/figures/tuned_tsne_scatter.png)
 
-*Figure 7. t-SNE projection on the same embedding set.*
+*Figure 9. t-SNE projection on the same embedding set.*
 
 ### UMAP
 
 ![Tuned UMAP scatter](../outputs/figures/tuned_umap_scatter.png)
 
-*Figure 8. UMAP projection on the same embedding set.*
+*Figure 10. UMAP projection on the same embedding set.*
 
 ### Visual Interpretation
 
@@ -364,18 +531,12 @@ The best-performing ACOM configuration in the completed tuning study was:
 
 ### Why It Performed Best
 
-It combined two changes that addressed the main weaknesses of the baseline:
+It combined the two changes that most directly addressed the main weaknesses of the baseline:
 
 1. wider swap candidate search
 2. annealed acceptance instead of purely greedy acceptance
 
 Together, these improved both optimization quality and semantic neighborhood preservation.
-
-### Cost History of the Best Variant
-
-![Tuned ACOM cost history](../outputs/figures/tuned_acom_cost_history.png)
-
-*Figure 9. Cost history for the tuned `acom_v1_wider_swap_annealed` run.*
 
 ### Best-Variant Summary
 
@@ -383,11 +544,21 @@ Together, these improved both optimization quality and semantic neighborhood pre
 |---|---:|---:|---:|---:|---:|
 | `acom_v1_wider_swap_annealed` | 300.831 | 213.015 | 87.815 | 0.367 | 0.787 |
 
-Figure 9 shows a deeper and more sustained descent than the baseline greedy run in Figure 2, which supports the interpretation that annealed acceptance reduced premature convergence.
+This version was selected as the final ACOM reference because it:
+
+- produced the **largest cost improvement** of any ACOM variant
+- materially improved neighborhood preservation to `0.367`
+- materially improved trustworthiness to `0.787`
+- showed less premature plateauing than the greedy baseline, as seen by comparing Figure 5 with Figure 3
+- became the first ACOM version in this project to beat PCA on both neighborhood preservation and trustworthiness
+
+In short, this was the first version that improved ACOM both as an optimizer and as a semantic mapping method.
 
 ## 13. Scaling Experiments
 
-The final phase tested whether the tuned ACOM variant remained stable as the number of documents increased. The scaling study used:
+The final phase tested whether the tuned ACOM variant remained stable as the number of documents increased. This phase answers a practical question: even if the tuned variant works on 100 documents, does it still behave reasonably on larger maps?
+
+The scaling study used:
 
 - the same five categories
 - the same embedding model
@@ -407,25 +578,25 @@ The final phase tested whether the tuned ACOM variant remained stable as the num
 
 ![ACOM scaling runtime](../outputs/figures/acom_scaling_runtime.png)
 
-*Figure 10. Runtime trend across dataset sizes.*
+*Figure 11. Runtime trend across dataset sizes.*
 
 ### Neighborhood Preservation Scaling
 
 ![ACOM scaling neighborhood preservation](../outputs/figures/acom_scaling_neighborhood.png)
 
-*Figure 11. Neighborhood preservation across dataset sizes.*
+*Figure 12. Neighborhood preservation across dataset sizes.*
 
 ### Trustworthiness Scaling
 
 ![ACOM scaling trustworthiness](../outputs/figures/acom_scaling_trustworthiness.png)
 
-*Figure 12. Trustworthiness across dataset sizes.*
+*Figure 13. Trustworthiness across dataset sizes.*
 
 ### Stress Scaling
 
 ![ACOM scaling stress](../outputs/figures/acom_scaling_stress.png)
 
-*Figure 13. Stress across dataset sizes.*
+*Figure 14. Stress across dataset sizes.*
 
 ### Interpretation
 
@@ -434,9 +605,11 @@ The final phase tested whether the tuned ACOM variant remained stable as the num
 - Quality deteriorated after `100` documents as neighborhood preservation and trustworthiness fell.
 - Stress increased steadily with scale, showing that discrete distortion becomes harder to control on larger maps.
 
+The overall conclusion is that the current best ACOM variant scales **stably**, but not **uniformly**. It continues to optimize successfully, yet the semantic quality of the final map becomes harder to maintain as the grid grows.
+
 ## 14. Limitations
 
-The experiments reveal several clear limitations:
+The experiments reveal several clear limitations of the current Version 1 approach:
 
 - ACOM still underperforms t-SNE and UMAP on neighborhood preservation and trustworthiness.
 - Stress remains much worse than PCA, which indicates weaker preservation of global pairwise geometry.
@@ -446,7 +619,7 @@ The experiments reveal several clear limitations:
 
 ### Evidence of Remaining Gap
 
-The final tuned comparison in Table 8 and Figure 4 shows that ACOM improved enough to exceed PCA on local-structure metrics, but it did not match t-SNE or UMAP on the same embedding set.
+The final tuned comparison table and Figure 6 show that ACOM improved enough to exceed PCA on local-structure metrics, but it did not match t-SNE or UMAP on the same embedding set.
 
 ## 15. Future Work
 
