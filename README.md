@@ -1,203 +1,173 @@
 # LLM Document ACOM
 
-This repository contains a research pipeline for mapping document embeddings into a discrete two-dimensional layout with ACOM and comparing that layout against standard continuous dimensionality reduction methods. The current implementation targets a balanced five-class subset of the 20 Newsgroups corpus and is structured to support repeatable experiments, quantitative evaluation, and archived run tracking.
+Research pipeline for mapping document embeddings onto a discrete two-dimensional grid with ACOM and comparing that layout against PCA, t-SNE, and optional UMAP.
 
-## Motivation
+## Research Motivation
 
-The project studies whether a discrete semantic map can preserve meaningful document neighborhoods while remaining easy to inspect visually. ACOM is used as the discrete mapping method, while PCA, t-SNE, and optional UMAP provide continuous baselines for comparison against the same embedding space.
+Most embedding visualization methods produce continuous 2D coordinates. Those methods are useful for inspection, but they do not solve a discrete placement problem. This project studies whether a discrete semantic map can preserve meaningful neighborhood structure while remaining interpretable as an explicit grid layout.
 
-## Pipeline
+## Problem Statement
 
-```text
-20 Newsgroups subset
--> light text cleaning
--> embedding generation
--> semantic distance matrix
--> ACOM / PCA / t-SNE / optional UMAP
--> evaluation metrics
--> archived experiment run
+Given a set of document embeddings, construct a two-dimensional semantic map and evaluate how well that map preserves structure from the original embedding space. The repository focuses on two questions:
+
+- How well can a discrete grid preserve semantic neighborhoods?
+- How does that discrete layout compare with standard continuous baselines under shared metrics?
+
+## Key Idea
+
+The repository implements a Version 1 ACOM-style optimizer that places documents on a finite grid by repeated swap-based search. Documents begin in a reproducible random layout, then the algorithm improves that layout using a semantic-neighborhood cost. The same embeddings are also projected with PCA, t-SNE, and optional UMAP so that all methods can be evaluated consistently.
+
+## Pipeline Overview
+
+```mermaid
+flowchart LR
+    A["Documents"] --> B["Preprocessing<br/>prepare_20newsgroups.py"]
+    B --> C["Embedding Inputs"]
+    C --> D["Embeddings<br/>generate_embeddings.py"]
+    D --> E["Semantic Distance Reference"]
+    E --> F["ACOM<br/>Discrete Grid"]
+    E --> G["PCA"]
+    E --> H["t-SNE"]
+    E --> I["UMAP (optional)"]
+    F --> J["Shared Metrics"]
+    G --> J
+    H --> J
+    I --> J
+    J --> K["Figures and Reports"]
+    K --> L["Archived Runs"]
 ```
 
-## Methods
+## Algorithms Compared
 
-- `ACOM`: discrete grid-based mapping
-- `PCA`: linear 2D baseline
-- `t-SNE`: nonlinear neighborhood-preserving baseline
-- `UMAP`: optional nonlinear baseline with graceful failure handling
+- `ACOM`: discrete grid-based mapping with swap optimization
+- `PCA`: linear continuous baseline
+- `t-SNE`: nonlinear local-neighborhood baseline
+- `UMAP`: optional nonlinear baseline
 
-## Evaluation
-
-The shared evaluation pipeline compares mappings against the original embedding space using:
-
-- neighborhood preservation
-- trustworthiness
-- stress
-- silhouette score by category when labels are available
-
-## Repository Overview
+## Repository Structure
 
 ```text
-.
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   ├── splits/
-│   └── embeddings/
-├── archive/
-│   ├── runs/
-│   ├── embeddings/
-│   ├── mappings/
-│   └── metrics/
-├── outputs/
-├── src/
+llm_document_acom/
+├── src/         pipeline modules and experiment runners
+├── data/        prepared data, splits, and embeddings
+├── archive/     archived experiment runs and study snapshots
+├── outputs/     latest generated maps, figures, and reports
+├── docs/        documentation and tracked review assets
 ├── requirements.txt
-├── README.md
-└── AGENTS.md
+└── README.md
 ```
 
-## Setup
+See [docs/REPOSITORY_STRUCTURE.md](docs/REPOSITORY_STRUCTURE.md) for a fuller layout description.
 
-Create and activate a Python environment, then install dependencies:
+## Installation
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Data Preparation
+The preferred embedding backend is `sentence-transformers` with `all-MiniLM-L6-v2`. If that backend is unavailable, the embedding pipeline falls back to TF-IDF.
 
-Download and prepare the balanced 20 Newsgroups subset:
+## Quick Start
+
+Prepare the benchmark subset:
 
 ```bash
 python3 src/prepare_20newsgroups.py
 ```
 
-This step:
-
-- uses `subset='train'` and `subset='test'`
-- removes headers, footers, and quotes
-- keeps these categories only:
-  - `comp.graphics`
-  - `rec.sport.baseball`
-  - `sci.med`
-  - `sci.space`
-  - `talk.politics.misc`
-- creates balanced train and test splits with 10 documents per category
-
-## Embedding Generation
-
-Generate embeddings from the prepared JSONL inputs:
+Generate embeddings:
 
 ```bash
 python3 src/generate_embeddings.py
 ```
 
-Embedding backends are configurable:
-
-- preferred local backend: `sentence-transformers`
-- fallback backend: TF-IDF via scikit-learn
-
-The script writes aligned embedding arrays and metadata tables under `data/embeddings/`.
-
-## Running Experiments
-
-Run the mapping and evaluation pipeline:
+Run the main experiment:
 
 ```bash
 python3 src/run_experiment.py
 ```
 
-Enable UMAP explicitly if the local environment supports it:
+Run with UMAP enabled:
 
 ```bash
 python3 src/run_experiment.py --enable-umap
 ```
 
-The experiment runner:
+## Running Experiments
 
-- validates metadata and embedding alignment
-- runs ACOM on the discrete grid
-- runs PCA and t-SNE on the same embedding matrix
-- runs UMAP optionally
-- computes shared evaluation metrics
-- saves latest outputs under `outputs/`
-- archives the full run under `archive/runs/`
+Single run on the prepared embedding set:
 
-Run a controlled ACOM tuning batch:
+```bash
+python3 src/run_experiment.py
+```
+
+Controlled ACOM variant sweep:
 
 ```bash
 python3 src/run_acom_sweep.py
 ```
 
-This sweep runs a small set of named ACOM variants against the same prepared embeddings, keeps the baseline references fixed, archives each ACOM run separately, and writes a variant comparison table to `outputs/reports/`.
+Scaling study for the tuned ACOM variant:
 
-## Outputs and Run Archiving
+```bash
+python3 src/run_acom_scaling.py
+```
 
-The repository keeps two output layers:
+Thesis-oriented result summaries:
+
+```bash
+python3 src/generate_thesis_results.py
+```
+
+## Output Files
+
+The project keeps two output layers:
 
 - `outputs/`: latest run artifacts for quick inspection
-- `archive/runs/`: timestamped experiment records for comparison across runs
+- `archive/`: timestamped experiment records for comparison and reproducibility
 
-Each archived run contains:
+Important report files include:
 
-- `maps/`
-- `figures/`
-- `reports/`
-- `config/config_snapshot.json`
-- `run_manifest.json`
+- `outputs/reports/metrics_summary.csv`
+- `outputs/reports/acom_variant_comparison.csv`
+- `outputs/reports/acom_scaling_results.csv`
+- `outputs/reports/acom_results_table_pretty.csv`
 
-The run index is stored in:
+The historical run index is stored at:
 
 - `archive/runs/run_index.csv`
 
-This index records run IDs, timestamps, completed methods, document counts, ACOM cost before and after optimization, and the path to each archived run.
+## Example Results
 
-ACOM sweep outputs are written to:
+The strongest ACOM variant currently archived is `acom_v1_wider_swap_annealed`. On the 100-document benchmark, it improved over the baseline ACOM configuration from:
 
-- `outputs/reports/acom_variant_comparison.csv`
-- `outputs/reports/acom_variant_comparison.json`
-- `outputs/figures/acom_variant_comparison.png`
+- neighborhood preservation: `0.134` to `0.367`
+- trustworthiness: `0.567` to `0.787`
+- final cost: `275.767` to `213.015`
 
-## Selected Figures
+In the tuned comparison, ACOM outperformed PCA on neighborhood preservation and trustworthiness, but remained below t-SNE and UMAP on those local-structure metrics.
 
-The repository includes a small set of tracked figures for quick inspection on GitHub:
+## Reproducibility
 
-- ACOM grid map: `docs/figures/acom_grid.png`
-- PCA scatter: `docs/figures/pca_scatter.png`
-- t-SNE scatter: `docs/figures/tsne_scatter.png`
-- metric comparison: `docs/figures/metric_comparison.png`
-- ACOM cost history: `docs/figures/acom_cost_history.png`
-- ACOM variant comparison: `docs/figures/acom_variant_comparison.png`
-- tuned ACOM grid: `docs/figures/tuned_acom_grid.png`
-- tuned ACOM vs baseline metrics: `docs/figures/tuned_acom_metric_comparison.png`
+The repository is designed for reproducibility through:
 
-![ACOM grid](docs/figures/acom_grid.png)
+- fixed random seeds in data preparation and experiment configuration
+- explicit metadata and embedding alignment checks
+- saved config snapshots for archived runs
+- run manifests and cost histories
+- shared metric implementations across all methods
 
-![Metric comparison](docs/figures/metric_comparison.png)
+Each archived run stores the exact configuration used to produce that result.
 
-## Thesis Results
+## Citation
 
-The repository also includes thesis-ready summary artifacts for the completed ACOM tuning stage:
+No formal citation file is included yet. For academic use, cite the repository URL, access date, and the specific commit or archived run ID used in the analysis.
 
-- [ACOM results table](docs/results/acom_results_table_pretty.csv)
-- [ACOM results interpretation](docs/results/acom_results_interpretation.md)
-- [Tuned ACOM metric summary](docs/results/tuned_acom_metrics_summary.csv)
+## Documentation
 
-## Current Status
-
-The repository currently includes:
-
-- a complete data-preparation pipeline for the selected 20 Newsgroups subset
-- configurable embedding generation
-- a strengthened Version 1 ACOM implementation
-- PCA, t-SNE, and optional UMAP baselines
-- shared metric computation and figure generation
-- timestamped experiment archiving for comparative tracking
-
-## Example Commands
-
-```bash
-python3 src/prepare_20newsgroups.py
-python3 src/generate_embeddings.py
-python3 src/run_experiment.py
-python3 src/run_experiment.py --enable-umap
-```
+- [Architecture](docs/ARCHITECTURE.md)
+- [ACOM Algorithm](docs/ALGORITHM_ACOM.md)
+- [Experiments](docs/EXPERIMENTS.md)
+- [Repository Structure](docs/REPOSITORY_STRUCTURE.md)
