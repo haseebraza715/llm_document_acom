@@ -1,0 +1,54 @@
+{
+  "run_id": "run_2026-03-11_02-26-49",
+  "timestamp": "2026-03-11_02-26-49",
+  "command_used": "python3 src/run_experiment.py",
+  "embedding_file_used": "/Users/haseebraza/Downloads/llm_document_acom/data/embeddings/all_embeddings.npy",
+  "metadata_file_used": "/Users/haseebraza/Downloads/llm_document_acom/data/embeddings/all_metadata.csv",
+  "methods_run_successfully": [
+    "ACOM",
+    "PCA",
+    "t-SNE"
+  ],
+  "method_statuses": {
+    "ACOM": "ok",
+    "PCA": "ok",
+    "t-SNE": "ok",
+    "UMAP": "skipped: disabled (pass --enable-umap to run)"
+  },
+  "umap_enabled": false,
+  "documents_processed": 100,
+  "grid_size": [
+    10,
+    10
+  ],
+  "random_seed": 42,
+  "acom_initial_cost": 300.830534,
+  "acom_final_cost": 248.498138,
+  "acom_improved": true,
+  "notes_or_warnings": [
+    "skipped: disabled (pass --enable-umap to run)"
+  ],
+  "latest_output_paths": {
+    "maps": [
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/maps/acom_positions.csv",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/maps/pca_positions.csv",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/maps/tsne_positions.csv"
+    ],
+    "figures": [
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/figures/acom_grid.png",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/figures/pca_scatter.png",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/figures/tsne_scatter.png",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/figures/metric_comparison.png",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/figures/acom_cost_history.png",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/figures/distance_correlation_acom.png",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/figures/distance_correlation_pca.png",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/figures/distance_correlation_t_sne.png"
+    ],
+    "reports": [
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/reports/metrics_summary.csv",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/reports/metrics_summary.json",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/reports/acom_run_summary.json",
+      "/Users/haseebraza/Downloads/llm_document_acom/outputs/reports/acom_cost_history.csv"
+    ]
+  }
+}

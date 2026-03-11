@@ -1,0 +1,27 @@
+{
+  "run_id": "run_2026-03-11_02-26-49",
+  "timestamp": "2026-03-11_02-26-49",
+  "input_embedding_path": "/Users/haseebraza/Downloads/llm_document_acom/data/embeddings/all_embeddings.npy",
+  "input_metadata_path": "/Users/haseebraza/Downloads/llm_document_acom/data/embeddings/all_metadata.csv",
+  "documents_processed": 100,
+  "grid_rows": 10,
+  "grid_cols": 10,
+  "distance_metric": "cosine",
+  "semantic_k": 8,
+  "neighbor_radius": 1,
+  "repulsion_weight": 0.35,
+  "num_ants": 30,
+  "max_iter": 120,
+  "accepted_swaps": 81,
+  "total_attempts": 2733,
+  "initial_cost": 300.830534,
+  "final_cost": 248.498138,
+  "improved": true,
+  "iterations_recorded": 9,
+  "method_statuses": {
+    "ACOM": "ok",
+    "PCA": "ok",
+    "t-SNE": "ok",
+    "UMAP": "skipped: disabled (pass --enable-umap to run)"
+  }
+}
