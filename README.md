@@ -122,6 +122,14 @@ The experiment runner:
 - saves latest outputs under `outputs/`
 - archives the full run under `archive/runs/`
 
+Run a controlled ACOM tuning batch:
+
+```bash
+python3 src/run_acom_sweep.py
+```
+
+This sweep runs a small set of named ACOM variants against the same prepared embeddings, keeps the baseline references fixed, archives each ACOM run separately, and writes a variant comparison table to `outputs/reports/`.
+
 ## Outputs and Run Archiving
 
 The repository keeps two output layers:
@@ -143,6 +151,12 @@ The run index is stored in:
 
 This index records run IDs, timestamps, completed methods, document counts, ACOM cost before and after optimization, and the path to each archived run.
 
+ACOM sweep outputs are written to:
+
+- `outputs/reports/acom_variant_comparison.csv`
+- `outputs/reports/acom_variant_comparison.json`
+- `outputs/figures/acom_variant_comparison.png`
+
 ## Selected Figures
 
 The repository includes a small set of tracked figures for quick inspection on GitHub:
@@ -152,10 +166,21 @@ The repository includes a small set of tracked figures for quick inspection on G
 - t-SNE scatter: `docs/figures/tsne_scatter.png`
 - metric comparison: `docs/figures/metric_comparison.png`
 - ACOM cost history: `docs/figures/acom_cost_history.png`
+- ACOM variant comparison: `docs/figures/acom_variant_comparison.png`
+- tuned ACOM grid: `docs/figures/tuned_acom_grid.png`
+- tuned ACOM vs baseline metrics: `docs/figures/tuned_acom_metric_comparison.png`
 
 ![ACOM grid](docs/figures/acom_grid.png)
 
 ![Metric comparison](docs/figures/metric_comparison.png)
+
+## Thesis Results
+
+The repository also includes thesis-ready summary artifacts for the completed ACOM tuning stage:
+
+- [ACOM results table](docs/results/acom_results_table_pretty.csv)
+- [ACOM results interpretation](docs/results/acom_results_interpretation.md)
+- [Tuned ACOM metric summary](docs/results/tuned_acom_metrics_summary.csv)
 
 ## Current Status
 

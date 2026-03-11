@@ -62,6 +62,7 @@ outputs/figures/*.png
 outputs/maps/*.csv
 outputs/reports/*.csv
 outputs/reports/*.json
+outputs/reports/*.md
 !outputs/figures/.gitkeep
 !outputs/maps/.gitkeep
 !outputs/reports/.gitkeep
@@ -70,4 +71,18 @@ outputs/reports/*.json
 archive/runs/run_*/
 !archive/runs/run_2026-03-11_02-26-49/
 !archive/runs/run_2026-03-11_02-26-49/**
+!archive/runs/run_2026-03-11_02-44-06_acom_v1_baseline/
+!archive/runs/run_2026-03-11_02-44-06_acom_v1_baseline/**
+!archive/runs/run_2026-03-11_02-44-07_acom_v1_k10/
+!archive/runs/run_2026-03-11_02-44-07_acom_v1_k10/**
+!archive/runs/run_2026-03-11_02-44-09_acom_v1_more_iters/
+!archive/runs/run_2026-03-11_02-44-09_acom_v1_more_iters/**
+!archive/runs/run_2026-03-11_02-44-11_acom_v1_stronger_repulsion/
+!archive/runs/run_2026-03-11_02-44-11_acom_v1_stronger_repulsion/**
+!archive/runs/run_2026-03-11_02-44-11_acom_v1_wider_swap_search/
+!archive/runs/run_2026-03-11_02-44-11_acom_v1_wider_swap_search/**
+!archive/runs/run_2026-03-11_02-44-15_acom_v1_radius2/
+!archive/runs/run_2026-03-11_02-44-15_acom_v1_radius2/**
+!archive/runs/run_2026-03-11_02-59-54_acom_v1_wider_swap_annealed/
+!archive/runs/run_2026-03-11_02-59-54_acom_v1_wider_swap_annealed/**
 !archive/runs/run_index.csv

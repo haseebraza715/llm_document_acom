@@ -1,0 +1,8 @@
+Variant,Run ID,Timestamp,Top-k Neighbors,Radius,Max Iterations,Attraction,Repulsion,Search Breadth,Acceptance,Initial Cost,Final Cost,Cost Improvement,Neighborhood Preservation,Trustworthiness,Stress,Silhouette
+acom_v1_baseline,run_2026-03-11_02-44-06_acom_v1_baseline,2026-03-11_02-44-06,8,1,120,1.0,0.35,12,greedy,300.831,275.767,25.063,0.134,0.567,5.12,-0.092
+acom_v1_k10,run_2026-03-11_02-44-07_acom_v1_k10,2026-03-11_02-44-07,10,1,120,1.0,0.35,12,greedy,309.381,261.565,47.815,0.189,0.609,5.115,-0.071
+acom_v1_more_iters,run_2026-03-11_02-44-09_acom_v1_more_iters,2026-03-11_02-44-09,8,1,180,1.0,0.35,12,greedy,300.831,252.119,48.711,0.191,0.637,5.115,-0.06
+acom_v1_radius2,run_2026-03-11_02-44-15_acom_v1_radius2,2026-03-11_02-44-15,8,2,120,1.0,0.35,12,greedy,626.612,570.195,56.417,0.188,0.625,5.116,-0.069
+acom_v1_stronger_repulsion,run_2026-03-11_02-44-11_acom_v1_stronger_repulsion,2026-03-11_02-44-11,8,1,120,1.0,0.5,12,greedy,382.639,354.963,27.676,0.137,0.574,5.12,-0.088
+acom_v1_wider_swap_annealed,run_2026-03-11_02-59-54_acom_v1_wider_swap_annealed,2026-03-11_02-59-54,8,1,120,1.0,0.35,20,annealed,300.831,213.015,87.815,0.367,0.787,5.107,0.097
+acom_v1_wider_swap_search,run_2026-03-11_02-44-11_acom_v1_wider_swap_search,2026-03-11_02-44-11,8,1,120,1.0,0.35,20,greedy,300.831,234.524,66.307,0.239,0.683,5.112,-0.023
