@@ -1,0 +1,2805 @@
+doc_id,text,category_name,subset
+train_comp_graphics_0151,"I am working on a program to display 3d wireframe models with the user
+being able to arbitrarily change any of the viewing parameters.  Also,
+the wireframe objects are also going to have dynamic attributes so
+that they can move around while the user is ""exploring"" the wireframe
+world.
+
+To do this, I am thinking of using the SRGP package described in the
+Van Dam, Foley and Feiner book, but I was wondering if there was
+another PD graphics package out there which was faster.  I would like
+to make the program as fast as possible so that it provides
+satisfactory real time performance on a Sun IPX.
+
+Ideally, I'm looking for a PD graphics package which will allow me to
+open a new window under X, and allow me to draw lines within the
+window.  Also, it would also need to have some sort of event driven
+interaction handling since the user is going to move around the
+wireframe models using the keyboard.
+
+If you know or wrote such a package, I would be grateful if you could
+direct me to a ftp site which contains the package.
+
+Thank you.",comp.graphics,train
+train_comp_graphics_0176,"I sure did use version 3.2. It works fine with most software but NOT
+with Animator Pro and that one is quite important to me. Pretty
+useless program without that thing working IMHO.
+So I hope the author can fix that.
+
+/Daniel..",comp.graphics,train
+train_comp_graphics_0232,"I aparantly mistyped the address for the ftp site which holds the images. The
+correct address should be:
+
+jupiter.csd.unb.ca
+^^
+rather than jupiter.csd.unb.edu.  They are in the directory:
+
+\pub\library.info",comp.graphics,train
+train_comp_graphics_0280,"Hi,
+
+I have a problem, I hope some of the 'gurus' can help me solve.
+
+Background of the problem:
+I have a rectangular mesh in the uv domain, i.e  the mesh is a
+mapping of a 3d Bezier patch into 2d. The area in this domain
+which is inside a trimming loop had to be rendered. The trimming
+loop is a set of 2d Bezier curve segments.
+For the sake of notation: the mesh is made up of cells.
+
+My problem is this :
+The trimming area has to be split up into individual smaller
+cells bounded by the trimming curve segments. If a cell
+is wholly inside the area..then it is output as a whole ,
+else it is trivially rejected.
+
+Does any body know how thiss can be done, or is there any algo.
+somewhere for doing this.
+
+Any help would be appreciated.
+
+Thanks,
+Ani.",comp.graphics,train
+train_comp_graphics_0344,"I think one (not ideal) solution is to use the
+tracing utility (can't remember the name, sorry!)
+included in the Corel Draw s/w pack.  It can convert
+bitmaps to Corel art format.  These can then be
+imported into a drawing rather than the bitmap.
+Result - the file is completely in Corel format and
+can be SCODAL'ed no problem!
+
+BUT the slight problem with this, which makes the
+solution less than idea, is that the trace utility
+spits out many more points than are necessary to
+define the shapes being traced.  Straight lines and
+curves are both traced as many short segments.
+
+So.. the SCODAL taking *much* longer to
+image.
+
+The obvious solution is time-consuming - stripping
+out the extra points by hand using Corel.
+
+OUCH!
+I've done it a few times :-]
+
+^^^^^^^^^^^^^^^^
+
+As I say, if you don't mind the problems, go via the route..
+BITMAP -> COREL (VIA TRACE) ->
+HAND TRIMMING (USING COREL)!! ->
+COMBINE WITH MAIN COREL PIC (VIA IMPORT) -> SCODAL",comp.graphics,train
+train_comp_graphics_0371,"Please note that there are some radiosity packages in my Resource Listing
+(under the Subject 3: FTP list)
+
+Greetings,
+Nick.
+--
+Nick (Nikolaos) Fotis         National Technical Univ. of Athens, Greece
+HOME: 16 Esperidon St.,       InterNet :
+Halandri, GR - 152 32   UUCP:    mcsun!ariadne!theseas!nfotis
+Athens, GREECE          FAX: (+30 1) 77 84 578
+
+USENET Editor of comp.graphics Resource Listing and soc.culture.greece FAQ
+NTUA/UA ACM Student Chapter Chair - we're organizing a small conference
+in Comp. Graphics, call if you're interested to participate.",comp.graphics,train
+train_comp_graphics_0506,"Hi,
+
+I've noticed that if you only save a model (with all your mapping planes
+positioned carefully) to a .3DS file that when you reload it after restarting
+3DS, they are given a default position and orientation.  But if you save
+to a .PRJ file their positions/orientation are preserved.  Does anyone
+know why this information is not stored in the .3DS file?  Nothing is
+explicitly said in the manual about saving texture rules in the .PRJ file.
+I'd like to be able to read the texture rule information, does anyone have
+the format for the .PRJ file?
+
+Is the .CEL file format available from somewhere?
+
+Rych",comp.graphics,train
+train_comp_graphics_0565,"This sounds wonderful, but it seems no one either wants to spend time doing
+this, or they don't have the power to do so.  For example, I would like
+to see a comp.graphics architecture like this:
+
+comp.graphics.algorithms.2d
+comp.graphics.algorithms.3d
+comp.graphics.algorithms.misc
+comp.graphics.hardware
+comp.graphics.misc
+comp.graphics.software/apps
+
+However, that is almost overkill.  Something more like this would probably
+make EVERYONE a lot happier:
+
+comp.graphics.programmer
+comp.graphics.hardware
+comp.graphics.apps
+comp.graphics.misc
+
+It would be nice to see specialized groups devote to 2d, 3d, morphing,
+raytracing, image processing, interactive graphics, toolkits, languages,
+object systems, etc. but these could be posted to a relevant group or
+have a mailing list organized.
+
+That way when someone reads news they don't have to see these subject
+headings, which are rather disparate:
+
+System specific stuff ( should be under comp.sys or comp.os.??.programmer ):
+
+""Need help programming GL""
+""ModeX programming information?""
+""Fast sprites on PC""
+
+Hardware technical stuff:
+
+""Speed of Weitek P9000""
+""Drivers for SpeedStar 24X""
+
+Applications oriented stuff:
+
+""VistaPro 3.0 help""
+""How good is 3dStudio?""
+""Best image processing program for Amiga""
+
+Programming oriented stuff:
+
+""Fast polygon routine needed""
+""Good morphing alogirhtm wanted""
+""Best depth sort for triangles?""
+""Which C++ library to get?""
+
+I wish someone with the power would get a CFD and then a CFV going on
+this stuff..this newsgroup needs it.",comp.graphics,train
+train_comp_graphics_0567,"Does anyone know of any good shareware animation or paint software for an SGI
+machine?  I've exhausted everyplace on the net I can find and still don't hava
+a nice piece of software.
+
+Thanks alot!
+
+Chad",comp.graphics,train
+train_comp_graphics_0577,"Are you using the traditional radiosity method, progressive refinement, or
+something else in your package?
+
+If you need to project patches on the hemi-cube surfaces, what technique are
+you using?  Do you have hardware to facilitate the projection?
+
+What are the guest username and password for this ftp site?
+
+Thanks, Stephan.",comp.graphics,train
+train_rec_sport_baseball_0184,"KC(?) news was doing a report on that.  They said that McRae is
+really a batting coach and not a manager.  But for some reason
+he took the job.  Whatever the reason, the Royals need a new
+manager now..while it is too late.",rec.sport.baseball,train
+train_rec_sport_baseball_0225,"[Deletions]
+
+Geez, Dal must have slipped something into Ted's drink sometime.  Comparing
+Prince to Pagnozzi offensively is laughable.  Prince has never hit well in
+the minors and he's now 27 years old, I think.  Pagnozzi was not a bad hitter
+in the minors.  (I'll bring in the numbers tomorrow assuming I don't have
+another brain cramp and forget.)  He had a very good year at Louisville
+before coming up to the majors.  As I recall, the hype on Pagnozzi coming up
+in the organization was good hit, decent fielding.  When he got to the
+majors and didn't hit as well as expected (not as much playing time?), he
+became Exhibit 312 in Nichols' Law of Catcher Defense and got the reputation
+as an outstanding defensive catcher.  It's not clear he ever learned to
+hit.  His four years with more than 100 AB--
+
+Born 31 July 1962
+Year     AB      BA     SLG     OBA
+1988    195    .282    .320    .328
+1990    220    .277    .373    .321
+1991    459    .264    .351    .317
+1992    485    .249    .359    .290
+
+No power, less-than-league-average walks, peak year when he turned 28,
+now declining.  If Ted is going to invoke Pagnozzi as a model for Prince,
+given that Prince has underperformed Pagnozzi in the minors, it's not
+a rosy picture.
+
+BTW, I'm still unhappy with moving Zeile, who had the same reputation
+coming up in the Cardinal organization as Pagnozzi, except that he was
+a much, much better hitter, to 3rd where he could be an average hitter
+and a below average fielder instead of a well-above average hitter
+as an average (or below average) fielding catcher.
+
+Harold",rec.sport.baseball,train
+train_rec_sport_baseball_0282,"Do you really have *that* much information on him?  Really?
+
+I don't know.  You tell me.  What percentage of players reach or
+exceed their MLE's *in their rookie season*?  We're talking about
+1993, you know.
+
+If that were your purpose, maybe.  Offerman spent 1992 getting
+acclimated, if you will.  The Dodgers as a team paid a big price
+that season.  Perhaps they will reap the benefits down the road.
+Do you really think they would have done what they did if they
+were competing for a pennant?
+
+For a stat-head, I'm amazed that you put any credence in spring
+training.  Did you notice who he got those 10 (!) hits off of, or
+are you going to tell me that it doesn't make a difference?
+
+Wait a minute.  I missed something here.  First, forget Keith
+Mitchell.  Are you saying that a kid who moves from AA to AAA
+and then does not improve would have been better off making a
+direct leap to the majors?  If a player does well at AA and then
+does not improve at AAA, isn't that a sign that maybe he doesn't
+belong in the bigs?
+
+Now, Keith Mitchell.  As I recall (no stat books handy - surprise!)
+he jumped from AA to Atlanta in 1991.  He did so well that he was
+returned to the minors, where he didn't do very well at all.  Now
+his career is in jeopardy.  So how does he fit in with your
+point.  Good MLE's in AA.  Moved him right to the big club.  Now
+he's one step away from being traded or moved out of baseball.
+Duh.
+
+Well, I've cast my lot.  Certainly you may understand better how
+good Lopez is.  And I may overvalue experience.  But neither one
+of us runs a baseball team.
+
+--	The Beastmaster",rec.sport.baseball,train
+train_rec_sport_baseball_0368,"are you serious? pitchers are pinch-hit for in the nl.  they are not in the
+nl.  if a pitcher is cranking in the al, he will stay in the game.  if he
+is cranking in the nl, he may not - ESPECIALLY if it's a pitchers' duel,
+and his team needs an extra run.",rec.sport.baseball,train
+train_rec_sport_baseball_0472,"Add Mike Trombley in there somewhere, since they need five people.  Mark
+Guthrie will remain in the bullpen as the long lefty.
+
+Pags and Terry Jorgenson will platoon at third, with Reboulet as the
+backup infielder.  Pags looked pretty miserable yesterday for a guy who
+lead the league in DA in 1991, muffing what should be routine grounders
+(heck, muffing a grounder *I* would probably have gotten to).  Jorgenson
+did nothing exceptional that I noticed.  Leius missed a ball I *think*
+Gagne would have reached; we will certainly miss Gag's glove this season.
+
+He looked pretty good there.  Contrary to what the mediots have been saying,
+he looked reasonable at first.  He isn't mid-80s Hrbek, but then neither is
+the Pretty Big Guy himself any more (note:  I'm used to seeing the Twins
+1B looking kinda big on the field, but not that big!).  If he hits vaguely
+like last year, he's a perfectly good first baseman.
+
+Note:  Much of this posting is from personal observation yesterday in a game
+where the regulars were mostly pulled after several innings.  Winfield may
+have big holes in his defensive game that didn't show up (he didn't have to
+pick any bad throws, for example), but I'll take what I saw so far.",rec.sport.baseball,train
+train_rec_sport_baseball_0518,"Well, after suffering from an intense fit of Minnesota-induced cabin fever,
+I've decided to road trip to Milwaukee and take in a couple of games this
+weekend. A couple games at County stadium will be great to relieve tension,
+but I thought ""Why not go to Wrigley for a game too?""
+
+I see the Cubs are playing the Phillies on Sat (2:05 start, I believe
+that's Eastern time listed). I figured it would be fun to bounce down to
+Wrigley for the day game and live it up a little. I'm wondering if anyone
+(esp. Cubbie fans) have some advice on:
+
+1) If I'm taking 41 (Skokie Hwy) south until it runs into 94, what's the
+best way to get to Wrigley? I'm planning on getting there an hour or
+two early and paying through the nose for parking to keep things easy.
+
+2) Is it probable that I'll be able to walk up and get bleacher seats (2 or
+3) on game day? I figure since it's early in the year, Ryno's out and
+the weather isn't great I should be able to get tickets. If not, what's
+the best way to get advance tickets; can I call the Cubs' ticket office
+directly and pick up tickets at the will call window?
+
+3) Any advice on where to eat before or after the game?
+
+4) Do they allow inflatable I-luv-ewe dolls (present from Lundy) into the
+bleachers? :-)",rec.sport.baseball,train
+train_rec_sport_baseball_0520,"Another word (offense) makes them my pick for last too.
+(Well, there's also my policy of never picking a Buck Rodgers' team for last)
+
+The 1961 Angels were  1/2 game out of 7th. The Athletics and
+expansion Senators finished tied for last.
+The 1962 Colt 45's finshed 8th - ahead of the Cubs (the Mets were last).
+The 1969 Royals finshed 4th - ahead of the White Sox (the Pilots in last).
+The 1977 Mariners finished 6th - ahead of the Athletics(in last).
+
+Apparently being an expansion team with a poor A's or Chicago
+team around is a `good thing'
+
+This may be an appropriate comparison.
+The 1929-31 Yankees finshed 2nd, 3rd and 2nd finshing
+18, 16 and 13-1/2 games out of first.
+In 1933,'34 and '35 they also finished second ( though they were only
+7, 7 and 3 games out).
+Even great teams can lose - That's why they play the season.
+(on the other hand.. I'm still picking the Braves to go all the way)",rec.sport.baseball,train
+train_rec_sport_baseball_0556,":
+It's i before e except after c, and in people named kEIth.
+
+Learn to spell.  It's Ryne.
+
+How can Brooks be # 6?  I think he would at least be ahead of Ron Santo.
+
+***********************
+1a)  Darren Daulton   *       MVP 1993
+***********************",rec.sport.baseball,train
+train_rec_sport_baseball_0588,"Stankiewicz?  I doubt it.
+
+Koufax was one of two Jewish HOFs: the other is Hank Greenberg.
+
+Other good players: Buddy Myer, Johnny Kling, Norm and Larry Sherry,
+Ken Holtzman, Saul Rogovin, Ed Reulbach.
+
+There have been over 150 Jewish major leaguers.  A few years ago there
+was an article about someone who keeps track of this in Spy magazine;
+the article was entitled ""Jews on First,"" of course.
+
+There have also been at least two books on the subject.",rec.sport.baseball,train
+train_rec_sport_baseball_0593,"And then   (cs1442aq) quoth:
+
+That's too bad.  I really had hoped Nolan could end his career with a great
+year.  I suppose there is still hope.",rec.sport.baseball,train
+train_sci_med_0084,"Essential tremor is a progressive hereditary tremor that gets worse
+when the patient tries to use the effected member.  All limbs, vocal
+cords, and head can be involved.  Inderal is a beta-blocker and
+is usually effective in diminishing the tremor.  Alcohol and mysoline
+are also effective, but alcohol is too toxic to use as a treatment.
+--
+----------------------------------------------------------------------------
+Gordon Banks  N3JXP      | ""Skepticism is the chastity of the intellect, and
+|  it is shameful to surrender it too soon.""",sci.med,train
+train_sci_med_0097,"I recently attended an allery seminar.  Steroid Nasal sprays were
+discussed.  Afterward on a one-on-one basis, I asked the speaker what if
+none of the Vancanese, Beconase, Nasalide, Nasalcort, or Nasalchrom work
+nor do any oral decongestants work.  She replied that she saw an article on
+Vasomotor Rhinitis.  That this is not an allergic reaction and that nothing
+other than the Afrin's and such would work.  (Which in my case is true).
+
+I want to find out as much as possible about this, since I am going to see
+my allergist in May and want to be armed to the hilt with information;
+since nothing he has done with me has helped me at all and I have had no
+relief for 14 months.",sci.med,train
+train_sci_med_0191,"Someone I know has recently been diagnosed as having Candida Albicans,
+a disease about which I can find no information.  Apparently it has something
+to do with the body's production of yeast while at the same time being highly
+allergic to yeast.  Can anyone out there tell me any more about it?
+
+Thanks.",sci.med,train
+train_sci_med_0192,"------------- cut here -----------------
+University of Arizona
+Tucson, Arizona
+
+Suggested Reading
+
+Tan SL, Royston P, Campbell S, Jacobs HS, Betts J, Mason B, Edwards RG (1992).
+Cumulative conception and Livebirth rates after in-vitro fertilization. Lancet
+339:1390-1394.
+
+For further information, call:
+Physicians' Resource Line
+1-800-328-5868
+in Tucson:
+694-5868
+
+HICNet Medical Newsletter                                              Page 28
+Volume  6, Number 10                                           April 20, 1993
+
+::
+Articles
+::
+
+LOW LEVELS OF AIRBORNE PARTICLES LINKED
+TO SERIOUS ASTHMA ATTACKS
+American Lung Association
+
+A new study published by the American Lung Association has shown that
+surprisingly low concentrations of airborne particles can send people with
+asthma rushing to emergency rooms for treatment.
+The Seattle-based study showed that roughly one in eight emergency visits
+for asthma in that city was linked to exposure to particulate air pollution.
+The actual exposure levels recorded in the study were far below those deemed
+unsafe under federal air quality laws.
+""People with asthma have inflamed airways, and airborne particles tend to
+exacerbate that inflammation,"" said Joel Schwartz, Ph.D., of the Environmental
+Protection Agency, who was the lead author of the study.  ""When people are on
+the threshold of having, a serious asthma attack, particles can push them over
+the edge.""
+The Seattle Study correlated 13 months of asthma emergency room visits
+with daily levels of PM,,. or particulate matter with an aerodynamic diameter
+of 10 microns or less.  These finer particles are considered hazardous because
+they are small enough penetrate into the lung.  Cities are considered out of
+compliance with clean air laws if the 24-hour average concentration of PM10
+exceeds 150 micrograms per cubic millimeter of air.
+In Seattle however, a link between fine particles and asthma was found at
+levels as low as 30 micrograms.  The authors concluded that for every 30
+microgram increase in the four-day average of PM10, the odds of someone with
+asthma needing emergency treatment increased by 12 percent.
+The findings were published in the April American Review of Respiratory
+Disease, an official journal of the American Thoracic Society, the Lung
+Association's medical section.
+The study is the latest in a series of recent reports to suggest that
+particulate matter is a greatly under appreciated health threat.  A 1992 study
+by Dr. Schwartz and Douglas Dockery, Ph.D., of Harvard found that particles
+may be causing roughly 60,000 premature deaths each year in the United States.
+Other studies have linked particulate matter to increased respiratory symptoms
+and bronchitis in children.
+""Government officials and the media are still very focused on ozone,""
+says Dr. Schwartz.  ""But more and more research is showing that particles are
+bad actors as well.""      One problem in setting, standards for particulate
+air pollution is that PMIO is difficult to study.  Unlike other regulated
+pollutants such as ozone and carbon monoxide, particulate matter is a complex
+and varying mixture of substances, including carbon, hydrocarbons, dust, and
+
+HICNet Medical Newsletter                                              Page 29
+Volume  6, Number 10                                           April 20, 1993
+
+acid aerosols.
+""Researchers can't Put people in exposure chambers to study the effects
+of particulate air pollution,"" says Dr. Schwartz.  ""We have no way of
+duplicating the typical urban mix of particles.  "" Consequently, most of what
+is known about particulates has been learned through population-based research
+like the Seattle study.
+Given that the EPA's current priority is to review the ozone and sulfur
+dioxide standards, the agency is unlikely to reexamine the PM10 standard any
+time soon.  Until changes are made, there appears to be little people with
+asthma can do to protect themselves from airborne particles.
+""In some areas, you can get reports on air quality, but the reports only
+cover the pollutant that is closest to violating its standard, and that's
+rarely particulate matter,"" says Dr.  Schwartz.  ""However, PM10 doesn't have
+to be near its violation range to be unhealthy.""
+
+HICNet Medical Newsletter                                              Page 30
+Volume  6, Number 10                                           April 20, 1993
+
+NIH Consensus Development Conference on Melanoma
+
+The National Institutes of Health Consensus Development Conference on
+Diagnosis and Treatment of Early Melanoma brought together experts in
+dermatology, pathology, epidemiology, public education, surveillance
+techniques, and potential new technologies as well as other health care
+professionals and the public to address (1) the clinical and histological
+characteristics of early melanoma; (2) the appropriate diagnosis, management,
+and followup of patients with early melanoma; (3) the role of dysplastic nevi
+and their significance; and (4) the role of education and screening in
+preventing melanoma morbidity and mortality.  Following 2 days of
+presentations by experts and discussion by the audience, a consensus panel
+weighed the scientific evidence and prepared their consensus statement.
+
+Among their findings, the panel recommended that (1) melanoma in situ is a
+distinct entity effectively treated surgically with 0.5 centimeter margins;
+(2) thin invasive melanoma, less than 1 millimeter thick, has the potential
+for long-term survival in more than 90 percent of patients after surgical
+excision with a 1 centimeter margin; (3) elective lymph node dissections and
+extensive staging evaluations are not recommended in early melanoma; (4)
+patients with early melanoma are at low risk for relapse but may be at high
+risk for development of subsequent melanomas and should be followed closely;
+(5) some family members of patients with melanoma are at increased risk for
+melanoma and should be enrolled in surveillance programs; and (6) education
+and screening programs have the potential to decrease morbidity and mortality
+from melanoma.
+
+A copy of the full text of the consensus panel's statement is available by
+calling the NIH Office of Medical Applications of Research at (301) 496-1143
+or by writing to:  Office of Medical Applications of Research, National
+Institutes of Health, Federal Building, Room 618, Bethesda, MD 20892.
+
+HICNet Medical Newsletter                                              Page 31
+Volume  6, Number 10                                           April 20, 1993
+
+NCI-Designated Cancer Centers
+
+The Cancer Centers Program is comprised of 55 NCI-designated Cancer Centers
+actively engaged in multidisciplinary research efforts to reduce cancer
+incidence, morbidity, and mortality.  Within the program, there are four types
+of cancer centers:  basic science cancer centers (14), which engage primarily
+in basic cancer research; clinical cancer centers (12), which focus on
+clinical research; ""comprehensive"" cancer centers (28), which emphasize a
+multidisciplinary approach to cancer research, patient care, and community
+outreach; and consortium cancer centers (1), which specialize in cancer
+prevention and control research.
+
+Although some cancer centers existed in the late 1960s and the 1970s, it was
+the National Cancer Act of 1971 that authorized the establishment of 15 new
+cancer centers, as well as continuing support for existing ones.  The passage
+of the act also dramatically transformed the centers' structure and broadened
+the scope of their mission to include all aspects of basic, clinical, and
+cancer control research.  Over the next two decades, the centers' program grew
+progressively.
+
+In 1990, there were 19 comprehensive cancer centers in the nation. Today,
+there are 28 of these institutions, all of which meet specific NCI criteria
+for comprehensive status.
+
+To attain recognition from the NCI as a comprehensive cancer center, an
+institution must pass rigorous peer review.  Under guidelines newly
+established in 1990, the eight criteria for ""comprehensiveness"" include the
+requirement that a center have a strong core of basic laboratory research in
+several scientific fields, such as biology and molecular genetics, a strong
+program of clinical research, and an ability to transfer research findings
+into clinical practice.
+
+Moreover, five of the criteria for comprehensive status go significantly
+beyond that required for attaining a Cancer Center Support Grant (also
+referred to as a P30 or core grant), the mechanism of choice for supporting
+the infrastructure of a cancer center's operations.  These criteria encompass
+strong participation in NCI-designated high-priority clinical trials,
+significant levels of cancer prevention and control research, and important
+outreach and educational activities--all of which are funded by a variety of
+sources.
+
+The other types of cancer centers also have special characteristics and
+capabilities for organizing new programs of research that can exploit
+important new findings or address timely research questions.
+
+HICNet Medical Newsletter                                              Page 32
+Volume  6, Number 10                                           April 20, 1993
+
+Of the 55 NCI-designated Cancer Centers, 14 are of the basic science type.
+These centers engage almost entirely in basic research, although some centers
+engage in collaborative research with outside clinical research investigators
+and in cooperative projects with industry to generate medical applications
+from new discoveries in the laboratory.
+
+Clinical cancer centers, in contrast, focus on both basic research and
+clinical research within the same institutional framework, and frequently
+incorporate nearby affiliated clinical research institutions into their
+overall research programs.  There are 12 such centers today.
+
+Finally, consortium cancer centers, of which there is one, are uniquely
+structured and concentrate on clinical research and cancer prevention and
+control research.  These centers interface with state and local public health
+departments for the purpose of achieving the transfer of effective prevention
+and control techniques from their research findings to those institutions
+responsible for implementing population-wide public health programs.
+Consortium centers also are heavily engaged in collaborations with
+institutions that conduct clinical trial research and coordinate community
+hospitals within a network of cooperating institutions in clinical trials.
+
+Together, the 55 NCI-Designated Cancer Centers continue to work toward
+creating new and innovative approaches to cancer research, and through
+interdisciplinary efforts, to effectively move this research from the
+laboratory into clinical trials and into clinical practice.
+
+Comprehensive Cancer Centers (Internet addresses are given where available)
+
+University of Alabama at Birmingham Comprehensive Cancer Center
+Basic Health Sciences Building, Room 108
+1918 University Boulevard
+Birmingham, Alabama 35294
+(205) 934-6612
+
+University of Arizona Cancer Center
+1501 North Campbell Avenue
+Tucson, Arizona 85724
+(602) 626-6372
+Internet:
+
+Jonsson Comprehensive Cancer Center
+University of California at Los Angeles
+200 Medical Plaza
+Los Angeles, California 90027
+(213) 206-0278
+
+HICNet Medical Newsletter                                              Page 33
+Volume  6, Number 10                                           April 20, 1993
+
+Internet:
+
+Kenneth T. Norris Jr. Comprehensive Cancer Center
+University of Southern California
+1441 Eastlake Avenue
+Los Angeles, California  90033-0804
+(213) 226-2370
+
+Yale University Comprehensive Cancer Center
+333 Cedar Street
+New Haven, Connecticut 06510
+(203) 785-6338
+
+Lombardi Cancer Research Center
+Georgetown University Medical Center
+3800 Reservoir Road, N.W.
+Washington, D.C. 20007
+(202) 687-2192
+
+Sylvester Comprehensive Cancer Center
+University of Miami Medical School
+1475 Northwest 12th Avenue
+Miami, Florida 33136
+(305) 548-4800
+Internet:
+
+Johns Hopkins Oncology Center
+600 North Wolfe Street
+Baltimore, Maryland 21205
+(410) 955-8638
+
+Dana-Farber Cancer Institute
+44 Binney Street
+Boston, Massachusetts 02115
+(617) 732-3214
+Internet:
+
+Meyer L. Prentis Comprehensive Cancer Center of Metropolitan
+Detroit
+110 East Warren Avenue
+Detroit, Michigan 48201
+(313) 745-4329
+Internet:
+
+University of Michigan Cancer Center
+
+HICNet Medical Newsletter                                              Page 34
+Volume  6, Number 10                                           April 20, 1993
+
+101 Simpson Drive
+Ann Arbor, Michigan 48109-0752
+(313) 936-9583
+BITNET:
+
+Mayo Comprehensive Cancer Center
+200 First Street Southwest
+Rochester, Minnesota 55905
+(507) 284-3413
+
+Norris Cotton Cancer Center
+Dartmouth-Hitchcock Medical Center
+One Medical Center Drive
+Lebanon, New Hampshire 03756
+(603) 646-5505
+BITNET:
+
+Roswell Park Cancer Institute
+Elm and Carlton Streets
+Buffalo, New York 14263
+(716) 845-4400
+
+Columbia University Comprehensive Cancer Center
+College of Physicians and Surgeons
+630 West 168th Street
+New York, New York 10032
+(212) 305-6905
+Internet:
+
+Memorial Sloan-Kettering Cancer Center
+1275 York Avenue
+New York, New York 10021
+(800) 525-2225
+
+Kaplan Cancer Center
+New York University Medical Center
+462 First Avenue
+New York, New York 10016-9103
+(212) 263-6485
+
+UNC Lineberger Comprehensive Cancer Center
+University of North Carolina School of Medicine
+Chapel Hill, North Carolina 27599
+(919) 966-4431
+
+HICNet Medical Newsletter                                              Page 35
+Volume  6, Number 10                                           April 20, 1993
+
+Duke Comprehensive Cancer Center
+P.O. Box 3814
+Durham, North Carolina 27710
+(919) 286-5515
+
+Cancer Center of Wake Forest University at the Bowman Gray School
+of Medicine
+300 South Hawthorne Road
+Winston-Salem, North Carolina 27103
+(919) 748-4354
+Internet:
+
+Ohio State University Comprehensive Cancer Center
+300 West 10th Avenue
+Columbus, Ohio 43210
+(614) 293-5485
+Internet:
+
+Fox Chase Cancer Center
+7701 Burholme Avenue
+Philadelphia, Pennsylvania 19111
+(215) 728-2570
+Internet:
+
+University of Pennsylvania Cancer Center
+3400 Spruce Street
+Philadelphia, Pennsylvania 19104
+(215) 662-6364
+
+Pittsburgh Cancer Institute
+200 Meyran Avenue
+Pittsburgh, Pennsylvania 15213-2592
+(800) 537-4063
+
+The University of Texas M.D. Anderson Cancer Center
+1515 Holcombe Boulevard
+Houston, Texas 77030
+(713) 792-3245
+
+Vermont Cancer Center
+University of Vermont
+1 South Prospect Street
+Burlington, Vermont 05401
+(802) 656-4580
+
+HICNet Medical Newsletter                                              Page 36
+Volume  6, Number 10                                           April 20, 1993
+
+Fred Hutchinson Cancer Research Center
+1124 Columbia Street
+Seattle, Washington 98104
+(206) 667-4675
+Internet:
+
+University of Wisconsin Comprehensive Cancer Center
+600 Highland Avenue
+Madison, Wisconsin 53792
+(608) 263-8600
+BITNET:
+
+Clinical Cancer Centers
+
+University of California at San Diego Cancer Center
+225 Dickinson Street
+San Diego, California 92103
+(619) 543-6178
+Internet:
+
+City of Hope National Medical Center
+Beckman Research Institute
+1500 East Duarte Road
+Duarte, California 91010
+(818) 359-8111 ext. 2292
+
+University of Colorado Cancer Center
+4200 East 9th Avenue, Box B188
+Denver, Colorado 80262
+(303) 270-7235
+
+University of Chicago Cancer Research Center
+5841 South Maryland Avenue, Box 444
+Chicago, Illinois 60637
+(312) 702-6180
+Internet:
+
+Albert Einstein College of Medicine
+1300 Morris Park Avenue
+Bronx, New York 10461
+(212) 920-4826
+
+HICNet Medical Newsletter                                              Page 37
+Volume  6, Number 10                                           April 20, 1993
+
+University of Rochester Cancer Center
+601 Elmwood Avenue, Box 704
+Rochester, New York 14642
+(716) 275-4911
+Internet:
+
+Ireland Cancer Center Case Western Reserve University
+University Hospitals of Cleveland
+2074 Abington Road
+Cleveland, Ohio 44106
+(216) 844-5432
+
+Roger Williams Cancer Center
+Brown University
+825 Chalkstone Avenue
+Providence, Rhode Island 02908
+(401) 456-2071
+
+St. Jude Children's Research Hospital
+332 North Lauderdale Street
+Memphis, Tennessee 38101-0318
+(901) 522-0306
+Internet:
+
+Institute for Cancer Research and Care
+4450 Medical Drive
+San Antonio, Texas 78229
+(512) 616-5580
+
+Utah Regional Cancer Center
+University of Utah Health Sciences Center
+50 North Medical Drive, Room 2C110
+Salt Lake City, Utah 84132
+(801) 581-4048
+BITNET:
+
+Massey Cancer Center
+Medical College of Virginia
+Virginia Commonwealth University
+1200 East Broad Street
+Richmond, Virginia 23298
+(804) 786-9641
+
+Consortia
+
+HICNet Medical Newsletter                                              Page 38
+Volume  6, Number 10                                           April 20, 1993
+
+Drew-Meharry-Morehouse Consortium Cancer Center
+1005 D.B. Todd Boulevard
+Nashville, Tennessee 37208
+(615) 327-6927
+
+HICNet Medical Newsletter                                              Page 39
+Volume  6, Number 10                                           April 20, 1993
+
+::
+General Announcments
+::
+
+THE UCI MEDICAL EDUCATION SOFTWARE REPOSITORY
+
+This is to announce the establishment of an FTP site at the University of
+California, for the collection of shareware, public-domain software and other
+information relating to Medical Education.
+
+Specifically, we are interested in establishing this site as a clearinghouse
+for personally developed software that has been developed for local medical
+education programs.  We welcome all contributions that may be shared with
+other users.
+
+To connect to the UCI Medical Education Software Repository, ftp to:
+
+FTP.UCI.EDU
+
+The Repository currently offers both MSDOS and Macintosh software, and we hope
+to support other operating systems (UNIX, MUMPS, AMIGA?).
+
+Uploads are welcome.  We actively solicit information and software which you
+have personaly developed or have found useful in your local medical education
+efforts, either as an instructor or student.
+
+Once you have connected to the site via FTP, cd (change directory) to either
+the med-ed/mac/incoming or the med-ed/msdos/incoming directories, change the
+mode to binary and ""send"" or ""put"" your files.  Note that you won't be able to
+see the files with the ""ls"" or ""dir"" commands.  Please compress your files as
+appropriate to the operating system (ZIP for MSDOS; Compactor or something
+similar for Macintosh) to save disk space.
+
+After uploading, please send email to Steve Clancy ( ) (for
+MSDOS) or Albert Saisho ( ) (for MAC) describing the file(s) you
+have uploaded and any other information we might need to describe it.
+
+Note that we can only accept software or information that has been designated
+as shareware, public-domain or that may otherwise be distributed freely.
+Please do not upload commercial software!  Doing so may jeopardize the
+existence of this FTP site.
+
+If you wish to upload software for other operating systems, please contact
+either Steve Clancy, M.L.S. or Albert Saisho, M.D. at the addresses above.
+
+HICNet Medical Newsletter                                              Page 40
+Volume  6, Number 10                                           April 20, 1993
+
+::
+AIDS News Summaries
+::
+
+AIDS Daily Summary
+
+The Centers for Disease Control and Prevention (CDC) National AIDS
+Clearinghouse makes available the following information as a public  service
+only. Providing this information does not constitute endorsement  by the CDC,
+the CDC Clearinghouse, or any other organization. Reproduction  of this text
+is encouraged; however, copies may not be sold.  Copyright 1993, Information,
+Inc., Bethesda, MD
+
+==================================================================
+April 12, 1993
+==================================================================
+
+""NIH Set to Test Multiple AIDS Vaccines"" Reuters (04/08/93)  (Frank,
+Jacqueline)
+
+Washington--The Clinton administration will permit the National
+Institutes of Health to test multiple AIDS vaccines instead of  only allowing
+the Army to test a single vaccine, administration  sources said Thursday.  The
+decision ends the controversy between Army AIDS researchers who had hoped to
+test a vaccine made by  MicroGeneSys Inc. and the National Institutes of
+Health, which  contended that multiple vaccines should be tested.  Health and
+Human Services Secretary Donna Shalala said a final announcement  on the
+therapeutic vaccine trials was expected to be made last  Friday.  Companies
+including Genentech Inc., Chiron Corp., and  Immuno AG have already told NIH
+that they are prepared to  participate in the vaccine tests.  The testing is
+intended to  demonstrate whether AIDS vaccines are effective in thwarting the
+replication of HIV in patients already infected.  Shalala refuted last week's
+reports that the Clinton administration had decided  the Army's test of the
+MicroGeneSys VaxSyn should proceed without tests of others at the same time.
+""The report was inaccurate,  and I expect there to be some announcement in the
+next 24 hours  about that particular AIDS research project,"" said Shalala.
+Administration sources subsequently confirmed that NIH director  Dr. Bernadine
+Healy and Food and Drug Administration Commissioner David Kessler had
+convinced the White House that multiple  vaccines should be tested
+simultaneously.  But MicroGeneSys  president Frank Volvovitz said a test of
+multiple vaccines could  triple the cost of the trial and delay it by two
+years.
+
+==================================================================
+
+HICNet Medical Newsletter                                              Page 41
+Volume  6, Number 10                                           April 20, 1993
+
+""The Limits of AZT's Impact on HIV"" U.S. News & World Report (04/12/93) Vol.
+114, No. 14, P. 18
+
+AZT has become the most widely used drug to fight AIDS since it  was
+approved by the Food and Drug Administration in 1987.   Burroughs Wellcome,
+the manufacturer of AZT, made $338 million  last year alone from sales of the
+drug.  However, a team of  European researchers recently reported that
+although HIV-positive patients taking AZT demonstrated a slightly lower risk
+of  developing AIDS within the first year of treatment, that benefit
+disappeared two years later.  The Lancet published preliminary  findings of
+the three-year study, which could give more reason  for critics to argue the
+drug's cost, side effects, and general  efficacy.  Even though U.S.
+researchers concede the study was  more comprehensive than American trials,
+many argue the European  researchers' suggestion that HIV-positive patients
+experience  little improvement in their illness before the development of
+AIDS symptoms.  In addition, researchers have long been familiar  with the
+--------- end of part 3 ------------",sci.med,train
+train_sci_med_0216,"OOPS. My original message died. I'll try again..
+I always understood (perhaps wrongly..:)) that the bacteria in our digestive
+tracts help us break down the components of milk. Perhaps the normal flora of
+the intestine changes as one passes from childhood.
+Is there a pathologist or microbiologist in the house?",sci.med,train
+train_sci_med_0229,"As I understood it, MSG *is* natural.  Isn't it found in
+tomatoes?
+
+Anyway, lots of people are terribly allergic to lots of natural
+things; peanuts, onions, tomatoes, milk, etc.  Just because something
+is 'natural' doesn't mean it won't cause problems with some folks.
+
+As for how foods taste:  If I'm not allergic to MSG and I like
+the taste of it, why shouldn't I use it?  Saying I shouldn't use
+it is like saying I shouldn't eat spicy food because my neighbor
+has an ulcer.
+
+People have long modified the taste of food by additives, whether
+they be chiles, black pepper, salt, cream sauces, etc.  All of these
+things cloud the flavor of the food.  Why do we bother with them?
+How should food be tasted?  Isn't it better left to the diner?",sci.med,train
+train_sci_med_0271,"Phenylketonuria is a disease in which the body cannot process phenylalanine.
+It can build up in the blood and cause seizures and neurological damage.
+An odd side effect is that the urine can be deeply colored, like red wine.
+People with the condition must avoid Nutrasweet, chocolate, and anything
+else rich in phenylalanine.",sci.med,train
+train_sci_med_0395,"Recurrent Volvulus
+-------------------
+
+This is regarding recurrent volvulus which our little boy
+has been suffering from ever since he was an infant. He had
+a surgery when he was one year old. Another surgery had
+to be performed one year after, when he was two years old.
+He turned three this February and he is still getting
+afflicted by this illness, like having to get hospitalised
+for vomitting and accompanying stomach pain.He managed
+not having a third surgery so far.
+
+*  	One thing me and my wife noticed is that his affliction
+peaks around the time he was born, on nearabouts, like in
+March every year.  Any significance to this?
+
+*	Why does this recur? Me and my family go through severe pain
+when our little boy have to undergo surgery. Why does surgery
+not rectify the situation?
+
+*	Also, which hospital in US or Canada specialize in this malady?
+
+*	What will be a good book explaining this disease in detail?
+
+*	Will keeping a particular diet keep down the probability of
+recurrence?
+
+*	As time goes on, will the probability of recurrence go down
+considering he is getting stronger and healthier and probably
+less prone to attacks? Or is this assumption wrong?
+
+*	Any help throwing light on these queries will be highly appreciated.
+Thanks very much!",sci.med,train
+train_sci_med_0402,"Yup.  By the way, what planet are you from, and once you got here, did
+you encounter those prejudices against foreign medical graduates?",sci.med,train
+train_sci_med_0563,"-*-----
+
+I hope Gordon Banks did not mean to imply that notions such as
+hard-to-see candida infections causing various problems should not
+be investigated.  Many researchers have made breakthroughs by
+figuring out how to investigate things that were previously thought
+""virtually impossible to test for.""
+
+Indeed, I would be surprised if ""candida overbloom"" were such a
+phenomena.  I would think that candida would produce signature
+byproducts whose measure would then set a lower bound on the
+extent of recent infection.  I realize this might get quite
+tricky and difficult, probably expensive, and likely inconvenient
+or uncomfortable to the subjects, but that is not the same as
+""virtually impossible.""",sci.med,train
+train_sci_space_0007,"If by that you mean anything on the GD approach, there was an article on
+it in a recent Avation Week. I don't remember the exact date but it was
+recent.
+
+Allen",sci.space,train
+train_sci_space_0087,"I have before me a pertinent report from the United States General
+Accounting Office:
+
+National Aero-Space Plane: Restructuring Future Research and Development
+Efforts
+December 1992
+Report number GAO/NSIAD-93-71
+
+In the back it lists the following related reports:
+
+NASP: Key Issues Facing the Program (31 Mar 92) GAO/T-NSIAD-92-26
+
+Aerospace Plane Technology: R&D Efforts in Japan and Australia
+(4 Oct 91) GAO/NSIAD-92-5
+
+Aerospace Plane Technology: R&D Efforts in Europe (25 July 91)
+GAO/NSIAD-91-194
+
+Aerospace Technology: Technical Data and Information on Foreign
+Test Facilities (22 Jun 90) GAO/NSIAD-90-71FS
+
+Investment in Foreign Aerospace Vehicle Research and Technological
+Development Efforts (2 Aug 89) GAO/T-NSIAD-89-43
+
+NASP: A Technology Development and Demonstration Program to Build
+the X-30 (27 Apr 88) GAO/NSIAD-88-122
+
+On the inside back cover, under ""Ordering Information"" it says
+
+""The first copy of each GAO report is free.  . . .  Orders
+may also be placed by calling (202)275-6241
+""
+
+Dani",sci.space,train
+train_sci_space_0133,"Could someone please send me the basics of the NASP project:
+1. The proposal/objectives
+2. The current status of the project/obstacles encountered
+3. Chance that the project shall ever be completed
+or any other interesting information about this project.
+
+Any help will be much appreciated",sci.space,train
+train_sci_space_0314,"No. I estimate a 99 % probability the Gehrels referred to
+is Thomas Gehrels of the Spacewatch project, Kitt Peak observatory.
+
+Maybe in the 24th century they could do gamma ray spectroscopy on
+distant asteroids with an orbiting observatory, but here in the
+primitive 20th we have to send a probe there to get gamma ray
+spectroscopy done.
+
+You have the info on Mayan Television yet?",sci.space,train
+train_sci_space_0336,"..
+
+Funny.  A bit disturbing.  Forging a posting seems somewhat unethical, even
+if the subject is as notorious as McElwaine.
+
+Followups should definitely not go to sci.space.",sci.space,train
+train_sci_space_0347,"Whatabout, Schools, Universities, Rich Individuals (around 250 people
+in the UK have more than 10 million dollars each). I reecieved mail
+from people who claimed they might get a person into space for $500
+per pound. Send a skinny person into space and split the rest of the money
+among the ground crew!
+Agreed. I volunteer for any UK attempts. But one clause: No launch methods
+which are clearly dangerous to the environment (ours or someone else's). No
+usage of materials from areas of planetary importance.
+
+Yes: We should *do* this rather than talk about it. Lobby people!
+The major problem with the space programmes is all talk/paperwork and
+no action!",sci.space,train
+train_sci_space_0440,"Well, first you work out how much cold gas you need, then make the
+tanks big enough.
+
+Working out how much cold gas is another problem, depending on
+vehicle configuration, flight duration, thruster Isp (which couples
+into storage pressure, which may be a factor in selecting tank
+wall thickness etc.)",sci.space,train
+train_sci_space_0493,"Hi,
+
+I'm writing a science fiction script and I'm looking for some
+answers to questions regarding the Moon and Earth. My starting point
+is an impossible situation.  [I checked with a professor at berkeley
+and his response was a VERY helpful ""can't happen"".] If you enjoy
+playing with unusual ideas and are willing answer some questions
+please contact me via e-mail ( ).
+
+I get extremely annoyed when screen and tele-plays ignore basic
+facts about computers that I'm determined to be as scientifically
+accurate as I can.
+
+Sorry for being vague, but I'd like to protect my idea as much as I
+can until I'm ready to sell it (hopefully).",sci.space,train
+train_sci_space_0570,"I have attached a copy of an announcement I picked up during my trip to
+Moscow last week.  I have several friends at the Moscow Aviation
+Institute who have asked me to post this announcement.  (I have done
+some editing, but the contents is unchanged from the original
+announcement.)
+
+For those of you not familiar with the Moscow Aviation Institute, it is
+the leading Russian school of higher education dedicated to the training
+of aircraft and spacecraft designers.  It specializes in airframe
+design, powerplant design, control systems, and power systems.
+Virtually all of the major former Soviet airframe designers (Tupolev,
+Su, Iluchine, Migoyan, etc.) were schooled at MAI.
+
+I had the opportunity to tour the two museums that are maintained at
+MAI.  The aircraft include Mig23, Su 27, Yak 38, the cockpit of an
+F-111(!), among others.  It was a fascinating and eye opening
+experience, expecially given the fact that the museum was, until a year
+or so ago, closed to virtually everyone.  I also had the opportunity to
+see some of the experiments being conducted with plasma drive engines
+for future space craft use.
+
+If you have any questions about the Institute, or the program, I would
+be glad to try and answer them.  The institute, and most of it's faculty
+have e-mail addresses.  However, it takes about a day or so for the
+receiver to get the message.  They are still a bit antiquated - but they
+are rapidly changing!
+
+Steve Emmett
+
+ps  please send any questions you have for me via e-mail.  George Mason
+university has about a 2 week (!) delay in news feed delivery.
+
+-------------------------------------------------------------------
+
+MOSCOW INTERNATIONAL AVIATION SCHOOL
+
+The aviation school ""Poljot"" (meaning Flight) is organized by the the
+Moscow Aviation Institute, the prominent Russian Center of airspace
+education and the foreign trade firm Poljot, well known in various
+parts of the world for their quartz and mechanical wrist watches.
+
+The course of studies will last only 50 days, but during this time
+you will have the unique opportunity:
+- to listen to intensive courses on the main aviation
+disciplines, the history and theory of techniques, and design of
+airplanes;
+- to visit and get acquainted with the world known Russian
+aviation firms - TU, MiG, Yak, Il and Su;
+- to meet and have discussions with famous aviation
+scientists, engineers and pilots;
+- to visit the most interesting museums of unique aviation
+techniques which were closed for many years to the public;
+- to see the International Airspace Show which will take
+place in Moscow from 31 August through 3 September 1993;
+- to visit famous art museums, historical and architectural
+monuments, theatres and concert halls;
+- to take part in sport competitions and have a great time
+with new friends.
+
+The Director of the school is Mr. Oleg Samelovich, a well known
+Russian scientist, professor, general designer and the Chief of the
+Airplanes Design Department of the Moscow Aviation Institute.  Mr.
+Samelovich is one of the designers of the the Su-24, Su-25, and Su-27
+
+The lectures are given in English, using a multi-media concept.  The
+students are provided with all the necessary text books and
+literature.  After the full course of studies are completed, the
+student will receive a special certificate of graduation.
+
+The cost of studies, including hotel, meals, excursions, theatres,
+etc is $3500.
+
+To apply for admission, send your application to:
+
+109147 Moscow Marksistskaja 34
+Foreign Trade Firm ""Poljot""
+274 00 13 (phone)
+274 00 22 (FAX)
+411989 POLEX SU (telex)
+
+In your application, include your full name, address, date and place
+of birth.  In addition, include complete passport information, as well
+as a description of your education.
+
+Upon receipt of this information, ""Poljot"" will immediately forward
+to you an official invitation for obtaining a Russian entrance visa
+as well as details on payment.
+
+Should you require additional information, please do not hesitate to
+contact us.
+
+(signed)	O. Samelovich
+
+------------------------------------------------------------------------
+
+--
+
+Steve Emmett",sci.space,train
+train_sci_space_0592,"Actually, the ""ether"" stuff sounded a fair bit like a bizzare,
+qualitative corruption of general relativity.  nothing to do with
+the old-fashioned, ether, though.  maybe somebody could loan him
+a GR text at a low level.
+
+didn't get much further than that, tho.. whew.",sci.space,train
+train_talk_politics_misc_0062,"[..]
+
+Not that I think anyone cares, but this pattern (using other examples
+of course) was discussed 2,000 years ago by Aristotle in
+_Nicomachean_Ethics_.   Note that you can't use this insight to reason
+backwards; e.g.:  Since the conservatives see the media as liberal and
+the liberals see the media as conservative, the media are fair!  (though
+I've seen this ""reasoning"" implied)
+
+Ken",talk.politics.misc,train
+train_talk_politics_misc_0063,"# #The article also contains numbers on the number of sexual partners.
+# #The median number of sexual partners for all men 20-39 was 7.3.
+# #Compared to the table I have already posted from Masters, Johnson,
+# #and Kolodny showing male homosexual partners, it is apparent that
+# #homosexual men are dramatically more promiscuous than the general
+# #male population.  It's a shame that we don't have a breakdown for
+# #straight men vs. gay/bi men -- that would show even more dramatically
+# #how much more promiscuous gay/bi men are.
+#
+# Possibly because gay/bi men are less likely to get married?
+
+Marriage isn't a requirement for a couple staying together.
+
+# What was the purpose of this post?  If it was to show a mindless obsession
+# with statistics, an incredibly flawed system of reasoning, and a repellent
+# hatemonger agenda, then the purpose was accomplished with panache.
+#
+# (a) Get a clue.  (b) Get a life.  (c) Get out of my face.  I'm not in yours.
+#
+# ----bi    Andrew D. Simchik					SCHNOPIA!
+
+Yes you are.  When you and the rest of the homosexual community
+pass laws to impose your moral codes on me, by requiring me to
+hire, rent to, or otherwise associate with a homosexual against
+my will, yes, you are in my face.  Until homosexuals stop trying
+to impose their morals on me, I will be in your face about this.",talk.politics.misc,train
+train_talk_politics_misc_0154,"Two institutions with absolute power.  Cute.
+
+Let's talk practicality, shall we?  If the Monarch tried to
+do something, what would happen?
+
+But you illustrated the problem very well.
+
+I am contending that there is no state in the Union which does
+not have ample wealth, if they choose to spend it, to run a perfectly
+acceptable Education system.  (I further contend that the amount of money
+being spent now is more then sufficient, but is being spent badly.)
+
+So, tell me Phill.  Were the Republicans also responsible for some
+of the *huge* increases in social programs?  Or were they *only*
+responsible for what you don't like.  (I contend it is Congress which
+is to blame.  Democrat and Republican alike.)
+
+Most of our worst areas are still better off than most of Europe.
+In any case, we're talking about *education*.
+
+Yes, I live in once such area.  You're woefully ignorant of the
+situation.
+
+At the same time some of Tennessee's school districts are closing
+down, the Governor asked for 7.5 million dollars for bicentenntial
+celebration license plats.  In almost the same breath he wanted to raise
+unemployment compensation and reduce taxes which paid into it.
+
+I don't know about the rest of the country, but *our* education
+problems stem directly from two problems, neither of which are a lack
+of money in the state.  (BTW, Tennessee is considered a ""tax heaven""
+and our economy is one of the strongest in the country.  *I* see
+a correlation.)  1)  What money we spend goes primarly to administration.
+The average administrator makes two and a half times what the average
+teacher makes, and sucks up an enormous amount of revenue.  And 2)
+the Governor is making a concerted effort to create an ""Education crisis""
+in order to push for his pet income tax.  Some of the most idiotic
+programs get funded (like State funds for new art in the county seat)
+while schools are closing.  It's not a lack of funds.  It's an
+unwillingness to spend them on what is more appropriate.  Education
+is *the* parental hot-button.  Education is *always* the first to
+but cut, because it's easier to get people to pay for their children
+than ugly art.
+
+It spoke very eloquently on government being based on the
+consent of the governed.
+
+They did it anyway.  The Continental Congress had its own set of
+bylaws.  It wasn't quite a government, but a means of making decisions
+had to be created.  (However low George Washington's opinion of them were.)
+
+Allow me again to speak heresy against the Holy Democratic Orders.
+So what?  The government was built with a very non-democratic Presidency
+with fairly broad powers, including the veto.
+
+Yes, and the Senate was intended to act as a balance to this.
+Too much democracy was intentionally avoided.  It was considered a good
+thing to place non-democratic blocks to impulsive action.
+
+So long as Congress has something to sell, people will pay for
+it.  Most congressmen rake in more money than they need.
+
+No, if the ""progressives"" don't want the ""reactionaries"" to move
+backward, they get the same benefit.  41% of the states is a *lot* of
+people.  And historically laws with that sort of minority arent'
+very effective, especially since it is usually geographically
+concentrated.
+When wielding the Federal Big Stick I don't see why they shouldn't
+have to make a better argument than, ""more people than not,"" agree.
+
+I'm not a Republican.  I'm a republican.  :-)
+
+And no, I'm neither a Democrat nor a democrat.
+
+Now, I've asked several times, and all you've done is answer
+""It isn't democratic,"" which I knew before I said it.  Why *should*
+it be democratic?  We don't have a true direct democracy, and few
+people advocate one.  Why, then, is this other modification of
+democracy to bias it against action so much worse?",talk.politics.misc,train
+train_talk_politics_misc_0194,"^^^^^^^^^
+
+Maybe we should ask the 83,103 people who were laid off this January whether
+or not we're in a recession. That was a figure that was reported in the
+New York Times. There is no official figure, because the Bureau of Labor
+Statistics stopped government tracking of layoffs eight months ago due to
+budget cuts.
+
+(The above information was published in Harper's Index, Harper's magazine.)",talk.politics.misc,train
+train_talk_politics_misc_0195,"THE WHITE HOUSE
+
+Office of the Press Secretary
+
+For Immediate Release                             April 14, 1993
+
+PRESIDENT NAMES OFFICIALS AT
+TRANSPORTATION, COMMERCE, DEFENSE, AND OPIC
+
+(Washington, DC)    President Clinton announced his intention
+today to nominate Albert Herberger to be Administrator of the
+Federal Maritime Administration, Loretta Dunn to be Assistant
+Secretary of Commerce for Import Administration, and Christopher
+Finn to be Executive Vice President of the Overseas Private
+Investment Corporation.
+
+Additionally, he has approved the appointments of Joan Yim
+to be Deputy Administrator of the Federal Maritime
+Administration, Alice Maroni to be Principal Deputy Comptroller
+of the Department of Defense, and Deborah Castelman to be Deputy
+Assistant Secretary of Defense for Command, Control, and
+Communications.
+
+""We are continuing to move forward with putting together a
+government of excellent, diverse Americans who share my
+commitment to changing the way that Washington works,"" said the
+President.  ""These six people I am naming today fit that bill.""
+
+Biographical sketches of the nominees are attached.
+
+###
+
+BIOGRAPHICAL SKETCHES OF NOMINEES
+April 14, 1993
+
+Albert Herberger, a thirty-five year Navy veteran who
+retired with the rank of Vice Admiral, is the Vice President of
+the International Planning and Analysis Center (IPAC).  Among the
+positions he held during his naval service were Deputy Commander-
+in-Chief of the U.S. Transportation Command, Director of
+Logistics on Staff for the Atlantic Fleet Commander-in-Chief, and
+Director of the Military Personnel Policy Division for the Office
+of Naval Operations.  A surface warfare expert and a merchant
+marine officer with over eighteen years operational experience,
+Herberger is also Vice Chairman of the National Defense
+Transportation Association's Sealift Committee.  He is a graduate
+of the U.S. Merchant Marine Academy and the Naval Postgraduate
+School.
+
+Loretta Dunn has served on the staff of the Senate Committee
+on Commerce, Science, and Transportation since 1979.  Since 1983
+she has been the Committee's Senior Trade Counsel, responsible
+for drafting trade legislation and reports, planning and
+conducting hearings, managing legislation on the Senate floor and
+in conferences with the House, overseeing a variety of executive
+branch agencies, including the Department of Commerce.  She was
+previously a Staff Counsel for the Committee.  Dunn holds a B.A.
+in History from the University of Kentucky, a J.D. from the
+University of Kentucky College of Law, and an L.M. from the
+Georgetown University Law Center.
+
+Christopher Finn is the Executive Vice President of Equities
+for the American Stock Exchange.  Previous positions he has held
+have included Senior Vice President of the Air and Water
+Technologies Corporation, Chief of Staff to Senator Daniel P.
+Moynihan, Deputy Commissioner of the New York State Department of
+Economic Development, and Chief Legislative Aide to Congressman
+James R. Jones.  Finn is a graduate of Harvard College.
+
+Joan Yim is a professional planner with over 17 years
+experience in community based planning, policy analysis, project
+design and management, inter-agency coordination and government
+affairs.  From 1975-92, she was with the Hawaii Office of State
+Planning as a planner on issues relating to natural resource and
+coastal zone management and public infrastructure financing,
+among other issues. Currently, she is Supervising Planner with
+the Honolulu firm of Parsons Brinckerhogg Quade & Douglas.
+Before going to work for the state, she was Executive
+Neighborhood Commission Secretary for the City and County of
+Honolulu, and Chair on the Kaneohe Community Planning Committee.
+A Democratic National committeewoman, Yim holds a B.A. from
+Connecticut College and pursued graduate studies at the
+University of Hawaii.
+
+(more)
+
+April 14, 1993
+page two
+
+Alice Maroni is a professional staff member of the House
+Armed Services Committee specializing in defense budget issues.
+She previously worked as a national defense specialist in the
+Foreign Affairs and National Defense Division of the
+Congressional Research Service, and as an international risk
+analyst for Rockwell International.  She has written extensively
+on defense budget related topics.  Maroni received her B.A. from
+Mount Holyoke College, and an M.A. from the Fletcher School of
+Law and Diplomacy at Tufts University.  She has also completed
+the senior service program at the National War College and
+Harvard's Program for Senior Executives in National and
+International Security.
+
+Deborah Castleman is currently on leave from RAND, where she
+is a Space and Defense Policy Analyst.  She was an advisor to the
+Clinton/Gore campaign on space, science and technology, and
+national security issues.  Prior to joining RAND in 1989,
+Castleman held engineering positions with the Hughes Space and
+Communications Group, General Dynamics, and Electrac, Inc.  She
+served as an Avionics Technician in the Air Force from 1974-77.
+Castleman holds a B.S. in Electrical and Electronic Engineering
+from California State Polytechnic University, M.S. in Electrical
+Engineering from the California Institute of Technology, and M.A.
+in International Studies from Claremont Graduate School.",talk.politics.misc,train
+train_talk_politics_misc_0337,"Aviation Week March 15 1993 p.48
+
+""the CBO estimates that matching the capability of 100 C-17s would
+require 70 C-5s at a total cost of $14.4 billion. This option is still
+more than $10 billion cheaper than completing the C-17 program, which
+the CBO estimates will cost $24.7 billion.""
+
+Sorry, I was nine billion off. The C-5s would be ten billion cheaper.
+Well, California voted overwhelmingly for change, right?
+The argument to continue military programs just to support jobs is
+a poor one. It's kept quite a few bases open that should have been closed
+years ago, wasting billions of taxes.",talk.politics.misc,train
+train_talk_politics_misc_0372,"It is a bit unfair to call blame the Clinton Administration alone..this
+initiative was underway under the Bush Administration..it is basically
+a bipartisan effort of the establishment Demopublicans and
+Republicrats..the same bipartisan effort that brought the S&L scandal,
+and BCCI, etc.",talk.politics.misc,train
+train_talk_politics_misc_0388,"(A.J. Teel) writes..
+
+Wrong.  It's possible to inherit a debt.
+
+See above.
+
+The Constitution is not a contract.  It is a statute.  Please,
+Mr. Teel, or anyone, show me one case where the U.S.
+Constitution, or any state constitution, is considered a
+contract.
+
+It is also designed to delineate the powers of the U.S.
+government.
+
+I can't wait.
+
+Daniel Reitman
+
+HOW NOT TO WRITE A DEED
+
+One case involved the construction of a conveyance to grantees ""jointly, as
+tenants in common, with equal rights and interest in said land, and to the
+survivor thereof, in fee simple. . . . To Have and to Hold the same unto the
+said parties hereto, equally, jointly, as tenants in common, with equal rights
+and interest for the period or term of their lives, and to the survivor thereof
+at the death of the other.""",talk.politics.misc,train
+train_talk_politics_misc_0425,"Since we are talking in theory and opinion, then I'll put in my $.02.
+First, a rebuttle. Personally, I love under-dogs. Unlike
+bandwagon jumpers, I abandon teams when they start winning. People that
+cheer for winners just because they are winners are insecure people who are
+afraid to be associated with something negative.
+
+On this one point, I agree. The reason that people bash WASP's is
+because they have been on top for a long time. Whoever is on top is
+going to oppress whoever is below them so that they can stay on top.
+If Hannibal had pushed on to Rome after his victory at Cannae we might
+all be bashing the blacks for oppressing us peacefull white people
+for all these centuries. I seriously doubt that if the blacks had
+conquered the world that they would have treated their colonies any
+better/worse than the whites did.
+The white race did some unspeakable things to the other races of
+the world. But they only did what any other conquering race would have done
+(ie. Khan). The real question is, should we carry over that blame to the
+present generation who didn't participate in the crimes? Would it do
+any good? Has it done Bosnia any good? They are fighting wars that stopped
+hundreds, even thousands, of years ago.
+My opinion is, if there are inequities now, then let's change
+them. But don't blame me for what my ancestors did. It wouldn't settle
+anything anyway.
+
+That's where you are dead wrong. You don't join up on a side just because
+they are winning. That makes you spineless. Winning, in high school and
+after high school, is still the best way to be popular, but it doesn't make
+you right. All the best causes in history were loosing causes (with only
+a couple exceptions). Winning only makes a difference to other people, not
+to yourself. And what good is the opinions of other people if they only care
+how you appear (ie. a Winner).
+
+If you can't beat them, fight them every inch of the way.
+
+------------------------------------------------------------------------------
+""At that moment the bottom fell out of Authur's mind.          Garrett Johnson
+His eyes turned inside out. His feet began to leak out
+of the top of his head. The room folded flat around him,
+spun around, shifted out of existence and left him sliding
+into his own naval."" - Douglas Adams",talk.politics.misc,train
+train_talk_politics_misc_0464,"That was hardly the point, was it? I was commenting on this all-too-common
+Republican attitude that if people disagree with us, they must be idiots, they
+must be sheep being led around by the Evil Liberal Media Conspiracy. This is
+a dangerous attitude indeed. Because it's not a very big step from ""people
+are sheep, they can't think for themselves"" to ""people are sheep and need
+firm leadership from we, who know better"".. this sort of attitude makes
+me worry about what'll happen to the United States if the extremist wing
+of the Republican party ever gets back into power again.
+
+Hey! This is a government-funded newsgroup! Let's have some separation
+of church and state, damn it!
+
+More like:
+
+Broward: ""Clinton's going to raise your income taxes by over $1000!""
+Mark:    ""No, he's not, only about $204.""
+Broward: (silence)
+
+OK, I predict that in 1996 the Republicans will STILL be bitter. Yeah, yeah,
+I know, it's not very impressive to predict things that are inevitable..",talk.politics.misc,train
+test_comp_graphics_0028,"RFD
+Request For Discussion
+for the
+OPEN  TELEMATIC GROUP
+
+OTG
+
+I have proposed the forming of a consortium/task force for the promotion
+of NAPLPS/JPEG, FIF to openly discuss ways, method,
+procedures,algorythms,
+applications, implementation, extensions of NAPLPS/JPEG standards.
+These standards should facilitate the creation of REAL_TIME Online
+applications that make use of Voice, Video, Telecommuting, HiRes
+graphics,
+Conferencing, Distant Learning, Online order entry, Fax,in addition
+these dicussion would assist all to better understand how SGML,CALS,
+ODA,MIME,OODBMS,JPEG,MPEG,FRACTALS,SQL,CDrom,cdromXA,Kodak PhotoCD,TCL,
+V.FAST,EIA/TIA562,can best be incorporated and implemented to
+develop TELEMATIC/Multimedia applications..
+
+We want to be able to support DOS, UNIX, MAC, WINDOWS, NT, OS/2
+platforms.
+It is our hope that individuals,developers, corporations, Universities,
+R & D labs would join in in supporting such an endeavor.
+
+This would be a NOT_FOR_PROFIT group with bylaws and charter. Already
+many
+corporation have decided to support OTG (Open TELEMATIC Group) so do not
+delay joining if you are a developer
+
+An RFD has been posted to form a usenet newsgroup and a FAQ will soon be
+be compose to start promulgating what is known on the subject.
+If you would like to be added to the mailist send email or mail to
+the address below.
+
+This group would publish an electronic quarterly NAPLPS/JPEG newsletter
+as well as a hardcopy version.
+We urge all who wants to see CMCs HiRes based applications
+& the NAPLPS/JPEG G R O W,  decide to join and mutually benefit from
+this NOT-FOR_PROFIT endeavor.
+
+NOTE: Telematic has been defined by Mr. James Martin as the marriage
+of Voice, Video, Hi-res Graphics, Fax, IVR, Music over telephone
+lines/LAN.
+
+If you would like to get involve write to me at:
+
+IMG Inter-Multimedia Group| Internet:
+P.O. Box 95901            |
+Atlanta, Georgia, US      | CIS     :  70611,3703
+| FidoNet :  1:133/407
+| BBS     :  +1-404-985-1198 zyxel 14.4k
+
+To all that have responded we are trying to acknowledge as soon as
+possible. We have really been inundated with org, corp, edu willing
+to get involve.
+It would be nice if upon responded you can state in what capacity
+you are willing to get involve.",comp.graphics,test
+test_comp_graphics_0045,"I'm still looking for Fractint drivers or a new release which supports the
+24bit color mode of the Diamond Speedstar 24X.  There are some 2, 4 and 26
+million colros drivers, but none work with the 24X.
+
+Any help would be appreciated!
+
+Thanks!
+
+Chad",comp.graphics,test
+test_comp_graphics_0130,"Yes.  There are many methods of rendering, raytracing is one of them.
+You didn't say what you mean by rendering, so I won't guess.  Methods of
+rendering include:
+
+o  Pencil and graph paper, doing the math by hand
+
+o  Wireframe rendering of the 2D projection
+
+o  Hidden line rendering
+
+o  Scanline rendering using:
+- Painter's algorithm.
+- BSP trees.
+- Z buffer
+- Other
+
+o  Raytracing
+
+o  Radiosity
+
+o  Holographic projection to film
+
+o  Combination of any of the above",comp.graphics,test
+test_comp_graphics_0133,"Does anybody know about a converter from CGM to PCX or anything else more
+common.  I've spent some time searching the archives with no luck.
+Could you email me your responses.
+
+Thx in advance,
+Mike G.",comp.graphics,test
+test_comp_graphics_0144,"Well, I dived in feet first and reverse engineered the .PRJ file as much
+as I needed to - extracted the mapping icon information - which is
+when it dawned on me that 3D Studio is useless for my needs. I need
+a mapping icon per applied texture.  I want to use a special purpose
+graphics computer for rendering the 3DS models and it requires a texture
+rule/plane to be specified in 3Space, i.e. position/orientation of the
+mapping rule.  Since only one mapping icon is used in 3DS to apply
+textures to ALL objects/faces, it renders (no pun intended) 3DS totally
+unsuitable for my needs.
+
+Anyone got a contact for Alias Upfront or any other good modeller for a
+PC?  I must be able to specify texture rules (one per texture) and this
+must be saved in a file which I can read.  I haven't found any info on Alias
+in the copy of the faq that I have.",comp.graphics,test
+test_comp_graphics_0202,"Hi there,
+I'm using POv-Ray on my IBM compatible at home, but I would like to
+run some things at work on our VAX computer. I believe there is a version
+of the source code for POV-ray that is VAX specific, but I'm not sure where
+to find it (I've looked at the several sites where the IBMPC version of it
+can be found). Can anyone help me?
+
+Thanks in advance,",comp.graphics,test
+test_comp_graphics_0205,"I have a question about recursive, backward raytracing.
+
+When an incident ray (I) strikes an object at point P, first
+the normal (N) is calculated. Light rays are calculated (L1 to Ln
+where n is the number of light sources) - these being the light
+rays that do not intersect with anything. The reflected ray (R) and
+the transmitted ray (T) is calculated from the formulae.
+
+Calling the routine recursively on R and T will return the colours
+along the rays (R and T) as rCol and tCol. Each object has its own
+colour oCol and each light source has liCol (1 <= i <= n).
+
+The question is:
+How do you combine rCol, tCol, oCol and all the liCol's to get
+the correct resulting colour to return along the I ray?
+
+All colours are defined as strucures (records) having r, g, b components
+between 0 and 1.
+
+If anyone has done this before could you give me a few hints?
+
+--
+Adrian Secchia",comp.graphics,test
+test_comp_graphics_0251,"Does anyone know of a program for the PC that
+will take AutoCad DXF format files and convert
+them to a raster format, like PCX, GIF, etc?
+Thanks in advance..
+ED",comp.graphics,test
+test_comp_graphics_0371,"I am looking for the specs for the .mpg files that are floating around
+the alt.binaries.pictures.* groups on the net.  Please lemme know where
+I can obtain the spec or email it to me.
+
+Thanks much.",comp.graphics,test
+test_comp_graphics_0387,"Hi I'm new to imaging, and my advisor and I would like to
+do some 3D reconstructions.
+
+We take slides (biological), and image them on a 486.  Then
+the software allows us to trace the outline of the objects
+we want to save.  The outlines are stored as a TIFF file.
+
+We would like to convert a group of these outlines into a
+3D image.  We are unsure as to where to begin.  Someone mentioned
+that if we could convert the TIFF into a vector format then
+we could view them in Autocad.
+
+Any help would be greatly appreciated.",comp.graphics,test
+test_rec_sport_baseball_0028,"funny, it seems to me that the stats major league and minor league handbooks,
+which are nothing BUT collections of statistics, are authored by ""bill james
+and stats inc. (and howe, for the minor league handbook)"".
+
+and i am not sure how the 1993 bill james player ratings book qualifies
+as a ""book with statistics"", while the elias analyst is a ""statistics book"".
+the analyst contains more stats, sure, but it also contains more dialogue.
+
+finally, the point was not about the word ""statistics"".  it was about
+""money-grubbing"".  i don't see how anyone who has looked at the bill
+james player ratings book cannot consider him money-grubbing.",rec.sport.baseball,test
+test_rec_sport_baseball_0068,"The Phillies have won two games back to back in extra innings.  Last
+night's game was hard fought.  The game in Chicago should have been a
+blow out.  All in all these two games show a different Phillies team.
+In past seasons they tended to always be on the short end of 1 run
+games.  I don't know how many times I saw them losing by only 1 run.
+If they were able to win most of those, they might have been more of
+a contending team.  They are 3-0 so far in extra innings.  And of
+course, they are 10-3.",rec.sport.baseball,test
+test_rec_sport_baseball_0092,"OK, OK, OK. First, my apologies for perhaps being untimely with this subject material and perhaps overly optimistic in my request, but here goes anyhow:
+
+I'm *very* interested in finding out how I might be able to get two tickets for the All Star game in Baltimore this year. My very aged folks live about 50 miles away and I know it would be a great thing for them to attend the game. I went with them, and my grandfather who got me into baseball as a small child, to the All Star game in DC many years ago. Although I'm now in the SF Bay Area, I'd *love* to be able to treat my folks to this game; it's absolutely the last chance they'd ever have to attend this g
+
+ame locally.
+
+Any info would be greatly appreciated!!",rec.sport.baseball,test
+test_rec_sport_baseball_0130,"I agree. I'll delete more as well.
+
+Still, if the 'whispers' reached San Francisco, it is certainly possible they
+were stronger elsewhere. Also, it was teammates making the aspersions. In any
+event, I know of no other player to be maligned in the last couple years.
+
+Uh, the original author's point was that black and white players were por-
+trayed differently by ""the media"", and towards this, he gave a highly selected
+list to ""prove"" his case. Sanders' name showed up eventually. I dispute that
+Sanders has ever been called lazy by ""the media"".
+
+Uh, that poster specifically stated ""allow me to be the first"". It is NOT a
+quibble, then, to state that ""the media"" did not portray Canseco as being
+lazy. If the other person chooses to so accuse him, after my post, that does not
+make it a quibble. And in fact, the media around here tend(ed) to play up his
+time in the wieght room. Hardly ""lazy"", and hardly a ""quibble"". Have you ever
+seen any ""mediot"" portray Canseco as ""lazy""? Unconcerned with his fielding, yes.
+Lazy, no.
+
+Well, Canseco has been involved in several felonies, including his high-speed
+record, carrying concealed fire-arms, and of course the domestic violence.
+Clemens had a run-in at a bar. Canseco had that, as well, and in both cases, the
+coverage was relatively minimal.
+
+Uh, if the only evidence offered is anecdotal, how can it be objected that the
+counter to it is also anecdotal?
+
+Uh, yes, and I agree with your assesment of Boggs, rather specifically. However,
+you did say ""everybody who has ever won a batting title"" has been accused of
+selfishness. I have not ever, anywhere, heard this said of Puckett. Pendleton,
+either. Similarly, Brett, B Williams, and others.
+
+There are others. Perhaps they are simply not as outspoken, except in the
+case of the ""born-again"" types I mention.",rec.sport.baseball,test
+test_rec_sport_baseball_0211,"Jason Lee asks:
+
+You must have heard wrong.  His arm is still sore.  He hasn't gone on the DL,
+but he may.  Managmenet is treating him as a day-to-day situation.
+
+His doctors thought that he was ready, and they had him throw in
+Colorado, but his arm wasn't up to the strain.  He is throwing every day,
+but he's just not quite ready to pitch full strength yet.
+
+(This is based on an interview that he gave on WFAN NY radio on Thursday,
+4/23)",rec.sport.baseball,test
+test_rec_sport_baseball_0213,"Some time back in this newsgroup, I seem to recall a thread about
+predicting the runs a given lineup of 9 batters could be expected
+to score given the appropriate statistical alphabet soup for these
+hitters (OBP, SLG, AVG, bat length, hat size, day-of-the-week,
+weather conditions, etc.).  :-)  Anyway, was I dreaming or is there
+some such animal?
+
+My apologies if this has been covered recently, I probably get to
+read 10% of the articles posted here.  No time.
+
+Many thanks in advance,
+
+scotty
+
+----------------------------------------------------------------------------
+M. Scott Walsh
+Tektronix, Inc.   Graphics Printing & Imaging Products IBD   (503)685-3622",rec.sport.baseball,test
+test_rec_sport_baseball_0228,"To all the Braves doubters:
+
+Don't worry.  The bats will come alive, and the Braves will come around.
+The pitching is solid, and as long the Braves don't have serious injuries
+to the starting rotation, they'll continue to pitch well.  Heck, with
+the five starters on the Braves rotation, they could even sustain an
+injury to one of the five (I hope this doesn't happen, though).
+
+The bats are there.. Pendleton will certainly bat over .280, Justice
+is catching fire, Bream, Nixon, Sanders, Gant.. well, there's too
+much offense there to be kept quiet for much longer.  Right now, the
+Cleveland Indians have 7 players batting over .300!  But I certainly
+wouldn't their seven for our respective seven (though wouldn't the
+Braves be something right now with their pitching and 7 players batting
+over .300?).
+
+The bullpen.. well, it IS suspect.  But when the bats come alive, the
+guys in the bullpen will be of less concern.
+
+So anyway, I believe the Braves will be tough to beat this season.  I'm
+not saying the Braves have automatically won the division, but I'm optim-
+istic about their season (though it's awful painful to watch them at
+times right now).
+
+Go Braves!!",rec.sport.baseball,test
+test_rec_sport_baseball_0231,"Even I noticed that Gant's demeanor was not one of a batter
+attempting to regain his concentration.  Gant was stalking off.
+I wonder if Gant said something to the ump?
+
+Actually, there was a small hand wave by Gant..as if to say
+'Don't bother me'. Gant may have said something here, too.
+
+Cox was already halfway to the ump when the strike was called.
+
+My impression was that Gant was not 'stepping out.'  He was making
+a protest about the lack of an appeal to first.  As has been
+pointed out earlier, there is no appeal to first on a strike.
+I can understand Gant feeling a little pressure in a two-out,
+RISP, 1 - 0 game, ninth inning.  He let it get to him.  The ump
+also overreacted.  Gant was stalking off, but I doubt he would
+have been gone long.  Hirschbeck should have let him have a
+moment to compose himself before telling him to come bat.
+IMHO, umpires should be more flexible than what Hirschbeck
+showed.  Gant was disturbed to the point it was pretty likely
+he would not get a hit.
+
+A very bad finish to a pretty good game.",rec.sport.baseball,test
+test_rec_sport_baseball_0300,"[..]
+
+Actually, according to the DA information posted by Sherri, Boggs is superior
+defensively to have.  Here's their Defensive Averages for the last five
+years: [compared to average at 3b, AL]
+
+1988        1989        1990        1991        1992
+Boggs     .643[+2]    .659[+47]   .550[-54]   .653[+33]   .634[+32]
+Hayes     -------     .601[-40]   .622[+18]   .606[-14]   .574[-28]
+
+If Hayes is a defensive standout at third, he's done a good job in disguising
+it.  To put it another way, compared to an average third baseman last year:
+
+Boggs converted 11 more grounders into outs, turned 2 more double plays, and
+prevented 11 doubles.
+
+Hayes let 12 more grounders go by for hits, turned 6 more double plays, and
+prevented 4 doubles.
+--
+Dale J. Stephenson |*| ( ) |*| Baseball fanatic",rec.sport.baseball,test
+test_rec_sport_baseball_0322,"Note:  I'm not posting this as part of an argument with Roger Meynard,
+but as an independent sort of thread.  I do actually quote some things
+that Roger Meynard wrote, but it might be better to think of this as
+""sampling"" his post (in the hip-hop sense) because it fits in with what
+I want to say.
+
+There's an interesting parallel between this way of viewing a baseball
+team and some people's conception of a biological organism.  In the
+biology context, we would very likely read ""fitness"" for ""the score of
+the game"" and ""organisms"" for ""teams"".  How we interpret ""players"" is
+trickier, but either ""organs"", or ""genes"" might seem reasonable
+choices depending on what point we were trying to make.  A ""genes""
+interpretation actually might be really interesting in this case,
+but that would be a different and probably longer post.
+
+If, however, we take the ""organ"" view, then our knowledge of biology
+should make us pause before we start saying things like ""species X is
+more fit than species Y because of a better organ Z"".  Given what we
+know about the interdependence of organs, we would often be suspicious
+of such claims.  (But note that this type of argument is quite often
+made when you map ""species X"" onto 'humans', and ""organ Z"" onto
+'brain').  On the other hand, some statements of this kind do seem
+more reasonable than others, as far as we can test them (e.g. 'brain'
+above might be more reasonable than 'pancreas' assuming no gross
+pathology, particularly if species Y is a primate).
+
+Even when you make such statements, you should be concerned with the
+functioning of the whole organism, and the possibility that one organ
+might be more crucial for one species and a second organ in another.
+(Not to mention the possibility that no organ is particularly crucial
+in some third species.)  However, if we are non-vitalists with any
+kind of reductionsit streak, we will want to say that an organism is
+not some completely magical unanalyzable ""whole"" but an intriguing
+process made up of various subprocesses that interact in ways that are
+potentially observable.  Some of these processes might be localized to
+particular organs, while others may be distributed across multiple
+organs.  In a way, this is just like a baseball team, except that I
+think it is pretty clear that the processes and interactions involved
+in baseball are *much* simpler and less numerous than in most organisms.
+
+One thing that is quite difficult about baseball is that perfectly
+controlled experiments are sometimes very tough to do.  But, of
+course, this has never stopped researchers from doing the best they
+can, and sometimes deriving very powerful conclusions even in the
+absence of certainty.  Most of this goes far beyond sheer speculation,
+but even sheer speculation can motivate further interesting research.
+
+In this cases, we're seeing the word ""statistics"" means ""summary of
+observed events"", where the events themselves can be viewed as the
+output of some process, and possibly inputs for other processes.
+Thus, if we have any valid notion of how the processes are put together
+into the functioning organism, data in the form of statistics might
+give us a basis to test particular hypotheses.
+
+This statement brings us back to the concept of fitness again.
+Fitness is defined in terms of both an organism and its environment;
+you might be fit in one situation and not another.  Moving to
+baseball, it is clear that each team spends the entire season in an
+environment including all the other teams in the league.  In at least
+a nominal sense, the division winners are the fittest teams in the
+league, in that they (on average) had better fitness scores than any
+of their competing opponennts.  But in a real sense, there is a fairly
+large random component in the performance of each team that is
+difficult if not impossible to account for in terms of factors
+intrinsic to (or interesting for) baseball.  The same is true in
+biology.  But here is also no direct biological equivalent of the
+World Series in basebal.  In the world series, the random component
+may be greatly magnified by the small number of games that are played,
+and both teams suddenly experience huge changes from the environement
+where they were originally successful.  It might be fun to watch, but
+it's unclear what it all really means.
+
+***
+
+Now just one more un-related point:
+
+On the other hand, you have seen some of us who can predict the
+outcome of the divisional races better than a random assignment of
+teams to finishes, and maybe some of us (e.g. me) who can do this
+better than the other participants in this forum on a regular basis.
+But this is probably only due to the fact that a 162-game schedule
+gives you a little hope that bad hops aren't the only difference
+between the winners and the losers.
+
+Moreover, you've had the opportunity to see some analysis of the World
+Series situation that makes the strong claim that *nobody* can predict
+the WS winner with reliably greater accuracy than a coin biased only
+to reflect the well-known home vs. road effect on winning percentage.
+
+Since stats are summaries of events, it's true that if you know the
+events you can derive the stats.  But if somebody is trying to
+understand the process behind the stats, then the stats produce new
+knowledge, and some of this might even be reliable, repeatable, and
+useful.  Speaking of which, I should get back to producing knowledge
+in a different field.  That is, of course, if I can produce knowledge
+even though I'm relying on stats to do it.",rec.sport.baseball,test
+test_sci_med_0016,"I am looking for statistics on the prevalence of disorders that are
+treatable with Botulinum Type A.  These disorders include: facial
+dyskinesia, meige syndrome, hemifacial spasm, apraxia of eyelid openeing,
+aberrant regeneration of the facial nerve, facial paralysis, strabismus,
+spasmodic torticollis, muscle spasm, occupational dystonia (i.e. writers
+cramp, etc.), spasmodic dysphonia, and temporal mandibular joint disease.
+
+I realize many of the disorders I listed (such as ""muscle spasm"" !!) are
+vaguely defined and may encompass a wide range of particular disorders.  My
+apologies; the list was provided to me as is.  I have some numbers, but not
+reliable.
+
+Any ideas on sources or, even bbetter, any actual figures (with source
+listed)?
+
+Many thanks,
+
+- Meg",sci.med,test
+test_sci_med_0051,"These are MY last words on the subject
+
+Some people think it enhances the flavor.  I personally don't think it
+helps the taste, it makes me sick, so I try to avoid it.
+
+Well, I know that MSG effects ME adversely - maybe not permanently but
+at least temporarily enough that I like to try to avoid the stuff.
+
+EXCUSE ME!!
+
+Why can't people learn to cook from scratch *ON* the net.  I've gotten
+LOTS of recipes off the net that don't use additives.
+
+If you LIKE additives then get off the net and go to your local
+supermarket, buy lots of packaged foods, and YOU get OFF THE NET!!
+
+I don't!!
+
+HEY - I'll pay *MY* hard earned dollars to buy food that costs more
+but does NOT have preservatives.  I choose to speak with my pocketbook
+in many ways.
+
+Nacho cheese Doritos, breading for MANY frozen fried foods (like fish
+and chicken), etc. ad naseum.
+
+Or the ""and other natural flavorings syndrome.""  It's been a few years
+since I've bought anything labelled with ""and other natural
+flavorings"".
+
+Well, I had had similar reactions many times.  That was when I really
+started WATCHING CAREFULLY - reaction to Doritos - hey guess what's in
+there - reaction to Lawry's season salt - guess what's in THERE
+
+I'll give you a hint - I've had enough problems with MANY MANY MANY
+different products with MSG that I figured out one thing.
+
+UNLESS I plan on getting sick - I won't eat the stuff without my
+Seldane.  And did I ever learn to read labels.
+
+Which was why I started checking EVERY time I got sick.  And EVERY
+time I got sick MSG was somehow involved in one of the food products.
+And consider there were no other similar ingredients (to my knowledge)
+- it might not please a medical researcher - but it pleased my own
+personal physician enough for him to give me allergy medicine and MOST
+IMPORTANTLY it's enough proof for ME to avoid it (and enough proof
+that my INCREDIBLY frugal fiance didn't flinch when I literally threw
+out or gave away all the food products in his pantry that had msg -
+and he always flinches when there's waste - but it was a simple
+explanation - I won't eat this stuff, I WON'T cook with this stuff, so
+I can either throw it out or give it away.)
+
+Probably Lawry's seasoning salt.  I LOVE the way that tastes.
+
+I'm not saying I NEVER consume ANYTHING with MSG.  I've noticed that I
+have a certain tolerance level - like a (small) bag of bbq chips once
+a month or so it not a problem - but that same bag of chips will
+bother me if I also had chicken bouillon yesterday and lunch at one of
+the Chinese restaurants the day before.
+
+But - some say that only 2% of the population has a problem with MSG -
+some say it's more like 20% - but let's say that it's 5%.  How many
+people would have to be tested that would have a problem?  Also - I
+KNOW I have a problem with it, and I wouldn't VOLUNTEER for a test.
+Like thanks guys but I don't WANT to get sick.  Also - I'm sure that
+most people probably have varying degrees of sensitivities at
+different times.  If I have a cold I'm MUCH more susceptible to the
+reaction than when I'm healthy (as proven today - when I'm stuffy but
+for some silly reason I still gave in and decided to have the BBQ
+chips ;}).
+
+Cathy doesn't - I haven't saved all my postings but I NEVER called it
+""chinese restaurant syndrome"" and I NEVER stated I got it only from
+Chinese food.  I just thought it would be easiest to conduct my
+personal test at a Chinese take out place that I knew would hold (or
+not hold) the MSG.  I can't call up whoever makes Doritos and ask them
+to make me ONE back of chips without MSG.
+
+Well, I believe I mentioned that in an earlier post
+
+Let's see you wrote this message at
+
+Date: 20 Apr 1993 00:09:31 -0500
+
+but on
+
+Date: 19 Apr 1993 16:33:18 GMT
+
+OH - and just in case anyone thinks I'm prejudice against either
+Chinese food or Asian people - I'm not going home to cook some Chinese
+food for the guy I'm marrying next week.  Incidentally, his last name
+is Wu.
+
+SO STOP IT WITH THE FLAME MAIL
+
+--
+Why does a woman work ten years to change a man's habits and then
+complain that he's not the man she married?
+-- Barbra Streisand",sci.med,test
+test_sci_med_0067,"A friend was recently admitted to North Carolina Memorial Hospital
+because of suspected meningitis.  Serious business.  They wanted to do
+a lumbar puncture, for which a CT scan is a prerequisite.
+
+I arrived in her hospital room about an hour after she had returned
+from the CT.   She was in tears.  Evidently the technicians in the CT
+lab had been very unpleasant to her.
+
+To begin with, they put her on the apparatus that moves you into the
+machine itself, and just pushed a button to slide her straight into the
+machine, without any explanation.  Imagine this.  You worried you may
+have a deadly disease, and next thing you know you're being put into
+this big scary machine, without a word of explanation about what is
+going to happen to you.  I believe this is inexcusable.   She waved her
+hand as if to say what are you doing to me, and they responded with
+annoyance and anger.  Next they inserted, or tried to insert, an IV
+catheter.  Apparently she has a lot of trouble with these and complained
+of the pain.  The technician just stopped and fixed her with a glare
+without any words of explanation.
+
+Is there anything I can do about these pigs ?
+
+I realize that these technicians do this sort of job day in and day
+out.  And that some patients can be very irritating and uncooperative.
+But this is simply no excuse.  Their purpose for existing is to help
+sick people, and there is no excuse for this sort of behavior.
+Fortunately my friend is fine.  But I imagine a large proportion of the
+people who get CT scans are not fine at all.  They have cancer and that
+sort of thing.  They don't need this kind of shit.
+
+Also, since I named the hospital involved, I should also point out that
+neither she nor I have any complaints about the competence or compassion
+of any of the other personnel at NCMH.",sci.med,test
+test_sci_med_0068,"Hello,
+
+Just one quick question:
+My father has had a back problem for a long time and doctors
+have diagnosed an operation is needed. Since he lives down in
+Mexico, he wants to know if there is a hospital anywhere in
+the United States particulary famous for this kind of surgery,
+kind of like Houston has a reputation for excellent doctors
+in eye surgery. Any additional info or pointers will be
+appreciated a whole lot!..
+
+Thanks in Advance.",sci.med,test
+test_sci_med_0164,"Any rocky mountain spotted fever experts out there ?
+
+The doctor thinks a friend might have this.
+The question is, doesn't the tick have to bite you ?
+
+You frequently find a tick crawling on you after a walk
+in the woods around here, but you tend to notice it before
+it bites you; pulling one out of your skin is something
+you're not likely to forget.
+
+Can you get the fever without it biting you ?  Do they
+sometimes bite you and then let go so you don't realize
+you were bitten ?  I know they will let go once they've had
+their fill, but you certainly would notice this (arggh).
+
+So how do you get the fever if you never pulled a tick
+off yourself (as opposed to finding one merely crawling
+on you) ?",sci.med,test
+test_sci_med_0174,"I need some ECG data , uncompressed,  hopefully in ascii format.
+Don't care what it looks like, this is for a signal processing
+project.",sci.med,test
+test_sci_med_0207,"There can be. But depression is not diagnositic of thyroid deficiency.
+Thyroid blood tests are easy, cheap, and effective in diagnosing thyroid
+deficiencies.",sci.med,test
+test_sci_med_0222,"Insomnia is a known, but relatively infrequent, side-effect of
+diphenhydramine.
+
+For most people, this does not occur.  On the other hand, most people
+can build up a tolerance to an antihistamine with extended use.
+(Allergy sufferers are often switched from one antihistamine to
+another to avoid this.)
+
+--
+Steven Litvintchouk
+MITRE Corporation
+202 Burlington Road
+Bedford, MA  01730-1420",sci.med,test
+test_sci_med_0243,"Hello,
+
+does anyone know about allergic reactions caused by the developer/toner
+of laser printers? What chemical stuff is involved?
+
+Thanks in advance!
+
+Reinhard",sci.med,test
+test_sci_med_0252,"Does anyone know of any studies done on the long-term health effects of a
+man's vasectomy on his female partner?
+
+I've seen plenty of study results about vasectomy's effects on men's health,
+but what about women?
+
+For example, might the wife of a vasectomized man become more at risk for,
+say, cervical cancer?  Adverse effects from sperm antibodies?  Changes in the
+vagina's pH?  Yeast or bacterial infections?
+
+Outside of study results, how about informed speculation?
+
+Thanks in advance for your help!",sci.med,test
+test_sci_space_0141,"Having read in the past about the fail-safe mechanisms on spacecraft, I had
+assumed that the Command Loss Timer had that sort of function.  However I
+always find disturbing the oxymoron of a ""NO-OP"" command that does something.
+If the command changes the behavior or status of the spacecraft it is not
+a ""NO-OP"" command.
+
+Of course this terminology comes from a Jet Propulsion Laboratory which has
+nothing to do with jet propulsion.
+
+--",sci.space,test
+test_sci_space_0151,"It's a moot point: Step out of your door go _anywhere_ (except possibly
+your mailbox). You will be ""subject to some ad agency's 'poor taste'""
+
+While I'm sure Sagan considers it sacrilegious, that wouldn't be
+because of his doubtfull credibility as an astronomer. Modern,
+ground-based, visible light astronomy (what these proposed
+orbiting billboards would upset) is already a dying field: The
+opacity and distortions caused by the atmosphere itself have
+driven most of the field to use radio, far infrared or space-based
+telescopes. In any case, a bright point of light passing through
+the field doesn't ruin observations. If that were the case, the
+thousands of existing satellites would have already done so (satelliets
+might not seem so bright to the eyes, but as far as astronomy is concerned,
+they are extremely bright.)",sci.space,test
+test_sci_space_0180,"You'll find that in Allen, C.W., ""Astrophysical Quantities"", Athlone
+Press, Dover, NH, 3rd edition, pp. 268-269 (1973).  To the accuracy it can
+be calculated (see specific references in Allen about how it is
+calculated), the temperature is 3 degrees K.
+
+Lots of people have remarked on this temperature.  The first may have
+been in Eddington's book, ""Internal Constitution of Stars"", Ch. 13 (1926;
+reprinted 1986), where he gives the ""temperature of space"" as 3 degrees.
+
+The source of this temperature is the radiation of starlight.
+
+To the accuracy of measurement, it's the same temperature.  Some of us
+think this may not be a coincidence.  -|Tom|-",sci.space,test
+test_sci_space_0237,"The people involved in it have been building hardware rather than writing
+press releases.  This is not a high-manpower project; they don't *have*
+spare people sitting around.
+
+As I understand it, there has also been some feeling on the part of some
+of the project management that publicity was not a good idea.  A lot of
+people have been working on changing this view, with some success.",sci.space,test
+test_sci_space_0261,"This is one of those ""yes, but"" things. It's true that a hydraulically
+pressurized tube can be somewhat more rigid than an unpressurized tube,
+but even at 2000 PSI levels a hydraulic hose will bend rather easily,
+though it's straight-on compressive strength is high, and it's torsional
+resistance increase is practically nil. On the other grasping member,
+there's no doubt that hydraulic ""leverage"" exists in nature. Tree roots
+are an example. Given time they can shatter concrete as osmotic pressure
+increases.
+
+Kangaroos 3-limbed? I don't think so. If you take the view that the
+tail is a limb, then monkeys and kangaroos are 5-limbed. I think the
+tail is a different kind of structure, grossly enlarged in the case
+of the kangaroo, but primarily still an instrument of balance rather
+than locomotion. I don't know much about panda ""thumbs"", so I'll ask
+is it opposable?
+
+Well I won't say flat out that they can't be intelligent, but I'll
+bring a couple of lines of argument to bear to try to show why I
+don't think it's likely. First let me say that when I say ""intelligent""
+I mean complex behaviors in response to novel situations on a level
+with, or greater than, human tool use and tool building. IE assuming
+suitable manipulators are present on the creature to allow it to alter
+it's enviroment in a planned way, it will do so. That's certainly not
+a universal or complete definition of intelligence, but it will suffice
+for a putative technological alien.
+
+Now no one knows exactly what makes a brain capable of thought, but
+it's generally accepted that one of the criteria is a certain level
+of complexity. This is generally determined by the number of neuron
+cells, and their interconnections. So a creature the size of a lemur
+wouldn't have enough neurons to support complex thought. This argument
+is considerably less clear in the case of the dinosaur. There's room
+for a large brain, though no indication that one ever developed. One
+reason this may be true is neuronic speed. The electrochemical messages
+that trigger neurons require time to propagate. This makes it difficult
+for a highly complex central brain to coordinate the movements of very
+large creatures. So there's little selection pressure for such brains.
+Instead, a simpler distributed network evolves. This doesn't rule out
+intelligent dinosaurs, but it points in that direction.
+
+Then there are the thermodynamic arguments. A tiny creature like the
+lemur needs to eat frequently because it's internal heat is rapidly
+lost due to it's high surface to volume ratio. I contend that a creature
+that must spend most of it's time and energy feeding won't have the time
+to develop and exercise intelligence. That argument may be somewhat weak.
+The dinosaur's problem is the reverse, it must moderate it's heat production
+because it's high volume to surface ratio makes it tend to retain waste heat.
+I'm assuming that a certain temperature range is optimal for chemical
+reactivity reasons for productive neuron function. So creatures would
+tend to need to maintain a regulated temperature in a range near that
+of humans if they are carbon based. That tends to rule out cold blooded
+creatures as potential homes of intelligence. Some people contend that
+some of the dinosaurs may have been warm blooded. But for a creature
+the size of a brontosaur, it's activity levels would have to be restrained
+or it would be prone to generate an internal steam explosion from the
+waste heat. Whales are similar size, but they can reject heat to the
+ocean, a much more efficient sink than air. I suspect that for intelligence
+to manifest itself, a certain degree of activity in interacting with the
+environment is necessary. IE monkey curiousity. I doubt a large dinosaur
+would be capable of that much activity.
+
+Gary",sci.space,test
+test_sci_space_0296,"The temperature of intergalactic space (or intercluster or
+intersupercluster space) would be very, very close to the microwave
+background temperature, 2.73 kelvins.  I recall that in interstellar
+space in our neighborhood of the galaxy it's something like 4 K.
+
+Is that what you were looking for?",sci.space,test
+test_sci_space_0310,"Forwarded from Neal Ausman, Galileo Mission Director
+
+GALILEO
+MISSION DIRECTOR STATUS REPORT
+POST-LAUNCH
+April 23 - 29, 1993
+
+SPACECRAFT
+
+1.  On April 22 and 23, delta Differenced One-way Range (DOR) passes were
+performed over DSS-14/63 (Goldstone/Madrid 70 meter antennas) and DSS-14/43
+(Goldstone/Canberra 70 meter antennas), respectively.  Initial results
+indicate the delta DOR pass on April 22 was unsuccessful due to ground
+station hardware problems but the one on April 23 was successfully performed.
+
+2.  On April 23, a cruise science Memory Readout (MRO) was performed for the
+Magnetometer (MAG) instrument.  Analysis indicates the data was received
+properly.
+
+3.  On April 23, the spare power relay contacts were commanded closed via the
+spacecraft stored sequence.  These relays were commanded closed by the CDS
+(Command Data Subsystem) prior to launch and were again commanded closed to
+preclude the possibility at Jupiter of the PPS relays/wiring being a
+source of internal electrostatic charge (IESD).
+
+4.  On April 26, cruise science Memory Readouts (MRO) were performed for the
+Extreme Ultraviolet Spectrometer (EUV), Dust Detector (DDS), and Magnetometer
+(MAG) instruments.  Preliminary analysis indicates the data was received
+properly.
+
+5.  During the period from April 26 to April 27, a navigation cycle was
+performed.  This navigation cycle provided near-continuous acquisition of
+two-way doppler and ranging data during three consecutive passes of the
+spacecraft over DSS-63, DSS-14, and DSS-43.
+
+6.  On April 26, real-time commands were sent to test slew the Radio Relay
+Antenna (RRA) in preparation for the mini-sequence slew test on April 28.
+The RRA was slewed from approximately 3.5 degrees from stow to approximately
+20.3 degrees.  Preliminary analysis indicated the antenna slewed to about 18
+degrees which was well within the predicted range.  The RRA was commanded back
+to approximately 15.2 degrees from stow.  Preliminary analysis indicated the
+antenna reached about 15.8 degrees also well within the predicted range.  The
+RRA motor temperature was at 1 degree C at the start of the activity and had
+increased to 1.6 degrees C at its completion.
+
+After verifying proper RRA slewing, the RRA slew test mini-sequence was
+uplinked to the spacecraft for execution on April 28.  Upon successful uplink,
+a Delayed Action Command (DAC) was sent which will reposition the stator on
+May 4 to its initial pre-test position.  Also, a DAC was sent to turn the
+Two-Way Noncoherent (TWNC) on April 28 prior to the start of the RRA slew test
+mini-sequence.
+
+7.  On April 27, a NO-OP command was sent to reset the command loss timer to
+264 hours, its planned value during this mission phase.
+
+8.  On April 28, the RRA slew test executed nominally.  The spacecraft under
+stored sequence control performed six RRA slews starting at about 16 degrees
+from stow and going to 53 degrees, back to 25 degrees, then to 51 degrees,
+back to 22 degrees, then to 48 degrees and then back to 21 degrees.  All of
+the slews were well within the predicted range.  The RRA motor temperature was
+at 2.3 degrees C at the start of the activity and had increased to 4.4
+degrees C at its completion.  After completion of the RRA slews, real-time
+commands were sent to reconfigure back to the pre-test configuration.
+
+9.  The AC/DC bus imbalance measurements have not exhibited significant change
+(greater than 25 DN) throughout this period.  The AC measurement reads 17 DN
+(3.9 volts).  The DC measurement reads 134 DN (15.7 volts).  These
+measurements are consistent with the model developed by the AC/DC special
+anomaly team.
+
+10. The Spacecraft status as of April 29, 1993, is as follows:
+
+a)  System Power Margin -  75 watts
+b)  Spin Configuration - Dual-Spin
+c)  Spin Rate/Sensor - 3.15rpm/Star Scanner
+d)  Spacecraft Attitude is approximately 23 degrees
+off-sun (lagging) and 4 degrees off-earth (leading)
+e)  Downlink telemetry rate/antenna- 40bps(coded)/LGA-1
+f)  General Thermal Control - all temperatures within
+acceptable range
+g)  RPM Tank Pressures - all within acceptable range
+h)  Orbiter Science- Instruments powered on are the PWS,
+EUV, UVS, EPD, MAG, HIC, and DDS
+i)  Probe/RRH - powered off, temperatures within
+acceptable range
+j)  CMD Loss Timer Setting - 264 hours
+Time To Initiation - 203 hours
+
+GDS (Ground Data Systems):
+
+1.  The first Galileo-GDS test of the MGDS V18.0 Command System (CMD) took
+place April 27, 1993 with DSS-61 (Madrid 34 meter antenna).  The test went
+well and demonstrated that the new command system interfaced with the new DSN
+(Deep Space Network) Group 5 Command Processor Assembly (CPA).  The test was
+successful and the next test for V18.0 CMD is scheduled for May 1, 1993 with
+DSS-15 (Goldstone 34 meter antenna).
+
+2.  The April System Engineers Monthly Report(SEMR)/Ground System Development
+Office (GSDO) MMR was conducted Thursday, April 29.   A review of current
+Project and Institutional (DSN and MOSO) system status was conducted.  On-going
+cruise development plus the GSDO Phase 1 and 2 delivery schedules, past months
+accomplishments  and potential problem areas were discussed.  No significant
+schedule changes or significant problems were reported.
+
+TRAJECTORY
+
+As of noon Thursday, April 29, 1993, the Galileo Spacecraft trajectory
+status was as follows:
+
+Distance from Earth         187,745,300 km (1.26 AU)
+Distance from Sun           296,335,800 km (1.98 AU)
+Heliocentric Speed          89,100 km per hour
+Distance from Jupiter       522,015,800 km
+Round Trip Light Time       20 minutes, 58 seconds
+
+SPECIAL TOPIC",sci.space,test
+test_sci_space_0351,"It is interesting to note in the past few days' correspondance that some
+believe that poor old New Mexico is not capable of hosting a commercial
+space launch business.  For many reasons, it can, and we here on the front
+lines see no reason why it should not.  The 'spaceport political publicity'
+referred to the other day had its intended effect - the state of New Mexico
+did establish the start of the necessary government infrastructure to back a
+commercial space port.  The commanding general at WSMR is in full support of
+dual-use for the facilities.  The WSMR location also has some strategic
+advantages in the form of necessary infrastructure and controlled air space
+to support the project.  Just because the folks involved have not done the
+traditional aerospace-equivalent of vapor-ware by inviting folks out to kick
+non-existent tires but have been merely doing their job to prepare for
+launch, don't think that nothing has happened.  From my interactions with
+the MACDAC folks, I get the impression that they want to set a firm,
+believable launch date based on vehicle readiness and not just some fiction
+to plug a space on a calendar.  I believe that all will happen this summer
+and don't worry, the locals here are planning to let everyone know when it
+does occur.
+Stephen Horan",sci.space,test
+test_sci_space_0368,"[discussion of pros and cons deleted]
+
+Could someone give me the references to the LLNL proposal?  I've been meaning
+to track it down in conjuntion with something I'm working on.  It's not
+directly related to space stations, but I think many of the principles will
+carry over.",sci.space,test
+test_sci_space_0371,"Not useful unless you've got some truly wonderful propulsion system for
+the mother ship that can't be applied to the probes.  Otherwise it's
+better to simply launch the probes independently.  The outer planets
+are scattered widely across a two-dimensional solar system, and going
+to one is seldom helpful in going to the next one.  Uranus is *not* on
+the way to Neptune.  Don't judge interplanetary trajectories in general
+by what the Voyagers did:  they exploited a lineup that occurs only
+every couple of centuries, and even so Voyager 2 took a rather indirect
+route to Neptune.
+
+Solar sails are pretty useless in the outer solar system.  They're also
+very slow, unless you assume quite advanced versions.",sci.space,test
+test_talk_politics_misc_0012,"Steve I'm glad to see that you abandoned the preamble thing.  What; did
+you do a word search to find Welfare somewhere else in the constitution?
+
+[my comments and paraphrases in brackets]
+
+Article I Section 8:  [in some ways the guts of the constitution]
+
+The Congress shall have the Power:
+
+1. To lay and collect Taxes, Duties, Imposts and Excises,
+to pay the Debts [indebtedness as defined in the document]
+and provide for the common Defence [Defence as precisely defined]
+and general Welfare [as defined through the document, mostly in ways
+[that limit the government.]
+of the United States; [but the above taxes shall be uniform through-
+[out the U.S.]
+
+[so far the congress has been given the power to collect taxes uniformly]
+
+[ then .. ]
+
+2.  To borrow Money [..]
+3.  To regulate Commerce with foreign Nations, [interstate and Indian tribes]
+4.  To [do uniform Naturalization and Bankruptcies]
+5.  To coin Money, regulate the Value thereof, and [etc.]
+6.  To [punish counterfeiters]
+7.  To establish Post Offices and post Roads
+8.  To [provide patents and copyrights]
+9.  To constitute Tribunals inferior to the Supreme Court;
+10. To define and punish Piracies and [etc.]
+11. To declare War, [and etc.]
+12. To raise and support Armies,[but for no longer than two years at a stretch]
+13. To provide and maintain a Navy, [notice no time limit on this one]
+14. To [make the rules for the army and navy]
+15. To provide for calling forth the Militia to execute the Laws [etc.]
+16. To provide for [training of the army except for some state stuff]
+17. To exercise exclusive Legislation [in D.C]
+18. To make all Laws [necessary to execute the foregoing ""Powers""].
+
+Your original instinct was right.  Looking to other nations for precedents
+that support an expansive liberal agenda is much easier than looking to the
+slim pickins found in the constitution.",talk.politics.misc,test
+test_talk_politics_misc_0037,"F<O>CUS/HEALTH: How U.S. compares.. Children/Elderly in Poverty
+
+==================================================================
+Percentage of children and elderly living in poverty 1984-1987:(3)
+==================================================================
+
+=================================================
+CHILDREN            ELDERLY
+COUNTRY              IN POVERTY         IN POVERTY
+=================================================
+United States           20.4               10.9
+Canada                   9.3                2.2
+Australia                9.0                4.0
+United Kingdom           7.4                5.2
+France                   4.6                4.5
+Netherlands              3.8                3.4
+Germany                  2.8                2.8
+Sweden                   1.6                4.3
+
+Source: Timothy M. Smeeding, ""U.S. Poverty and Income Security Policy in a
+Cross National Perspective, October 1991, Luxembourg, October, 1991,
+Luxembourg Income Study, working paper 70.
+
+******************************************************************
+
+=====================================
+Of the 19 Western Industrial Nations:
+=====================================
+
+Western Industrial Countries having a National Health Insurance plan
+providing universal coverage:
+
+Australia      YES    Sweden             YES
+Canada         YES    United Kingdom     YES
+Denmark        YES    Austria            YES
+Finland        YES    France             YES
+Ireland        YES    Switzerland        YES
+Italy          YES    Spain              YES
+Japan          YES    Belgium            YES
+New Zealand    YES    Germany            YES
+Netherlands    YES    Norway             YES
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Western Industrial Countries NOT having a National Health Insurance
+plan providing universal coverage.
+
+United States       NO
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+******************************************************************
+
+From page 74 of:
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+_We're Number One, Where America Stands -- and Falls -- in the New
+World Order_ by Andrew L Shapiro.
+
+New York, May 1992, Vintage Books, a division of Random House.
+$10 paperback. ISBN 0-679-73893-2
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+[Transcribed by   (Joe Woodard)]
+
+``America is becoming a land of private greed and public squalor.
+This book is an indispensable road map through the wreckage. The
+facts it reveals will startle you. They may depress you. But
+ideally they'll fire you up to help rebuild this nation.''",talk.politics.misc,test
+test_talk_politics_misc_0121,"Your starting to sound like a little child who wants ice cream. If you
+kick and scream enough you think people will believe you. Sorry proof
+by vigorous ascertion doesn't hold any water. I can insist that cats
+are dogs all day, it doesn't make it so.",talk.politics.misc,test
+test_talk_politics_misc_0163,"( I AGREE ! )
+
+I think the problem here is that Mrs. Reno strikes me
+( After watching NightLine Last night ) as a person who is incapable
+of understanding OR dealing with a great number of things.",talk.politics.misc,test
+test_talk_politics_misc_0165,"No Cramer it does not.  In this instance you are telling porkies to
+*yourself* as well as everyone else.  Haven't you ever been to a
+cafe or restaurant and been absalutely stuffed full of goodies and yet
+when one more item, just a little different, with a new texture and
+a new taste, was presented you *somehow* found the space for it.
+
+Maybe you haven't, so what?  It is a widely reported phenomina and
+I reckon the same applies to sex.",talk.politics.misc,test
+test_talk_politics_misc_0174,"(Matthew T. Russotto) writes..
+
+It's fairly simple. It was decided to burn the place down,
+and more than one agent was dispatched to set the fires in
+separate parts of the compound. I doubt that ""simultaneously""
+means ""at the exact same time"" in this case. It likely means
+""close enough together to preclude them from being part of
+the same fire.""
+
+They might be waiting until the evidence comes in from the
+site, and the investigation is at least well underway.
+
+The same could be said of Jonestown.
+
+Maybe. Then again, I've been suprised at what folks have missed
+in the past in similar situations. Don't jump t oconclusions.
+
+_____  _____
+\\\\\\/ ___/___________________
+Mitchell S Todd  \\\\/ /                 _____/__________________________
+________________    \\/ / mst4298@zeus._____/.'.'.'.'.'.'.'.'.'.'.'.'_'_'_/
+\_____        \__    / / tamu.edu  _____/.'.'.'.'.'.'.'.'.'.'.'.'.'_'_/
+\__________\__  / /        _____/_'_'_'_'_'_'_'_'_'_'_'_'_'_'_/
+\_ / /__________/
+\/____/\\\\\\
+\\\\\\",talk.politics.misc,test
+test_talk_politics_misc_0175,"Is this an arguement against or for?  Or simply a statement of agreeance/
+disagreeance.  The fact that there are more homosexuals in prison does not
+mean that homosexuals are immoral and more liable to commit crime.  And one
+must remember that prison is not necessarily a reflection of the type of
+people who are criminals.  What are the statistics for unsolved crime?",talk.politics.misc,test
+test_talk_politics_misc_0226,"THE WHITE HOUSE
+
+Office of the Press Secretary
+
+______________________________________________________________
+For Immediate Release                             April 20, 1993
+
+REMARKS BY THE PRESIDENT
+DURING PRESENTATION OF TEACHER OF THE YEAR AWARD
+
+The Rose Garden
+
+1:25 P.M. EDT
+
+THE PRESIDENT:  Good afternoon.  Please be seated.  I
+want to say, first, how delighted I am to be here with Secretary
+Riley and with Senator Graham.  The three of us served as governors
+together during the 1980s when we worked constantly on strategies to
+improve our schools, when we led often difficult and long efforts to
+upgrade the standards in American education and to improve the
+quality of instruction our children were receiving.
+
+There were no two governors whom I admired more during
+that period than the two who now stand on this stage with the Teacher
+of the Year.  And I think both of them would join me in saying that,
+after all the testimony has been heard and all the bills have been
+passed and the funds have been raised and allocated, it all comes
+down to what happens between the teacher and the students in the
+classroom.
+
+That's why today's ceremony honoring the National
+Teacher of the Year is so important.  Tracey Leon Bailey is one
+recognition all across our country for highly advanced and innovative
+science programs.  He's developed and introduced into Florida's
+classrooms cutting-edge programs in molecular biology and DNA
+fingerprinting -- subjects usually taught only in college and, I
+might add, probably only dimly understood here in the Nation's
+Capital.  (Laughter.)
+
+Within three years of being hired by a satellite high
+school, Mr. Bailey's institution had one of the strongest science
+programs in the entire state of Florida, and it won numerous national
+and international awards.  These advanced programs aren't just for a
+favored few.  Tracey Bailey has inspired all kinds of students,
+including those previously known as low-achieving or at-risk to reach
+for excellence and to attain it.  This is what our students need and
+what our country needs.
+
+Today, we know that a good future with high wages and
+rich opportunities rests on the foundation of quality education for a
+lifetime.  The basics aren't enough anymore.  All our kids need
+competence in math and science and advanced problem-solving.  That's
+why Tracey Bailey's accomplishments are so important and why I am so
+pleased and proud to participate in recognizing and honoring these
+accomplishments.
+
+Tracey, you represent the best in the United States.
+I'm glad to recognize you today and to formally present you with this
+Apple Award as the Teacher of the Year for 1993.  (Applause.)
+
+MR. BAILEY:  Thank you, Mr. President.  It is indeed a
+great honor and a tremendous responsibility to represent the nation's
+2.5 million teachers.  And we appreciate the support that you have
+shown for education, and we're looking forward to working with you to
+help redesign and improve our nation's schools.
+
+We know that the quality of our children's education
+will directly impact the future of our economic and social landscape
+in the years to come.  And we thank you so much for your continued
+support and commitment to our children's education.  Thank you again.
+(Applause.)
+
+THE PRESIDENT:  In closing, I would like to also welcome
+the education leaders in Florida who are here, those representing the
+national education groups who have also come.  I'd like to recognize
+Tracey's congressman, Representative Jim Bacchus in the back, himself
+a great advocate of education.  And I'd like to remind all of you
+that the ultimate purpose of the National Teacher of the Year Award
+is to find a way for the rest of us to express our appreciation to
+people all across this country who give their lives to our children,
+all of the teachers of this country who get up every day and do their
+best to try to advance the cause of learning for all the children of
+America.  They are, in so many ways, our most important public
+servants.
+
+Thank you very much.  (Applause.)",talk.politics.misc,test
+test_talk_politics_misc_0268,"F<O>CUS/HEALTH: Millions of Americans un-/under- covered
+
+===================================
+Percentage of population covered by
+public health insurance, 1990(25)
+===================================
+
+=============================================
+COUNTRY      PERCENT  COUNTRY         PERCENT
+=============================================
+Australia      100    Sweden            100
+Canada         100    United Kingdom    100
+Denmark        100    Austria            99
+Finland        100    France             99
+Ireland        100    Switzerland        99
+Italy          100    Spain              99
+Japan          100    Belgium            98
+New Zealand    100    Germany            92
+Netherlands    100    United States      21
+Norway         100
+
+Sources: Organization for Economic Cooperation and Development (Paris),
+Health Data file, 1991: U.S.: National Center for Heath Statistics, Advance
+Data, No. 201, June 18, 1991.
+
+******************************************************************
+""We're Number One in percentage of population without health insurance.
+******************************************************************
+
+""The main reason we're Number One in  percentage of population without
+health  insurance  is  that we're last  in  percentage  of  population
+covered  by public health insurance. Only about one fifth of Americans
+qualify for the main types of public health insurance available in the
+United States: Medicare, Medicaid, and veterans' benefits.(2l)
+
+""Of those  who don't  qualify, many  have private  insurance.(22)  But
+almost  one  in  seven  Americans  (34  million people--most living in
+families with a working adult) have  no insurance  at  all, and one in
+four (63 million) have been without insurance for a substantial period
+of time during the last two years. Many more have inadequate coverage,
+meaning that they could be bankrupted by a major illness.(23) In fact,
+one  health  care  expert  says that because  only 1  percent  of  the
+population  has   private   longterm-care  insurance,  ""virtually  any
+American could be  impoverished by a prolonged disabling illness.""(24)
+Additionally, as many as  40 percent of those  eligible for some forms
+of public aid do not  receive  it. These  gaps in health  care  result
+directly from  the  fact  that  the  United  States is  the only major
+industrialized  nation (other than  South Africa) without  a  national
+health insurance  plan providing  universal coverage while controlling
+costs.
+
+******************************************************************
+
+_We're Number One, Where America Stands -- and Falls -- in the New
+World Order_ by Andrew L Shapiro.
+
+New York, May 1992, Vintage Books, a division of Random House.
+$10 paperback. ISBN 0-679-73893-2
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+[Transcribed by   (Joe Woodard)]
+
+``America is becoming a land of private greed and public squalor.
+This book is an indispensable road map through the wreckage. The
+facts it reveals will startle you. They may depress you. But
+ideally they'll fire you up to help rebuild this nation.''",talk.politics.misc,test
+test_talk_politics_misc_0288,"A few questions for Janet Reno:
+
+Why don't you think generals have any place in law enforcement?
+
+If the ATF/FBI had proof that Koresh was:
+
+A child molester
+A child abuser
+A wife abuser
+Bigamist
+Sexual Deviant (not a crime in all 50 states, yet)
+As well as
+Illegally modify weapons
+
+Why wasn't he simply arrested during one of his morning jogs?  Why did
+the allegations of child/wife/sex crimes only come out after the Branch
+Davidians repelled the initial assualt?
+
+Was it because it became necessary to demonize David Koresh?  Do you
+feel responsible for the deaths of over 80 people?  How many would be alive to
+day if Koresh had been arrested outside the compound?
+
+Inquiring minds want to know.
+
+[Although Janet was installed after the siege began, her purge of the
+justice dept. leaves only her people in charge.]",talk.politics.misc,test

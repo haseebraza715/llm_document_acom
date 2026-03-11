@@ -1,2 +1,9 @@
-run_id,timestamp,methods_completed,docs_count,initial_cost,final_cost,improvement,run_path
-run_2026-03-11_02-26-49,2026-03-11_02-26-49,ACOM;PCA;t-SNE,100,300.830534,248.498138,True,/Users/haseebraza/Downloads/llm_document_acom/archive/runs/run_2026-03-11_02-26-49
+run_id,timestamp,methods_completed,docs_count,initial_cost,final_cost,improvement,run_path,variant_name
+run_2026-03-11_02-26-49,2026-03-11_02-26-49,ACOM;PCA;t-SNE,100,300.830534,248.498138,True,archive/runs/run_2026-03-11_02-26-49,
+run_2026-03-11_02-44-06_acom_v1_baseline,2026-03-11_02-44-06,ACOM;PCA;t-SNE,100,300.830534,275.767268,True,archive/runs/run_2026-03-11_02-44-06_acom_v1_baseline,acom_v1_baseline
+run_2026-03-11_02-44-07_acom_v1_k10,2026-03-11_02-44-07,ACOM;PCA;t-SNE,100,309.380733,261.565325,True,archive/runs/run_2026-03-11_02-44-07_acom_v1_k10,acom_v1_k10
+run_2026-03-11_02-44-09_acom_v1_more_iters,2026-03-11_02-44-09,ACOM;PCA;t-SNE,100,300.830534,252.119488,True,archive/runs/run_2026-03-11_02-44-09_acom_v1_more_iters,acom_v1_more_iters
+run_2026-03-11_02-44-11_acom_v1_stronger_repulsion,2026-03-11_02-44-11,ACOM;PCA;t-SNE,100,382.638709,354.962566,True,archive/runs/run_2026-03-11_02-44-11_acom_v1_stronger_repulsion,acom_v1_stronger_repulsion
+run_2026-03-11_02-44-11_acom_v1_wider_swap_search,2026-03-11_02-44-11,ACOM;PCA;t-SNE,100,300.830534,234.523915,True,archive/runs/run_2026-03-11_02-44-11_acom_v1_wider_swap_search,acom_v1_wider_swap_search
+run_2026-03-11_02-44-15_acom_v1_radius2,2026-03-11_02-44-15,ACOM;PCA;t-SNE,100,626.611576,570.195037,True,archive/runs/run_2026-03-11_02-44-15_acom_v1_radius2,acom_v1_radius2
+run_2026-03-11_02-59-54_acom_v1_wider_swap_annealed,2026-03-11_02-59-54,ACOM;PCA;t-SNE,100,300.830534,213.015064,True,archive/runs/run_2026-03-11_02-59-54_acom_v1_wider_swap_annealed,acom_v1_wider_swap_annealed

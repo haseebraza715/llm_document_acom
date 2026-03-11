@@ -1,7 +1,8 @@
 {
-  "run_id": "run_2026-03-11_02-26-49",
-  "timestamp": "2026-03-11_02-26-49",
-  "command_used": "python3 src/run_experiment.py",
+  "run_id": "run_2026-03-11_02-44-09_acom_v1_more_iters",
+  "timestamp": "2026-03-11_02-44-09",
+  "variant_name": "acom_v1_more_iters",
+  "command_used": "python3 src/run_acom_sweep.py",
   "embedding_file_used": "data/embeddings/all_embeddings.npy",
   "metadata_file_used": "data/embeddings/all_metadata.csv",
   "methods_run_successfully": [
@@ -23,26 +24,21 @@
   ],
   "random_seed": 42,
   "acom_initial_cost": 300.830534,
-  "acom_final_cost": 248.498138,
+  "acom_final_cost": 252.119488,
   "acom_improved": true,
   "notes_or_warnings": [
+    "Allow longer optimization with the same objective.",
     "skipped: disabled (pass --enable-umap to run)"
   ],
   "latest_output_paths": {
     "maps": [
-      "outputs/maps/acom_positions.csv",
-      "outputs/maps/pca_positions.csv",
-      "outputs/maps/tsne_positions.csv"
+      "outputs/maps/acom_positions.csv"
     ],
     "figures": [
       "outputs/figures/acom_grid.png",
-      "outputs/figures/pca_scatter.png",
-      "outputs/figures/tsne_scatter.png",
-      "outputs/figures/metric_comparison.png",
       "outputs/figures/acom_cost_history.png",
       "outputs/figures/distance_correlation_acom.png",
-      "outputs/figures/distance_correlation_pca.png",
-      "outputs/figures/distance_correlation_t_sne.png"
+      "outputs/figures/metric_comparison.png"
     ],
     "reports": [
       "outputs/reports/metrics_summary.csv",

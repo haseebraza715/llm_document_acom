@@ -1,0 +1,26 @@
+[
+  {
+    "method":"ACOM",
+    "neighborhood_preservation":0.137,
+    "trustworthiness":0.573704142,
+    "stress":5.1204930357,
+    "distance_correlation":0.0799874186,
+    "silhouette":-0.0876712538
+  },
+  {
+    "method":"PCA",
+    "neighborhood_preservation":0.329,
+    "trustworthiness":0.758260355,
+    "stress":0.6120994747,
+    "distance_correlation":0.4111351904,
+    "silhouette":0.2429909855
+  },
+  {
+    "method":"t-SNE",
+    "neighborhood_preservation":0.523,
+    "trustworthiness":0.8927810651,
+    "stress":13.2416205631,
+    "distance_correlation":0.5446523312,
+    "silhouette":0.4063670337
+  }
+]
