@@ -143,6 +143,20 @@ The run index is stored in:
 
 This index records run IDs, timestamps, completed methods, document counts, ACOM cost before and after optimization, and the path to each archived run.
 
+## Selected Figures
+
+The repository includes a small set of tracked figures for quick inspection on GitHub:
+
+- ACOM grid map: `docs/figures/acom_grid.png`
+- PCA scatter: `docs/figures/pca_scatter.png`
+- t-SNE scatter: `docs/figures/tsne_scatter.png`
+- metric comparison: `docs/figures/metric_comparison.png`
+- ACOM cost history: `docs/figures/acom_cost_history.png`
+
+![ACOM grid](docs/figures/acom_grid.png)
+
+![Metric comparison](docs/figures/metric_comparison.png)
+
 ## Current Status
 
 The repository currently includes:
