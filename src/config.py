@@ -12,6 +12,7 @@ OUTPUTS_DIR = BASE_DIR / "outputs"
 
 @dataclass(slots=True)
 class ExperimentConfig:
+    acom_variant_name: str = "acom_v1_baseline"
     metadata_path: Path = DATA_DIR / "embeddings" / "all_metadata.csv"
     embedding_path: Path = DATA_DIR / "embeddings" / "all_embeddings.npy"
 
@@ -31,7 +32,13 @@ class ExperimentConfig:
 
     neighborhood_k: int = 10
     acom_semantic_k: int = 8
+    acom_attraction_weight: float = 1.0
     acom_repulsion_weight: float = 0.35
+    acom_swap_candidates: int = 12
+    acom_acceptance_rule: str = "greedy"
+    acom_temperature_start: float = 0.05
+    acom_temperature_decay: float = 0.97
+    acom_early_stopping_rounds: int = 3
     tsne_perplexity: float = 20.0
 
     archive_embedding_dir: Path = ARCHIVE_DIR / "embeddings"

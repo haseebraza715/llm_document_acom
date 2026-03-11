@@ -140,3 +140,25 @@ def plot_acom_cost_history(cost_history: pd.DataFrame, output_path: str | Path) 
     fig.tight_layout()
     fig.savefig(output, dpi=200)
     plt.close(fig)
+
+
+def plot_acom_variant_comparison(comparison_frame: pd.DataFrame, output_path: str | Path) -> None:
+    output = Path(output_path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+
+    figure, axes = plt.subplots(1, 3, figsize=(15, 5))
+    metrics = [
+        ("cost_improvement", "Cost Improvement"),
+        ("neighborhood_preservation", "Neighborhood Preservation"),
+        ("trustworthiness", "Trustworthiness"),
+    ]
+
+    for axis, (column, title) in zip(axes, metrics, strict=True):
+        ordered = comparison_frame.sort_values(column, ascending=False)
+        axis.bar(ordered["variant_name"], ordered[column])
+        axis.set_title(title)
+        axis.tick_params(axis="x", rotation=45)
+
+    figure.tight_layout()
+    figure.savefig(output, dpi=200)
+    plt.close(figure)

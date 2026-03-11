@@ -26,7 +26,13 @@ class ACOMMapper:
         max_iter: int,
         radius: int,
         semantic_k: int = 8,
+        attraction_weight: float = 1.0,
         repulsion_weight: float = 0.35,
+        swap_candidates_per_step: int = 12,
+        acceptance_rule: str = "greedy",
+        temperature_start: float = 0.05,
+        temperature_decay: float = 0.97,
+        early_stopping_rounds: int = 3,
         random_seed: int = 42,
     ) -> None:
         self.grid = grid
@@ -35,17 +41,43 @@ class ACOMMapper:
         self.max_iter = max_iter
         self.radius = radius
         self.semantic_k = semantic_k
+        self.attraction_weight = attraction_weight
         self.repulsion_weight = repulsion_weight
+        self.swap_candidates_per_step = swap_candidates_per_step
+        self.acceptance_rule = acceptance_rule
+        self.temperature_start = temperature_start
+        self.temperature_decay = temperature_decay
+        self.early_stopping_rounds = early_stopping_rounds
         self.rng = np.random.default_rng(random_seed)
         self.doc_ids = list(grid.doc_ids)
         self.doc_index = {doc_id: index for index, doc_id in enumerate(self.doc_ids)}
         self.semantic_neighbor_count = min(max(3, semantic_k), max(1, len(self.doc_ids) - 1))
-
         max_semantic = float(np.max(self.semantic_distances))
         self.semantic_norm = self.semantic_distances / max_semantic if max_semantic > 0 else self.semantic_distances
         self.semantic_neighbors = self._build_semantic_neighbors()
         self.reverse_semantic_neighbors = self._build_reverse_semantic_neighbors()
         self.neighbor_weights = self._build_neighbor_weights()
+        self._validate_parameters()
+
+    def _validate_parameters(self) -> None:
+        if self.radius < 1:
+            raise ValueError("radius must be at least 1.")
+        if self.semantic_k < 1:
+            raise ValueError("semantic_k must be at least 1.")
+        if self.swap_candidates_per_step < 1:
+            raise ValueError("swap_candidates_per_step must be at least 1.")
+        if self.attraction_weight <= 0:
+            raise ValueError("attraction_weight must be positive.")
+        if self.repulsion_weight < 0:
+            raise ValueError("repulsion_weight must be non-negative.")
+        if self.acceptance_rule not in {"greedy", "annealed"}:
+            raise ValueError("acceptance_rule must be either 'greedy' or 'annealed'.")
+        if self.temperature_start <= 0:
+            raise ValueError("temperature_start must be positive.")
+        if not 0 < self.temperature_decay <= 1:
+            raise ValueError("temperature_decay must be in the interval (0, 1].")
+        if self.early_stopping_rounds < 1:
+            raise ValueError("early_stopping_rounds must be at least 1.")
 
     def _build_semantic_neighbors(self) -> dict[str, list[str]]:
         neighbors: dict[str, list[str]] = {}
@@ -81,7 +113,7 @@ class ACOMMapper:
         for neighbor_id in self.semantic_neighbors[doc_id]:
             neighbor_position = self.grid.get_position(neighbor_id)
             similarity_weight = self.neighbor_weights[doc_id][neighbor_id]
-            total += similarity_weight * self._normalized_grid_distance(position, neighbor_position)
+            total += self.attraction_weight * similarity_weight * self._normalized_grid_distance(position, neighbor_position)
 
         for local_neighbor_id in self.grid.get_neighbors(position, radius=self.radius):
             local_index = self.doc_index[local_neighbor_id]
@@ -131,12 +163,12 @@ class ACOMMapper:
         for candidate in nearest + farthest + current_neighbors + random_candidates:
             if candidate not in ordered_candidates:
                 ordered_candidates.append(candidate)
-        return ordered_candidates
+        return ordered_candidates[: self.swap_candidates_per_step]
 
     def _propose_swap(self) -> tuple[str, str, float, int]:
         doc_a = self.doc_ids[int(self.rng.integers(0, len(self.doc_ids)))]
         best_pair = (doc_a, doc_a)
-        best_improvement = 0.0
+        best_improvement = float("-inf") if self.acceptance_rule == "annealed" else 0.0
         candidates = self._candidate_docs(doc_a)
 
         for candidate in candidates:
@@ -146,28 +178,47 @@ class ACOMMapper:
                 best_improvement = improvement
                 best_pair = (doc_a, candidate)
 
+        if best_improvement == float("-inf"):
+            best_improvement = 0.0
         return best_pair[0], best_pair[1], best_improvement, len(candidates)
+
+    def _should_accept(self, improvement: float, iteration: int) -> bool:
+        if improvement > 0:
+            return True
+        if self.acceptance_rule == "greedy":
+            return False
+
+        temperature = max(self.temperature_start * (self.temperature_decay**iteration), 1e-4)
+        acceptance_probability = float(np.exp(improvement / temperature))
+        return bool(self.rng.random() < acceptance_probability)
 
     def run(self) -> ACOMResult:
         initial_cost = self.total_cost()
         history: list[float] = [initial_cost]
         accepted_swaps = 0
         total_attempts = 0
+        stagnant_rounds = 0
 
-        for _ in range(self.max_iter):
+        for iteration in range(self.max_iter):
             improved_this_round = False
             for _ in range(self.num_ants):
                 doc_a, doc_b, improvement, candidate_count = self._propose_swap()
                 total_attempts += max(1, candidate_count)
-                if doc_a == doc_b or improvement <= 0:
+                if doc_a == doc_b:
                     break
 
-                self.grid.swap(doc_a, doc_b)
-                accepted_swaps += 1
-                improved_this_round = True
+                if self._should_accept(improvement, iteration):
+                    self.grid.swap(doc_a, doc_b)
+                    accepted_swaps += 1
+                    improved_this_round = improved_this_round or improvement > 0
 
             history.append(self.total_cost())
-            if not improved_this_round:
+            if improved_this_round:
+                stagnant_rounds = 0
+            else:
+                stagnant_rounds += 1
+
+            if stagnant_rounds >= self.early_stopping_rounds:
                 break
 
         final_cost = history[-1]
