@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv/
+venv/
+env/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local output caches
+outputs/reports/.cache/
+outputs/reports/.mplconfig/
+outputs/reports/.numba_cache/
+
+# Generated raw data
+data/raw/raw_*.jsonl
+data/raw/sklearn_cache/
+!data/raw/.gitkeep
+
+# Generated processed data
+data/processed/cleaned_*.jsonl
+data/processed/embedding_input_*.jsonl
+data/processed/dataset_report.json
+
+# Generated split files
+data/splits/*.csv
+!data/splits/.gitkeep
+
+# Generated embeddings and metadata
+data/embeddings/*.npy
+data/embeddings/*_metadata.csv
+!data/embeddings/.gitkeep
+
+# Legacy archive outputs
+archive/embeddings/*.npy
+archive/embeddings/*.json
+!archive/embeddings/.gitkeep
+archive/mappings/*.csv
+!archive/mappings/.gitkeep
+archive/metrics/*.csv
+archive/metrics/*.json
+!archive/metrics/.gitkeep
+
+# Latest run outputs
+outputs/figures/*.png
+outputs/maps/*.csv
+outputs/reports/*.csv
+outputs/reports/*.json
+!outputs/figures/.gitkeep
+!outputs/maps/.gitkeep
+!outputs/reports/.gitkeep
+
+# Archived runs are ignored by default, except the curated review run and index
+archive/runs/run_*/
+!archive/runs/run_2026-03-11_02-26-49/
+!archive/runs/run_2026-03-11_02-26-49/**
+!archive/runs/run_index.csv
