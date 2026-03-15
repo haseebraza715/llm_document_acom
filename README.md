@@ -48,11 +48,22 @@ flowchart LR
 
 ```text
 llm_document_acom/
-├── src/         pipeline modules and experiment runners
-├── data/        prepared data, splits, and embeddings
-├── archive/     archived experiment runs and study snapshots
-├── outputs/     latest generated maps, figures, and reports
-├── docs/        documentation and tracked review assets
+├── src/              pipeline modules and experiment runners
+├── data/             prepared data, splits, and embeddings
+├── archive/          archived experiment runs and study snapshots
+├── outputs/
+│   ├── figures/
+│   │   ├── grids/        ACOM grid layouts
+│   │   ├── scatters/     PCA / t-SNE / UMAP scatter plots
+│   │   ├── scaling/      scaling study line plots
+│   │   ├── variants/     ACOM variant comparison bars
+│   │   ├── discretized/  discretized baseline grids
+│   │   ├── diagnostics/  cost histories, distance correlations, metric bars
+│   │   └── panels/       multi-panel composite figures
+│   ├── maps/         position CSVs for each method
+│   └── reports/      metric CSVs, JSON summaries, collision reports
+├── paper/            ACM sigconf LaTeX paper and figures
+├── docs/             documentation and tracked review assets
 ├── requirements.txt
 └── README.md
 ```
@@ -115,6 +126,13 @@ Scaling study for the tuned ACOM variant:
 python3 src/run_acom_scaling.py
 ```
 
+Discretize continuous baselines onto the same 10x10 grid for like-for-like comparison:
+
+```bash
+python3 src/discretize_baselines.py
+python3 src/visualize_discretized_baselines.py
+```
+
 Thesis-oriented result summaries:
 
 ```bash
@@ -134,6 +152,8 @@ Important report files include:
 - `outputs/reports/acom_variant_comparison.csv`
 - `outputs/reports/acom_scaling_results.csv`
 - `outputs/reports/acom_results_table_pretty.csv`
+- `outputs/reports/discretized_baselines_metrics.csv`
+- `outputs/reports/full_comparison_with_discretized.csv`
 
 The historical run index is stored at:
 
@@ -148,6 +168,20 @@ The strongest ACOM variant currently archived is `acom_v1_wider_swap_annealed`. 
 - final cost: `275.767` to `213.015`
 
 In the tuned comparison, ACOM outperformed PCA on neighborhood preservation and trustworthiness, but remained below t-SNE and UMAP on those local-structure metrics.
+
+### Discretized baseline comparison
+
+When PCA, t-SNE, and UMAP are discretized onto the same 10x10 grid, ACOM is the only method that guarantees zero collisions (one document per cell). Collision counts for discretized baselines: PCA 27 collision cells (max 8 docs/cell), t-SNE 32 (max 4), UMAP 28 (max 7).
+
+## Paper
+
+An ACM sigconf paper is included in `paper/`. Build with:
+
+```bash
+cd paper && bash build.sh
+```
+
+The paper uses `tectonic` as its TeX engine and references figures from `paper/figures/`.
 
 ## Reproducibility
 
