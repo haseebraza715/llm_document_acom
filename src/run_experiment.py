@@ -7,6 +7,7 @@ import os
 import re
 import shutil
 import sys
+import time
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -264,9 +265,9 @@ def load_experiment_inputs(config: ExperimentConfig) -> tuple[pd.DataFrame, np.n
             all_embeddings=all_embeddings,
         )
 
-    if len(all_metadata) != config.grid_rows * config.grid_cols:
+    if len(all_metadata) > config.grid_rows * config.grid_cols:
         raise ValueError(
-            "Grid dimensions must match document count for a fully occupied discrete map. "
+            "Grid capacity must be at least as large as document count. "
             f"documents={len(all_metadata)}, grid={config.grid_rows}x{config.grid_cols}"
         )
 
@@ -366,9 +367,9 @@ def write_baseline_assets(config: ExperimentConfig, baseline_results: BaselineRe
         "UMAP": config.map_dir / "umap_positions.csv",
     }
     baseline_figure_specs = {
-        "PCA": config.figure_dir / "pca_scatter.png",
-        "t-SNE": config.figure_dir / "tsne_scatter.png",
-        "UMAP": config.figure_dir / "umap_scatter.png",
+        "PCA": config.figure_dir / "scatters" / "pca_scatter.png",
+        "t-SNE": config.figure_dir / "scatters" / "tsne_scatter.png",
+        "UMAP": config.figure_dir / "scatters" / "umap_scatter.png",
     }
 
     for method_name, frame in baseline_results.frames.items():
@@ -380,7 +381,7 @@ def write_baseline_assets(config: ExperimentConfig, baseline_results: BaselineRe
         plot_2d_scatter(frame, method_name, figure_path)
         figure_paths.append(figure_path)
 
-        correlation_path = config.figure_dir / f"distance_correlation_{method_name.lower().replace('-', '_')}.png"
+        correlation_path = config.figure_dir / "diagnostics" / f"distance_correlation_{method_name.lower().replace('-', '_')}.png"
         plot_distance_correlation(semantic_distances, baseline_results.coordinates[method_name], method_name, correlation_path)
         figure_paths.append(correlation_path)
 
@@ -434,13 +435,17 @@ def run_single_experiment(
         early_stopping_rounds=config.acom_early_stopping_rounds,
         random_seed=config.random_seed,
     )
+    acom_start = time.perf_counter()
     acom_result = acom_mapper.run()
+    acom_runtime_seconds = time.perf_counter() - acom_start
 
     acom_positions = acom_positions_to_frame(acom_result.positions, metadata)
     acom_coordinates = acom_positions[["grid_col", "grid_row"]].to_numpy(dtype=float)
     acom_metrics = evaluate_method("ACOM", embeddings, acom_coordinates, semantic_distances, labels, config.neighborhood_k)
 
-    metrics_frames = [pd.DataFrame([acom_metrics]), baseline_cache.metrics_frame.copy()]
+    metrics_frames = [pd.DataFrame([acom_metrics])]
+    if not baseline_cache.metrics_frame.empty:
+        metrics_frames.append(baseline_cache.metrics_frame.copy())
     metrics_frame = pd.concat(metrics_frames, ignore_index=True)
 
     acom_map_path = config.map_dir / "acom_positions.csv"
@@ -484,27 +489,28 @@ def run_single_experiment(
         "cost_improvement": round(float(acom_result.initial_cost - acom_result.final_cost), 6),
         "improved": bool(acom_result.final_cost < acom_result.initial_cost),
         "iterations_recorded": len(acom_result.history) - 1,
+        "runtime_seconds": round(float(acom_runtime_seconds), 4),
         "method_statuses": {"ACOM": "ok", **baseline_statuses},
         "notes": notes,
     }
     acom_summary_path.write_text(json.dumps(acom_summary, indent=2), encoding="utf-8")
 
-    plot_acom_grid(acom_positions, config.figure_dir / "acom_grid.png")
-    plot_acom_cost_history(cost_history_frame, config.figure_dir / "acom_cost_history.png")
+    plot_acom_grid(acom_positions, config.figure_dir / "grids" / "acom_grid.png")
+    plot_acom_cost_history(cost_history_frame, config.figure_dir / "diagnostics" / "acom_cost_history.png")
     plot_distance_correlation(
         semantic_distances,
         acom_coordinates,
         "ACOM",
-        config.figure_dir / "distance_correlation_acom.png",
+        config.figure_dir / "diagnostics" / "distance_correlation_acom.png",
     )
-    plot_metric_comparison(metrics_frame, config.figure_dir / "metric_comparison.png")
+    plot_metric_comparison(metrics_frame, config.figure_dir / "diagnostics" / "metric_comparison.png")
 
     map_paths = [acom_map_path]
     figure_paths = [
-        config.figure_dir / "acom_grid.png",
-        config.figure_dir / "acom_cost_history.png",
-        config.figure_dir / "distance_correlation_acom.png",
-        config.figure_dir / "metric_comparison.png",
+        config.figure_dir / "grids" / "acom_grid.png",
+        config.figure_dir / "diagnostics" / "acom_cost_history.png",
+        config.figure_dir / "diagnostics" / "distance_correlation_acom.png",
+        config.figure_dir / "diagnostics" / "metric_comparison.png",
     ]
     if write_baseline_outputs:
         baseline_map_paths, baseline_figure_paths = write_baseline_assets(config, baseline_cache, semantic_distances)
@@ -536,6 +542,7 @@ def run_single_experiment(
         "acom_initial_cost": round(float(acom_result.initial_cost), 6),
         "acom_final_cost": round(float(acom_result.final_cost), 6),
         "acom_improved": bool(acom_result.final_cost < acom_result.initial_cost),
+        "acom_runtime_seconds": round(float(acom_runtime_seconds), 4),
         "notes_or_warnings": ([notes] if notes else []) + warnings,
         "latest_output_paths": {
             key: [relative_repo_path(path) for path in paths]
@@ -555,6 +562,7 @@ def run_single_experiment(
         "initial_cost": round(float(acom_result.initial_cost), 6),
         "final_cost": round(float(acom_result.final_cost), 6),
         "improvement": bool(acom_result.final_cost < acom_result.initial_cost),
+        "runtime_seconds": round(float(acom_runtime_seconds), 4),
         "run_path": relative_repo_path(run_dir),
     }
     update_run_index(config.archive_runs_dir / "run_index.csv", run_index_entry)
@@ -578,6 +586,7 @@ def run_single_experiment(
         "initial_cost": round(float(acom_result.initial_cost), 6),
         "final_cost": round(float(acom_result.final_cost), 6),
         "cost_improvement": round(float(acom_result.initial_cost - acom_result.final_cost), 6),
+        "runtime_seconds": round(float(acom_runtime_seconds), 4),
         "neighborhood_preservation": float(acom_row["neighborhood_preservation"]),
         "trustworthiness": float(acom_row["trustworthiness"]),
         "stress": float(acom_row["stress"]),
@@ -596,6 +605,7 @@ def run_single_experiment(
         "acom_initial_cost": round(float(acom_result.initial_cost), 6),
         "acom_final_cost": round(float(acom_result.final_cost), 6),
         "acom_improved": bool(acom_result.final_cost < acom_result.initial_cost),
+        "acom_runtime_seconds": round(float(acom_runtime_seconds), 4),
         "metrics_path": str(metrics_csv_path),
         "acom_summary_path": str(acom_summary_path),
         "run_index_path": str(config.archive_runs_dir / "run_index.csv"),

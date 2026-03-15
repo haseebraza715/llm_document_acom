@@ -205,14 +205,14 @@ def run_tuned_variant_against_baselines(best_row: pd.Series) -> dict[str, object
     tuned_map_frame = acom_positions.rename(columns={"grid_row": "grid_row", "grid_col": "grid_col"})
     tuned_map_frame.to_csv(tuned_map_path, index=False)
 
-    plot_acom_grid(acom_positions, FIGURE_DIR / "tuned_acom_grid.png")
-    plot_acom_cost_history(cost_history_frame, FIGURE_DIR / "tuned_acom_cost_history.png")
-    plot_metric_comparison(metrics_frame, FIGURE_DIR / "tuned_acom_metric_comparison.png")
+    plot_acom_grid(acom_positions, FIGURE_DIR / "grids" / "tuned_acom_grid.png")
+    plot_acom_cost_history(cost_history_frame, FIGURE_DIR / "diagnostics" / "tuned_acom_cost_history.png")
+    plot_metric_comparison(metrics_frame, FIGURE_DIR / "diagnostics" / "tuned_acom_metric_comparison.png")
     plot_distance_correlation(
         semantic_distances,
         acom_coordinates,
         "ACOM (Tuned)",
-        FIGURE_DIR / "tuned_distance_correlation_acom.png",
+        FIGURE_DIR / "diagnostics" / "tuned_distance_correlation_acom.png",
     )
 
     baseline_output_specs = {
@@ -223,12 +223,12 @@ def run_tuned_variant_against_baselines(best_row: pd.Series) -> dict[str, object
     for method_name, frame in baseline_results.frames.items():
         map_name, scatter_name, corr_name = baseline_output_specs[method_name]
         frame.to_csv(MAP_DIR / map_name, index=False)
-        plot_2d_scatter(frame, method_name, FIGURE_DIR / scatter_name)
+        plot_2d_scatter(frame, method_name, FIGURE_DIR / "scatters" / scatter_name)
         plot_distance_correlation(
             semantic_distances,
             baseline_results.coordinates[method_name],
             method_name,
-            FIGURE_DIR / corr_name,
+            FIGURE_DIR / "diagnostics" / corr_name,
         )
 
     return {
@@ -293,7 +293,7 @@ def main() -> None:
         "pretty_table": str(pretty_path),
         "interpretation": str(interpretation_path),
         "tuned_metrics_path": str(REPORT_DIR / "tuned_acom_metrics_summary.csv"),
-        "tuned_figure_path": str(FIGURE_DIR / "tuned_acom_metric_comparison.png"),
+        "tuned_figure_path": str(FIGURE_DIR / "diagnostics" / "tuned_acom_metric_comparison.png"),
     }
     print(json.dumps(summary, indent=2))
 
