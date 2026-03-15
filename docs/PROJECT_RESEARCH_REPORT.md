@@ -509,6 +509,18 @@ However, discretization reveals a critical difference in output quality: all thr
 
 PCA produces 27 collision cells with up to 8 documents sharing a single cell. t-SNE produces 32 collision cells (max 4 per cell), and UMAP produces 28 (max 7 per cell). ACOM, by contrast, guarantees zero collisions by construction — every document occupies exactly one cell. This distinction is the core value proposition of ACOM: it solves the discrete placement problem that continuous methods do not address, even when those methods are post-hoc discretized.
 
+### Discretized Baseline Grids
+
+![Discretized baseline comparison](../outputs/figures/discretized/discretized_comparison_grid.png)
+
+*Figure 15. Side-by-side discretized grids for PCA, t-SNE, and UMAP on the 10×10 grid. Collision cells contain multiple overlapping documents.*
+
+### ACOM vs Discretized Baselines
+
+![ACOM vs discretized baselines](../outputs/figures/discretized/discretized_vs_acom_grid.png)
+
+*Figure 16. Four-panel comparison of the tuned ACOM grid (zero collisions) against discretized PCA, t-SNE, and UMAP. The continuous methods produce visibly crowded cells while ACOM maintains one document per cell.*
+
 ## 11. Visual Comparison of Methods
 
 The visual comparison helps clarify what the quantitative metrics mean in practice. The continuous methods produce smooth scatter plots, while ACOM produces a cell-based layout that can be read as an explicit semantic map.
