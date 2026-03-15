@@ -1,0 +1,16 @@
+\begin{table}[!tb]
+  \caption{Final benchmark comparison on the 100-document dataset. Tuned ACOM exceeds PCA on neighborhood preservation and trustworthiness, but t-SNE and UMAP remain stronger overall on the benchmark. Higher is better for neighborhood preservation, trustworthiness, and silhouette; lower is better for stress.}
+  \label{tab:main-comparison}
+  \centering
+  \small
+  \begin{tabular}{lrrrr}
+    \toprule
+    Method & Neigh. & Trust. & Stress & Silh. \\
+    \midrule
+    ACOM (Tuned) & 0.367 & 0.787 & 5.107 & 0.097 \\
+    PCA & 0.329 & 0.758 & 0.612 & 0.243 \\
+    t-SNE & 0.523 & 0.893 & 13.242 & 0.406 \\
+    UMAP & 0.505 & 0.897 & 2.850 & 0.534 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

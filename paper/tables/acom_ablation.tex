@@ -1,0 +1,19 @@
+\begin{table}[!tb]
+  \caption{ACOM variant sweep used for model selection. The baseline row is the untuned configuration; the tuned row combines wider swap search with annealed acceptance and gives the strongest result.}
+  \label{tab:acom-ablation}
+  \centering
+  \scriptsize
+  \begin{tabular}{lrrrlr}
+    \toprule
+    Variant & Search & Neigh. & Trust. & Accept. & Cost Impr. \\
+    \midrule
+    \textbf{Baseline} & 12 & \textbf{0.134} & \textbf{0.567} & greedy & 25.063 \\
+    k=10 & 12 & 0.189 & 0.609 & greedy & 47.815 \\
+    More Iter. & 12 & 0.191 & 0.637 & greedy & 48.711 \\
+    Radius 2 & 12 & 0.188 & 0.625 & greedy & 56.417 \\
+    Strong Repulse & 12 & 0.137 & 0.574 & greedy & 27.676 \\
+    \textbf{Wider Search} & 20 & \textbf{0.239} & \textbf{0.683} & greedy & 66.307 \\
+    \textbf{Tuned} & 20 & \textbf{0.367} & \textbf{0.787} & annealed & 87.815 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

@@ -1,0 +1,101 @@
+\section{Results}
+
+\subsection{Qualitative Comparison}\label{sec:qualitative}
+
+Figure~\ref{fig:qualitative-panel} summarizes the output types directly. ACOM produces an explicit grid assignment, while PCA, t-SNE, and UMAP remain continuous scatter layouts. This discrete-versus-continuous difference is the main qualitative motivation for the method.
+
+\begin{figure*}[!t]
+  \centering
+  \includegraphics[width=0.78\textwidth]{qualitative_comparison_compact.png}
+  \caption{Compact qualitative comparison on the 100-document benchmark: tuned ACOM grid (A), PCA (B), t-SNE (C), and UMAP (D). ACOM is the only method that yields an explicit discrete semantic grid rather than a continuous scatter layout.}
+  \Description{A four-panel comparison figure showing the tuned ACOM grid and three baseline scatter plots on the same benchmark dataset.}
+  \label{fig:qualitative-panel}
+\end{figure*}
+
+\subsection{Baseline vs. Tuned ACOM}\label{sec:baseline-vs-tuned}
+
+The baseline ACOM configuration is weak on local-structure preservation: neighborhood preservation is 0.134 and trustworthiness is 0.567. The tuned variant raises those values to 0.367 and 0.787, respectively. Wider search gives the first substantial improvement, and annealed acceptance produces the final jump to the best saved result.
+
+Figure~\ref{fig:baseline-vs-tuned} makes the same change visible in the map itself: the tuned layout forms more coherent local regions than the baseline grid. This baseline-to-tuned transition is one of the clearest positive results in the repository.
+
+\begin{figure*}[!t]
+  \centering
+  \includegraphics[width=0.78\textwidth]{baseline_vs_tuned_panel.png}
+  \caption{Baseline versus tuned ACOM on the 100-document benchmark. The baseline grid (A) has neighborhood preservation 0.134 and trustworthiness 0.567, while the tuned grid (B) reaches 0.367 and 0.787. The improvement corresponds to wider swap search followed by annealed acceptance.}
+  \Description{A two-panel figure comparing the baseline ACOM grid and the tuned ACOM grid on the same benchmark dataset.}
+  \label{fig:baseline-vs-tuned}
+\end{figure*}
+
+\subsection{Variant Sweep and Model Selection}\label{sec:variant-sweep}
+
+Figure~\ref{fig:variant-comparison} and Table~\ref{tab:acom-ablation} show that not all changes help equally. Increasing neighbors, iterations, or radius produces only modest gains, while stronger repulsion barely improves on the baseline. The first clear step comes from wider search (0.239 neighborhood preservation, 0.683 trustworthiness), and annealed acceptance then produces the tuned configuration.
+
+\begin{figure*}[!t]
+  \centering
+  \includegraphics[width=0.78\textwidth]{acom_variant_comparison.png}
+  \caption{ACOM variant sweep. Wider search produces the first major gain over the baseline, and annealed acceptance yields the strongest final result. Variant labels I--VII are defined in Table~\ref{tab:variant-labels}.}
+  \Description{A three-panel bar chart comparing ACOM variants on cost improvement, neighborhood preservation, and trustworthiness.}
+  \label{fig:variant-comparison}
+\end{figure*}
+
+\begin{table}[!tb]
+  \caption{Roman-numeral labels used for the ACOM variant sweep in Figure~\ref{fig:variant-comparison}.}
+  \label{tab:variant-labels}
+  \centering
+  \small
+  \begin{tabular}{ll}
+    \toprule
+    Label & Variant Description \\
+    \midrule
+    I & Baseline \\
+    II & k=10 \\
+    III & More Iterations \\
+    IV & Radius 2 \\
+    V & Strong Repulsion \\
+    VI & Wider Search \\
+    VII & Tuned (Wider Search + Annealed Acceptance) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\input{tables/acom_ablation.tex}
+
+\subsection{Final Benchmark Comparison}\label{sec:benchmark}
+
+Table~\ref{tab:main-comparison} gives the final benchmark comparison against PCA, t-SNE, and UMAP. Tuned ACOM reaches neighborhood preservation 0.367 and trustworthiness 0.787, exceeding PCA on both metrics (0.329 and 0.758). However, PCA remains much better on stress (0.612 versus 5.107), and t-SNE and UMAP are stronger overall on the benchmark. The supported claim is therefore narrower: ACOM is competitive with PCA on the two local metrics while producing a discrete semantic grid that the continuous baselines do not provide.
+The higher stress values arise because the discrete grid constraint limits the ability to preserve global distances compared with continuous projections.
+
+\input{tables/main_comparison.tex}
+
+\subsection{Scaling Behavior}\label{sec:scaling}
+
+Table~\ref{tab:scaling} and Figure~\ref{fig:scaling} show that tuned ACOM remains operational across all tested sizes. Quality peaks around 100 documents and then declines: neighborhood preservation falls from 0.351 at 100 documents to 0.240 at 150 and 0.193 at 200, while trustworthiness falls from 0.780 to 0.723 and 0.705. Runtime rises from 13.4 seconds at 50 documents to about 36--39 seconds at 150--200 documents.
+
+\input{tables/scaling_results.tex}
+
+\begin{figure*}[!t]
+  \centering
+  \begin{subfigure}[b]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{acom_scaling_neighborhood.png}
+    \caption{Neighborhood Preservation}
+    \label{fig:scaling-panel-a}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{acom_scaling_trustworthiness.png}
+    \caption{Trustworthiness}
+    \label{fig:scaling-panel-b}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{acom_scaling_runtime.png}
+    \caption{Runtime (seconds)}
+    \label{fig:scaling-panel-c}
+  \end{subfigure}
+  \caption{Scaling behavior of tuned ACOM. Neighborhood preservation and trustworthiness peak around 100 documents and then decline, while runtime rises as dataset size increases. Each dataset size uses a dedicated grid: 8$\times$8 for 50 documents, 10$\times$10 for 100, 13$\times$13 for 150, and 15$\times$15 for 200; the quality peak near 100 documents therefore coincides with the 10$\times$10 configuration.}
+  \Description{Three scaling subfigures show neighborhood preservation, trustworthiness, and runtime as dataset size increases from 50 to 200 documents, with one subplot per metric and a subcaption below each panel.}
+  \label{fig:scaling}
+\end{figure*}

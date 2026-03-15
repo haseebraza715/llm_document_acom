@@ -1,0 +1,112 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{7}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Lang(1995)]%
+        {lang1995newsweeder}
+\bibfield{author}{\bibinfo{person}{Ken Lang}.} \bibinfo{year}{1995}\natexlab{}.
+\newblock \showarticletitle{Newsweeder: Learning to filter netnews}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 12th International Conference on
+  Machine Learning}}.
+\newblock
+
+
+\bibitem[McInnes et~al\mbox{.}(2018)]%
+        {mcinnes2018umap}
+\bibfield{author}{\bibinfo{person}{Leland McInnes}, \bibinfo{person}{John
+  Healy}, {and} \bibinfo{person}{James Melville}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{{UMAP}: Uniform Manifold Approximation and
+  Projection for Dimension Reduction}.
+\newblock \bibinfo{journal}{\emph{arXiv preprint arXiv:1802.03426}}
+  (\bibinfo{year}{2018}).
+\newblock
+
+
+\bibitem[Pearson(1901)]%
+        {pearson1901pca}
+\bibfield{author}{\bibinfo{person}{Karl Pearson}.}
+  \bibinfo{year}{1901}\natexlab{}.
+\newblock \showarticletitle{On lines and planes of closest fit to systems of
+  points in space}.
+\newblock \bibinfo{journal}{\emph{Philos. Mag.}} \bibinfo{volume}{2},
+  \bibinfo{number}{11} (\bibinfo{year}{1901}), \bibinfo{pages}{559--572}.
+\newblock
+
+
+\bibitem[Reimers and Gurevych(2019)]%
+        {reimers2019sentencebert}
+\bibfield{author}{\bibinfo{person}{Nils Reimers} {and} \bibinfo{person}{Iryna
+  Gurevych}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Sentence-{BERT}: Sentence Embeddings using Siamese
+  {BERT}-Networks}. In \bibinfo{booktitle}{\emph{Proceedings of EMNLP}}.
+\newblock
+
+
+\bibitem[Rousseeuw(1987)]%
+        {rousseeuw1987silhouette}
+\bibfield{author}{\bibinfo{person}{Peter~J. Rousseeuw}.}
+  \bibinfo{year}{1987}\natexlab{}.
+\newblock \showarticletitle{Silhouettes: a graphical aid to the interpretation
+  and validation of cluster analysis}.
+\newblock \bibinfo{journal}{\emph{J. Comput. Appl. Math.}}
+  \bibinfo{volume}{20} (\bibinfo{year}{1987}), \bibinfo{pages}{53--65}.
+\newblock
+
+
+\bibitem[van~der Maaten and Hinton(2008)]%
+        {vandermaaten2008tsne}
+\bibfield{author}{\bibinfo{person}{Laurens van~der Maaten} {and}
+  \bibinfo{person}{Geoffrey Hinton}.} \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Visualizing data using {t-SNE}}.
+\newblock \bibinfo{journal}{\emph{Journal of Machine Learning Research}}
+  \bibinfo{volume}{9} (\bibinfo{year}{2008}), \bibinfo{pages}{2579--2605}.
+\newblock
+
+
+\bibitem[Venna and Kaski(2006)]%
+        {venna2006trustworthiness}
+\bibfield{author}{\bibinfo{person}{Jarkko Venna} {and} \bibinfo{person}{Samuel
+  Kaski}.} \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Visualizing gene interaction graphs with local
+  multidimensional scaling}.
+\newblock \bibinfo{journal}{\emph{Proceedings of ESANN}}
+  (\bibinfo{year}{2006}).
+\newblock
+
+
+\end{thebibliography}

@@ -1,0 +1,16 @@
+\begin{table}[!tb]
+  \caption{Scaling behavior of tuned ACOM from 50 to 200 documents. Quality is strongest near 100 documents and declines at larger sizes even though optimization remains active.}
+  \label{tab:scaling}
+  \centering
+  \small
+  \begin{tabular}{rrrrrr}
+    \toprule
+    Docs & Grid & Runtime & Neigh. & Trust. & Stress \\
+    \midrule
+    50 & 8$\times$8 & 13.36 & 0.342 & 0.728 & 3.989 \\
+    100 & 10$\times$10 & 15.10 & 0.351 & 0.780 & 5.146 \\
+    150 & 13$\times$13 & 38.99 & 0.240 & 0.723 & 6.931 \\
+    200 & 15$\times$15 & 36.10 & 0.193 & 0.705 & 8.180 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

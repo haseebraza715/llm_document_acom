@@ -1,0 +1,71 @@
+\documentclass[sigconf]{acmart}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{Bib\TeX}}}
+
+\setcopyright{none}
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage{dblfloatfix}
+\usepackage{placeins}
+\usepackage{flafter}
+\usepackage{balance}
+\usepackage{subcaption}
+\setlength{\floatsep}{4pt plus 1pt minus 1pt}
+\setlength{\textfloatsep}{6pt plus 1pt minus 2pt}
+\setlength{\intextsep}{4pt plus 1pt minus 1pt}
+\setlength{\dblfloatsep}{4pt plus 1pt minus 1pt}
+\setlength{\dbltextfloatsep}{6pt plus 1pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}
+\renewcommand{\dblfloatpagefraction}{0.8}
+
+\begin{document}
+
+\title[Discrete Embedding Grids with ACOM]{Discrete Embedding Grids with ACOM}
+
+\author{Haseeb Raza}
+\affiliation{%
+  \institution{ELTE}
+  \city{Budapest}
+  \country{Hungary}}
+\email{haseeb.javed715@gmail.com}
+
+\renewcommand{\shortauthors}{Haseeb Raza}
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+% Conference metadata kept minimal for this draft.
+\acmConference[Intelligent Robotics FAIR 2026]{Intelligent Robotics FAIR 2026}{}{}
+
+% TODO: Replace with real ACM CCS concepts if required by the venue.
+% \begin{CCSXML}
+% \end{CCSXML}
+% \ccsdesc[500]{TODO}
+
+\keywords{document embeddings, discrete semantic mapping, ACOM, dimensionality reduction, semantic grids}
+
+\maketitle
+
+\input{sections/intro}
+\input{sections/methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+% TODO: last page column balance still imperfect — known LaTeX limitation with two-column templates
+\balance
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

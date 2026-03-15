@@ -1,0 +1,42 @@
+\section{Method and Experimental Setup}
+
+\subsection{Dataset}
+
+The dataset is the 20 Newsgroups dataset~\cite{lang1995newsweeder}, a standard benchmark for text categorization containing approximately 18,000 posts across 20 newsgroup categories. We obtained the dataset via scikit-learn's \texttt{fetch\_20newsgroups} loader~\cite{pedregosa2011sklearn}, which downloads the \texttt{20news-bydate} archive from the original distribution. The five categories used are \mbox{\texttt{comp.graphics}}, \mbox{\texttt{rec.sport.baseball}}, \mbox{\texttt{sci.med}}, \mbox{\texttt{sci.space}}, and \mbox{\texttt{talk.politics.misc}}. We sampled 10 documents per category per split, giving 50 train and 50 test documents for 100 documents total. Preprocessing removed headers, footers, and quoted reply text. Embeddings use the all-MiniLM-L6-v2 model from the sentence-transformers library~\cite{reimers2019sentencebert}, producing 384-dimensional embeddings.
+
+\subsection{Methods Compared}
+
+Principal Component Analysis (PCA) \cite{pearson1901pca} is a linear projection that preserves directions of maximum variance in the data. t-distributed Stochastic Neighbor Embedding (t-SNE) \cite{vandermaaten2008tsne} is a nonlinear method that preserves local neighborhood structure by minimizing the KL divergence between high- and low-dimensional pairwise similarity distributions. Uniform Manifold Approximation and Projection (UMAP) \cite{mcinnes2018umap} is a manifold learning method that balances local and global structure. The proposed ACOM mapper places each document on a discrete grid cell through iterative swap proposals evaluated against a cost function that attracts semantic neighbors and repels semantically distant grid neighbors. The strongest variant combines wider swap candidate search with annealed acceptance.
+
+\subsection{ACOM Variants}
+
+Seven ACOM configurations were evaluated in a controlled sweep, each isolating one design decision relative to the baseline. The variants are listed in Table~\ref{tab:variant-labels}. The baseline (I) uses greedy acceptance and a swap candidate breadth of 12. Variant II increases semantic neighbor coverage to k=10. Variant III extends the iteration budget. Variant IV expands the local neighborhood radius to 2. Variant V increases the repulsion weight. Variant VI widens the swap candidate search to 20. The tuned configuration (VII) combines variant VI with annealed acceptance, which permits occasional uphill moves to escape local minima.
+
+\subsection{Metrics}
+
+We evaluate all methods using the following metrics, computed against the same original embedding space.
+
+\paragraph{Neighborhood Preservation}
+Let $\mathcal{N}_k^H(i)$ and $\mathcal{N}_k^L(i)$ denote the $k$ nearest neighbors of point $i$ in the original embedding space and in the mapped space respectively. Neighborhood preservation is:
+\begin{equation}
+\text{NP} = \frac{1}{nk} \sum_{i=1}^{n} \left|\mathcal{N}_k^H(i) \cap \mathcal{N}_k^L(i)\right|
+\end{equation}
+
+\paragraph{Trustworthiness}
+Trustworthiness~\cite{venna2006trustworthiness} measures whether points introduced as neighbors by the mapping are genuine neighbors in the original space:
+\begin{equation}
+T(k) = 1 - \frac{2}{nk(2n-3k-1)} \sum_{i=1}^{n} \sum_{j \in \mathcal{N}_k^L(i) \setminus \mathcal{N}_k^H(i)} (r(i,j) - k)
+\end{equation}
+where $r(i,j)$ is the rank of point $j$ in the original space sorted by distance from $i$.
+
+\paragraph{Stress}
+Stress measures disagreement between original pairwise distances and mapped pairwise distances:
+\begin{equation}
+\text{Stress} = \sqrt{\frac{\sum_{i<j}(d_{ij} - \hat{d}_{ij})^2}{\sum_{i<j} d_{ij}^2}}
+\end{equation}
+where $d_{ij}$ is the original cosine distance and $\hat{d}_{ij}$ is the Euclidean distance in the mapped space.
+
+\paragraph{Silhouette Score}
+The silhouette score~\cite{rousseeuw1987silhouette} measures cluster separation quality in the mapped space, ranging from $-1$ to $1$ where higher values indicate better-separated clusters.
+
+% TODO: Add a concise algorithm box or pseudocode if the final venue page budget allows.
