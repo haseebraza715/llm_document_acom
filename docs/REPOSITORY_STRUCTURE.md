@@ -63,6 +63,10 @@ Important modules include:
 - [`src/run_experiment.py`](../src/run_experiment.py)
 - [`src/run_acom_sweep.py`](../src/run_acom_sweep.py)
 - [`src/run_acom_scaling.py`](../src/run_acom_scaling.py)
+- [`src/discretize_baselines.py`](../src/discretize_baselines.py)
+  Discretizes continuous PCA, t-SNE, and UMAP positions onto a 10×10 grid, recomputes evaluation metrics, and produces collision statistics for like-for-like comparison with ACOM.
+- [`src/visualize_discretized_baselines.py`](../src/visualize_discretized_baselines.py)
+  Generates grid visualizations for the discretized baselines, including individual method grids, a side-by-side comparison panel, and a four-panel ACOM-vs-discretized composite figure.
 - [`src/generate_thesis_results.py`](../src/generate_thesis_results.py)
 - [`src/acom.py`](../src/acom.py)
 - [`src/grid.py`](../src/grid.py)
@@ -102,6 +106,8 @@ This is the archive of record for completed experiments.
 - `embeddings/`, `mappings/`, `metrics/`, `extracted_text/`
   Additional archival directories retained for organization and supporting artifacts.
 
+Discretization experiment runs are archived under `runs/` following the same timestamped convention as other runs (e.g., `run_<timestamp>_discretize_baselines`).
+
 ## `outputs`
 
 This directory contains the latest generated working outputs.
@@ -110,10 +116,10 @@ This directory contains the latest generated working outputs.
   Latest ACOM and baseline position files.
 
 - `figures/`
-  Latest generated plots.
+  Latest generated plots, organized into subdirectories: `grids/` for ACOM grid layouts, `scatters/` for PCA/t-SNE/UMAP scatter plots, `scaling/` for scaling study line plots, `variants/` for ACOM variant comparison bars, `discretized/` for discretized baseline grids (including `discretized_pca_grid.png`, `discretized_tsne_grid.png`, `discretized_umap_grid.png`, `discretized_comparison_grid.png`, and `discretized_vs_acom_grid.png`), `diagnostics/` for cost histories and distance correlations, and `panels/` for multi-panel composite figures.
 
 - `reports/`
-  Latest CSV, JSON, and Markdown summaries.
+  Latest CSV, JSON, and Markdown summaries. Includes `discretized_baselines_metrics.csv`, `discretized_baselines_collisions.json`, and `full_comparison_with_discretized.csv` from the discretization experiment.
 
 ## `docs`
 

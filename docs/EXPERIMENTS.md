@@ -100,7 +100,7 @@ Current named variants include:
 - `acom_v1_radius2`
 - `acom_v1_wider_swap_annealed`
 
-These experiments are designed as controlled changes so that each variant isolates one main design decision.
+These experiments are designed as controlled changes so that each variant isolates one main design decision. The strongest variant is `acom_v1_wider_swap_annealed`, which combined wider swap candidate search with annealed acceptance and achieved the highest neighborhood preservation (`0.367`), trustworthiness (`0.787`), and largest cost improvement (`87.815`) among all variants.
 
 ## Scaling Experiments
 
@@ -121,6 +121,25 @@ Balanced category allocation is preserved as closely as possible, and the study 
 - `15x15`
 
 Unlike the main comparison run, the scaling study focuses on ACOM behavior across sizes rather than rerunning continuous baselines for every size.
+
+## Discretization Experiment
+
+The discretization experiment tests whether the quality gap between ACOM and the continuous baselines is an artifact of comparing discrete grid positions against continuous coordinates. It is executed by [`src/discretize_baselines.py`](../src/discretize_baselines.py), which bins the continuous PCA, t-SNE, and UMAP positions into the same 10×10 grid used by ACOM using uniform binning, then recomputes all evaluation metrics on the resulting cell-center coordinates. The companion script [`src/visualize_discretized_baselines.py`](../src/visualize_discretized_baselines.py) generates grid visualizations for the discretized layouts.
+
+To run:
+
+```bash
+python3 src/discretize_baselines.py
+python3 src/visualize_discretized_baselines.py
+```
+
+The discretization step produces three output files:
+
+- `outputs/reports/discretized_baselines_metrics.csv` — evaluation metrics for each discretized method
+- `outputs/reports/discretized_baselines_collisions.json` — per-method collision statistics with cell-level detail
+- `outputs/reports/full_comparison_with_discretized.csv` — merged table combining tuned ACOM metrics with discretized baseline metrics
+
+The key finding is that discretization barely changes the continuous baselines' metric scores — PCA neighborhood preservation drops from `0.329` to `0.324`, t-SNE from `0.523` to `0.490`, UMAP from `0.505` to `0.471` — but all three methods produce significant cell collisions (PCA: 27 collision cells with max 8 docs/cell, t-SNE: 32 with max 4, UMAP: 28 with max 7). ACOM produces zero collisions by design. This confirms that the quality gap is structural rather than a measurement artifact.
 
 ## Research Workflow
 
@@ -162,5 +181,8 @@ The repository currently includes several thesis-oriented summary outputs, inclu
 - `outputs/reports/acom_results_table_pretty.csv`
 - `outputs/reports/acom_scaling_results.csv`
 - `outputs/reports/tuned_acom_metrics_summary.csv`
+- `outputs/reports/discretized_baselines_metrics.csv`
+- `outputs/reports/discretized_baselines_collisions.json`
+- `outputs/reports/full_comparison_with_discretized.csv`
 
 These files support later method comparison, reporting, and thesis tables.

@@ -126,10 +126,15 @@ Scaling study for the tuned ACOM variant:
 python3 src/run_acom_scaling.py
 ```
 
-Discretize continuous baselines onto the same 10x10 grid for like-for-like comparison:
+Discretize continuous baselines onto the same 10×10 grid and recompute metrics for a like-for-like comparison with ACOM:
 
 ```bash
 python3 src/discretize_baselines.py
+```
+
+Generate grid visualizations for the discretized baselines (requires the discretization step above):
+
+```bash
 python3 src/visualize_discretized_baselines.py
 ```
 
@@ -153,6 +158,7 @@ Important report files include:
 - `outputs/reports/acom_scaling_results.csv`
 - `outputs/reports/acom_results_table_pretty.csv`
 - `outputs/reports/discretized_baselines_metrics.csv`
+- `outputs/reports/discretized_baselines_collisions.json`
 - `outputs/reports/full_comparison_with_discretized.csv`
 
 The historical run index is stored at:
@@ -169,9 +175,9 @@ The strongest ACOM variant currently archived is `acom_v1_wider_swap_annealed`. 
 
 In the tuned comparison, ACOM outperformed PCA on neighborhood preservation and trustworthiness, but remained below t-SNE and UMAP on those local-structure metrics.
 
-### Discretized baseline comparison
+### Discretization Experiment
 
-When PCA, t-SNE, and UMAP are discretized onto the same 10x10 grid, ACOM is the only method that guarantees zero collisions (one document per cell). Collision counts for discretized baselines: PCA 27 collision cells (max 8 docs/cell), t-SNE 32 (max 4), UMAP 28 (max 7).
+When the continuous baselines are discretized onto the same 10×10 grid used by ACOM, their quality metrics barely change — PCA drops from `0.329` to `0.324` on neighborhood preservation, t-SNE from `0.523` to `0.490`, and UMAP from `0.505` to `0.471` — but all three produce significant cell collisions. PCA has 27 collision cells (max 8 docs/cell), t-SNE has 32 (max 4), and UMAP has 28 (max 7). ACOM produces zero collisions by design. This confirms that the quality gap between ACOM and the continuous baselines is structural rather than a measurement artifact of comparing discrete versus continuous coordinates.
 
 ## Paper
 

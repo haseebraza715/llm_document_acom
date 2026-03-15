@@ -53,6 +53,12 @@ The central execution path is implemented in [`src/run_experiment.py`](../src/ru
 - [`src/visualization.py`](../src/visualization.py)
   Generates grid plots, scatter plots, metric comparison charts, distance-correlation plots, variant comparison plots, and scaling plots.
 
+- [`src/discretize_baselines.py`](../src/discretize_baselines.py)
+  Standalone analysis script that discretizes continuous PCA, t-SNE, and UMAP positions onto a 10×10 grid using uniform binning, recomputes all evaluation metrics on the discretized coordinates, records collision statistics, and archives the run. This enables a like-for-like comparison with ACOM under the same grid constraint.
+
+- [`src/visualize_discretized_baselines.py`](../src/visualize_discretized_baselines.py)
+  Standalone visualization script that generates grid plots for the discretized baselines, a side-by-side three-panel comparison, and a four-panel ACOM-vs-discretized composite figure. Depends on the collision report produced by `discretize_baselines.py`.
+
 ## Module Interaction
 
 ```mermaid
@@ -71,7 +77,13 @@ flowchart TD
     K --> L["visualization.py"]
     L --> M["outputs/"]
     F --> N["archive/runs/"]
+
+    M --> O["discretize_baselines.py"]
+    O --> P["visualize_discretized_baselines.py"]
+    O --> N
 ```
+
+Note: `discretize_baselines.py` and `visualize_discretized_baselines.py` are standalone analysis scripts that run after the main pipeline. They consume outputs from the main experiment (position CSVs and embeddings) and produce their own reports, figures, and archived runs.
 
 ## Experiment Execution Pipeline
 
@@ -130,6 +142,8 @@ There is no standalone top-level `reports/` directory. Reports are written to:
 - `outputs/reports/`
 - `archive/runs/<run_id>/reports/`
 - `archive/scaling_studies/<study_id>/reports/`
+
+The discretization experiment adds `discretized_baselines_metrics.csv`, `discretized_baselines_collisions.json`, and `full_comparison_with_discretized.csv` to both `outputs/reports/` and the archived run directory.
 
 ## Directory Roles
 

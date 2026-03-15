@@ -104,6 +104,8 @@ The main ACOM parameters are defined in [`src/config.py`](../src/config.py) and 
 - `acom_early_stopping_rounds`
 - `random_seed`
 
+The best-performing configuration (`acom_v1_wider_swap_annealed`) used: `grid_rows=10`, `grid_cols=10`, `num_ants=30`, `max_iter=120`, `neighbor_radius=1`, `acom_semantic_k=8`, `acom_attraction_weight=1.0`, `acom_repulsion_weight=0.35`, `acom_swap_candidates=20`, `acom_acceptance_rule=annealed`, `acom_temperature_start=0.03`, `acom_temperature_decay=0.985`, `acom_early_stopping_rounds=3`, and `random_seed=42`.
+
 ## Algorithm Workflow
 
 ```mermaid
@@ -172,3 +174,4 @@ This is substantially cheaper than recomputing full global cost for every candid
 - Larger document sets create a harder combinatorial search problem.
 - Stress remains weaker than strong continuous baselines such as PCA.
 - The proposal strategy is broader than the original baseline, but still not highly targeted toward the worst local mismatches.
+- Quality degrades beyond approximately 100 documents. In the scaling study, neighborhood preservation dropped from `0.351` at 100 documents to `0.240` at 150 and `0.193` at 200, while stress rose from `5.146` to `6.931` and `8.180` respectively.

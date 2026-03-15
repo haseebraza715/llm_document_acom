@@ -6,6 +6,7 @@
 - The tuned ACOM variant outperformed PCA on neighborhood preservation (`0.367` vs `0.329`) and trustworthiness (`0.787` vs `0.758`) on the 100-document benchmark.
 - t-SNE still achieved the strongest local-structure preservation in the final comparison, with neighborhood preservation `0.523` and trustworthiness `0.893`.
 - ACOM remained stable as dataset size increased from `50` to `200` documents, but neighborhood preservation and trustworthiness declined beyond `100` documents while stress increased.
+- Discretizing the continuous baselines onto the same 10×10 grid barely changes their metrics (PCA neighborhood preservation drops from `0.329` to `0.324`, t-SNE from `0.523` to `0.490`, UMAP from `0.505` to `0.471`) while producing significant collisions (PCA: 27 collision cells with max 8 docs/cell, t-SNE: 32 with max 4, UMAP: 28 with max 7). ACOM produces zero collisions by design, confirming that the quality gap is structural and not a measurement artifact.
 
 ## Executive Summary
 
@@ -86,6 +87,9 @@ flowchart LR
     H --> I
     I --> J["Figures and Reports"]
     J --> K["Archived Runs"]
+    J --> L["Discretize Baselines<br/>discretize_baselines.py"]
+    L --> M["Discretized Figures<br/>visualize_discretized_baselines.py"]
+    L --> K
 ```
 
 ### Method Comparison: Continuous vs Discrete Outputs
@@ -487,6 +491,23 @@ Runtime data is available for embedding generation and for the ACOM scaling stud
 | Tuned ACOM scaling run | 100 documents | `15.1044 s` |
 | Tuned ACOM scaling run | 150 documents | `38.9926 s` |
 | Tuned ACOM scaling run | 200 documents | `36.0956 s` |
+
+### Discretized Baseline Comparison
+
+A natural question is whether the gap between ACOM and the continuous baselines is partly an artifact of comparing discrete grid coordinates against unconstrained continuous coordinates. To test this, the continuous PCA, t-SNE, and UMAP positions were discretized onto the same 10×10 grid used by ACOM. Each method's continuous (x, y) coordinates were binned into grid cells using uniform partitioning, and all evaluation metrics were recomputed on the resulting cell-center coordinates. This places every method under the same geometric constraint and allows a like-for-like comparison.
+
+The results show that discretization has only a modest effect on the continuous baselines' quality metrics. PCA neighborhood preservation drops from `0.329` to `0.324`, t-SNE from `0.523` to `0.490`, and UMAP from `0.505` to `0.471`. Trustworthiness shows a similar pattern of minimal change: PCA moves from `0.758` to `0.764`, t-SNE from `0.893` to `0.889`, and UMAP from `0.897` to `0.886`. The metric changes are small enough to confirm that the quality differences between ACOM and the continuous baselines are structural rather than measurement artifacts of the coordinate representation.
+
+However, discretization reveals a critical difference in output quality: all three continuous methods produce significant cell collisions when forced onto the grid. A collision occurs when multiple documents are assigned to the same grid cell, which makes the layout unusable as a one-document-per-cell semantic map.
+
+| Method | Neighborhood Preservation | Trustworthiness | Stress | Silhouette | Collision Cells | Max Docs/Cell |
+|---|---:|---:|---:|---:|---:|---:|
+| ACOM (Tuned) | 0.367 | 0.787 | 5.107 | 0.097 | 0 | 1 |
+| PCA (Discretized) | 0.324 | 0.764 | 0.617 | 0.249 | 27 | 8 |
+| t-SNE (Discretized) | 0.490 | 0.889 | 13.140 | 0.418 | 32 | 4 |
+| UMAP (Discretized) | 0.471 | 0.886 | 2.803 | 0.530 | 28 | 7 |
+
+PCA produces 27 collision cells with up to 8 documents sharing a single cell. t-SNE produces 32 collision cells (max 4 per cell), and UMAP produces 28 (max 7 per cell). ACOM, by contrast, guarantees zero collisions by construction — every document occupies exactly one cell. This distinction is the core value proposition of ACOM: it solves the discrete placement problem that continuous methods do not address, even when those methods are post-hoc discretized.
 
 ## 11. Visual Comparison of Methods
 
