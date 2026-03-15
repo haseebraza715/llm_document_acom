@@ -236,6 +236,69 @@ def generate_embeddings(
         return fallback_artifacts
 
 
+def generate_embeddings_for_frame(
+    frame: pd.DataFrame,
+    backend: str,
+    model_name: str,
+    batch_size: int,
+    tfidf_max_features: int,
+) -> tuple[np.ndarray, dict[str, object]]:
+    if backend == "sentence-transformers":
+        start_time = time.perf_counter()
+        model = _load_sentence_transformer(model_name)
+        embeddings = model.encode(
+            frame["text"].tolist(),
+            batch_size=batch_size,
+            convert_to_numpy=True,
+            normalize_embeddings=False,
+            show_progress_bar=False,
+        ).astype(np.float32)
+        runtime_seconds = time.perf_counter() - start_time
+        return embeddings, {
+            "backend_used": "sentence-transformers",
+            "embedding_model_used": f"sentence-transformers:{model_name}",
+            "runtime_seconds": round(float(runtime_seconds), 4),
+            "failed_records": [],
+        }
+
+    if backend == "tfidf":
+        start_time = time.perf_counter()
+        vectorizer = TfidfVectorizer(stop_words="english", max_features=tfidf_max_features)
+        embeddings = vectorizer.fit_transform(frame["text"].tolist()).toarray().astype(np.float32)
+        runtime_seconds = time.perf_counter() - start_time
+        return embeddings, {
+            "backend_used": "tfidf",
+            "embedding_model_used": f"tfidf:max_features={tfidf_max_features}",
+            "runtime_seconds": round(float(runtime_seconds), 4),
+            "failed_records": [],
+        }
+
+    try:
+        return generate_embeddings_for_frame(
+            frame=frame,
+            backend="sentence-transformers",
+            model_name=model_name,
+            batch_size=batch_size,
+            tfidf_max_features=tfidf_max_features,
+        )
+    except Exception as exc:
+        embeddings, report = generate_embeddings_for_frame(
+            frame=frame,
+            backend="tfidf",
+            model_name=model_name,
+            batch_size=batch_size,
+            tfidf_max_features=tfidf_max_features,
+        )
+        report["failed_records"] = [
+            {
+                "stage": "backend_selection",
+                "backend": "sentence-transformers",
+                "reason": str(exc),
+            }
+        ]
+        return embeddings, report
+
+
 def validate_embeddings(frame: pd.DataFrame, embeddings: np.ndarray, split_name: str) -> None:
     if embeddings.ndim != 2:
         raise ValueError(f"{split_name} embeddings must be 2D. Received shape {embeddings.shape}.")

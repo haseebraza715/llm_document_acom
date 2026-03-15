@@ -102,6 +102,49 @@ def select_balanced_records(cleaned_records: list[DocumentRecord], sample_size: 
     return [DocumentRecord(**record) for record in selected.to_dict(orient="records")]
 
 
+def load_cleaned_records(subsets: tuple[str, ...] = ("train", "test")) -> list[DocumentRecord]:
+    cleaned_records: list[DocumentRecord] = []
+    for subset in subsets:
+        for _, cleaned_record in iter_subset_records(subset):
+            cleaned_records.append(cleaned_record)
+    return cleaned_records
+
+
+def select_balanced_total_records(
+    cleaned_records: list[DocumentRecord],
+    total_size: int,
+    seed: int,
+) -> list[DocumentRecord]:
+    if total_size <= 0:
+        raise ValueError("total_size must be positive.")
+
+    per_category = total_size // len(CATEGORIES)
+    remainder = total_size % len(CATEGORIES)
+    allocation = {
+        category_name: per_category + (1 if index < remainder else 0)
+        for index, category_name in enumerate(CATEGORIES)
+    }
+
+    frame = pd.DataFrame(asdict(record) for record in cleaned_records)
+    selected_frames: list[pd.DataFrame] = []
+
+    for category_name in CATEGORIES:
+        category_frame = frame[frame["category_name"] == category_name].copy()
+        valid_frame = category_frame[category_frame["text"].apply(is_valid_document)].copy()
+        required = allocation[category_name]
+        if len(valid_frame) < required:
+            raise ValueError(
+                f"Not enough valid documents for {category_name}. "
+                f"Required {required}, found {len(valid_frame)}."
+            )
+        sampled = valid_frame.sample(n=required, random_state=seed).sort_values("doc_id")
+        selected_frames.append(sampled)
+
+    selected = pd.concat(selected_frames, ignore_index=True)
+    selected = selected.sort_values(["category_name", "doc_id"]).reset_index(drop=True)
+    return [DocumentRecord(**record) for record in selected.to_dict(orient="records")]
+
+
 def write_jsonl(path: Path, records: Iterable[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as handle:
