@@ -112,7 +112,7 @@ flowchart LR
 
 The tuned ACOM system produces an explicit semantic grid rather than a scatter plot. Figure 1 shows the final discrete output that the rest of the report explains and justifies.
 
-![Tuned ACOM grid](../outputs/figures/tuned_acom_grid.png)
+![Tuned ACOM grid](../outputs/figures/grids/tuned_acom_grid.png)
 
 *Figure 1. Tuned `acom_v1_wider_swap_annealed` grid layout on the 100-document benchmark.*
 
@@ -286,13 +286,13 @@ flowchart TD
 
 ### Baseline ACOM Grid
 
-![Baseline ACOM grid](../outputs/figures/acom_v1_baseline_grid.png)
+![Baseline ACOM grid](../outputs/figures/grids/acom_v1_baseline_grid.png)
 
 *Figure 2. Discrete grid produced by the first ACOM baseline run.*
 
 ### Baseline ACOM Cost History
 
-![Baseline ACOM cost history](../outputs/figures/acom_v1_baseline_cost_history.png)
+![Baseline ACOM cost history](../outputs/figures/diagnostics/acom_v1_baseline_cost_history.png)
 
 *Figure 3. Cost curve for the first ACOM baseline run.*
 
@@ -371,7 +371,7 @@ This table captures the development logic of the project: start with a simple ba
 
 ### Variant Comparison Figure
 
-![ACOM variant comparison](../outputs/figures/acom_variant_comparison.png)
+![ACOM variant comparison](../outputs/figures/variants/acom_variant_comparison.png)
 
 *Figure 4. Comparison of cost improvement, neighborhood preservation, and trustworthiness across named ACOM variants.*
 
@@ -401,7 +401,7 @@ The strongest improvement came from adding **annealed acceptance** on top of wid
 
 ### Tuned Cost History as Evidence of Reduced Plateauing
 
-![Tuned ACOM cost history](../outputs/figures/tuned_acom_cost_history.png)
+![Tuned ACOM cost history](../outputs/figures/diagnostics/tuned_acom_cost_history.png)
 
 *Figure 5. Cost history for `acom_v1_wider_swap_annealed`, showing a deeper descent than the baseline greedy run.*
 
@@ -449,7 +449,7 @@ The main comparison in this project is the tuned ACOM variant against PCA, t-SNE
 
 ### Metric Comparison Figure
 
-![Tuned metric comparison](../outputs/figures/tuned_acom_metric_comparison.png)
+![Tuned metric comparison](../outputs/figures/diagnostics/tuned_acom_metric_comparison.png)
 
 *Figure 6. Final metric comparison between the tuned ACOM variant and the continuous baselines.*
 
@@ -515,25 +515,25 @@ The visual comparison helps clarify what the quantitative metrics mean in practi
 
 ### Tuned ACOM Grid
 
-![Tuned ACOM grid](../outputs/figures/tuned_acom_grid.png)
+![Tuned ACOM grid](../outputs/figures/grids/tuned_acom_grid.png)
 
 *Figure 7. Tuned ACOM discrete document map.*
 
 ### PCA
 
-![Tuned PCA scatter](../outputs/figures/tuned_pca_scatter.png)
+![Tuned PCA scatter](../outputs/figures/scatters/tuned_pca_scatter.png)
 
 *Figure 8. PCA projection on the same embedding set.*
 
 ### t-SNE
 
-![Tuned t-SNE scatter](../outputs/figures/tuned_tsne_scatter.png)
+![Tuned t-SNE scatter](../outputs/figures/scatters/tuned_tsne_scatter.png)
 
 *Figure 9. t-SNE projection on the same embedding set.*
 
 ### UMAP
 
-![Tuned UMAP scatter](../outputs/figures/tuned_umap_scatter.png)
+![Tuned UMAP scatter](../outputs/figures/scatters/tuned_umap_scatter.png)
 
 *Figure 10. UMAP projection on the same embedding set.*
 
@@ -597,25 +597,25 @@ The scaling study used:
 
 ### Runtime Scaling
 
-![ACOM scaling runtime](../outputs/figures/acom_scaling_runtime.png)
+![ACOM scaling runtime](../outputs/figures/scaling/acom_scaling_runtime.png)
 
 *Figure 11. Runtime trend across dataset sizes.*
 
 ### Neighborhood Preservation Scaling
 
-![ACOM scaling neighborhood preservation](../outputs/figures/acom_scaling_neighborhood.png)
+![ACOM scaling neighborhood preservation](../outputs/figures/scaling/acom_scaling_neighborhood.png)
 
 *Figure 12. Neighborhood preservation across dataset sizes.*
 
 ### Trustworthiness Scaling
 
-![ACOM scaling trustworthiness](../outputs/figures/acom_scaling_trustworthiness.png)
+![ACOM scaling trustworthiness](../outputs/figures/scaling/acom_scaling_trustworthiness.png)
 
 *Figure 13. Trustworthiness across dataset sizes.*
 
 ### Stress Scaling
 
-![ACOM scaling stress](../outputs/figures/acom_scaling_stress.png)
+![ACOM scaling stress](../outputs/figures/scaling/acom_scaling_stress.png)
 
 *Figure 14. Stress across dataset sizes.*
 
